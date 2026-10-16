@@ -1,0 +1,969 @@
+{
+  "generated_at": "2026-10-16T12:18:46.602Z",
+  "me": {
+    "name": "Alex Kim",
+    "title": "Account Manager",
+    "company": "Fernway",
+    "email": "alex@fernway.example"
+  },
+  "companies": [
+    {
+      "id": "northwind",
+      "name": "Northwind",
+      "domain": "northwind.example"
+    },
+    {
+      "id": "bluebird",
+      "name": "Bluebird Labs",
+      "domain": "bluebirdlabs.example"
+    },
+    {
+      "id": "helio",
+      "name": "Helio Health",
+      "domain": "heliohealth.example"
+    },
+    {
+      "id": "acme",
+      "name": "Acme Logistics",
+      "domain": "acmelogistics.example"
+    },
+    {
+      "id": "orchard",
+      "name": "Orchard & Co",
+      "domain": "orchardco.example"
+    }
+  ],
+  "knowledge_docs": [
+    {
+      "id": "price-list",
+      "title": "Fernway price list"
+    },
+    {
+      "id": "faq",
+      "title": "Customer FAQ"
+    },
+    {
+      "id": "manual-sso",
+      "title": "Manual excerpt: SSO sign-in troubleshooting"
+    },
+    {
+      "id": "terms",
+      "title": "Service terms summary"
+    }
+  ],
+  "people": [
+    {
+      "id": "jane",
+      "name": "Jane Lee",
+      "email": "jane@northwind.example",
+      "title": "Head of Operations",
+      "company_id": "northwind",
+      "tone": "normal",
+      "stage": "trusted",
+      "stage_label": "Close",
+      "stage_reason": null,
+      "received_count": 7,
+      "sent_count": 5,
+      "first_contact_days_ago": 41,
+      "last_contact_days_ago": 0.12,
+      "facts": []
+    },
+    {
+      "id": "sam",
+      "name": "Sam Ortiz",
+      "email": "sam@northwind.example",
+      "title": "Finance Manager",
+      "company_id": "northwind",
+      "tone": "formal",
+      "stage": "new",
+      "stage_label": "New",
+      "stage_reason": null,
+      "received_count": 1,
+      "sent_count": 1,
+      "first_contact_days_ago": 6,
+      "last_contact_days_ago": 5.8,
+      "facts": []
+    },
+    {
+      "id": "marco",
+      "name": "Marco Diaz",
+      "email": "marco@bluebirdlabs.example",
+      "title": "Engineering Lead",
+      "company_id": "bluebird",
+      "tone": "casual",
+      "stage": "active",
+      "stage_label": "Ongoing",
+      "stage_reason": null,
+      "received_count": 4,
+      "sent_count": 2,
+      "first_contact_days_ago": 35,
+      "last_contact_days_ago": 2,
+      "facts": []
+    },
+    {
+      "id": "nina",
+      "name": "Nina Park",
+      "email": "nina@bluebirdlabs.example",
+      "title": "CTO",
+      "company_id": "bluebird",
+      "tone": "formal",
+      "stage": "new",
+      "stage_label": "New",
+      "stage_reason": null,
+      "received_count": 1,
+      "sent_count": 0,
+      "first_contact_days_ago": 2.5,
+      "last_contact_days_ago": 2.5,
+      "facts": []
+    },
+    {
+      "id": "priya",
+      "name": "Priya Shah",
+      "email": "priya@heliohealth.example",
+      "title": "Program Manager",
+      "company_id": "helio",
+      "tone": "normal",
+      "stage": "new",
+      "stage_label": "New",
+      "stage_reason": null,
+      "received_count": 1,
+      "sent_count": 1,
+      "first_contact_days_ago": 4,
+      "last_contact_days_ago": 1,
+      "facts": []
+    },
+    {
+      "id": "tom",
+      "name": "Tom Becker",
+      "email": "tom@acmelogistics.example",
+      "title": "Procurement Lead",
+      "company_id": "acme",
+      "tone": "formal",
+      "stage": "cooling",
+      "stage_label": "Going quiet",
+      "stage_reason": null,
+      "received_count": 2,
+      "sent_count": 1,
+      "first_contact_days_ago": 26,
+      "last_contact_days_ago": 8.8,
+      "facts": []
+    },
+    {
+      "id": "lena",
+      "name": "Lena Novak",
+      "email": "lena@orchardco.example",
+      "title": "Finance Director",
+      "company_id": "orchard",
+      "tone": "normal",
+      "stage": "new",
+      "stage_label": "New",
+      "stage_reason": null,
+      "received_count": 2,
+      "sent_count": 1,
+      "first_contact_days_ago": 8,
+      "last_contact_days_ago": 5,
+      "facts": []
+    },
+    {
+      "id": "ken",
+      "name": "Ken Watanabe",
+      "email": "ken@orchardco.example",
+      "title": "Operations Analyst",
+      "company_id": "orchard",
+      "tone": "normal",
+      "stage": "dormant",
+      "stage_label": "Quiet",
+      "stage_reason": null,
+      "received_count": 1,
+      "sent_count": 0,
+      "first_contact_days_ago": 96,
+      "last_contact_days_ago": 96,
+      "facts": []
+    }
+  ],
+  "mails": [
+    {
+      "id": "m01",
+      "direction": "in",
+      "person_id": "jane",
+      "days_ago": 41,
+      "subject": "Q4 quote for Fernway Business",
+      "body": "Hi Alex,\n\nWe'd like to move our operations team to Fernway in Q4. Could you send a quote for the Business plan, 40 seats, annual, starting November 1?\n\nThanks,\nJane Lee\nHead of Operations, Northwind",
+      "goal_id": "q4",
+      "needs_reply": true
+    },
+    {
+      "id": "m02",
+      "direction": "out",
+      "person_id": "jane",
+      "days_ago": 40.8,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Hi Jane,\n\nGreat to hear. I'll send the quote this week. One question first: do you need SSO for the team?\n\nBest,\nAlex",
+      "goal_id": "q4",
+      "needs_reply": false
+    },
+    {
+      "id": "m03",
+      "direction": "in",
+      "person_id": "jane",
+      "days_ago": 39.6,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Yes, SSO is a must. We'd also like onboarding help for the team leads.\n\nJane",
+      "goal_id": "q4",
+      "needs_reply": true
+    },
+    {
+      "id": "m04",
+      "direction": "out",
+      "person_id": "jane",
+      "days_ago": 37,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Hi Jane,\n\nHere is the quote: Business plan, 40 seats at $20 per seat per month, billed annually, $9,600 per year. SSO and guided onboarding are included. The quote is valid for 30 days.\n\nBest,\nAlex",
+      "goal_id": "q4",
+      "needs_reply": false
+    },
+    {
+      "id": "m05",
+      "direction": "in",
+      "person_id": "jane",
+      "days_ago": 30,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Thanks Alex. I'm reviewing it with finance and will come back within two weeks.\n\nJane",
+      "goal_id": "q4",
+      "needs_reply": false
+    },
+    {
+      "id": "m06",
+      "direction": "in",
+      "person_id": "jane",
+      "days_ago": 22,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Hi Alex, finance asked whether we could pay quarterly instead of annually up front. Is that possible?\n\nJane",
+      "goal_id": "q4",
+      "needs_reply": true
+    },
+    {
+      "id": "m07",
+      "direction": "out",
+      "person_id": "jane",
+      "days_ago": 21.6,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Hi Jane,\n\nYes. Quarterly invoicing is available on annual plans with a 3% surcharge. Annual up front stays at $9,600.\n\nBest,\nAlex",
+      "goal_id": "q4",
+      "needs_reply": false
+    },
+    {
+      "id": "m08",
+      "direction": "in",
+      "person_id": "jane",
+      "days_ago": 15,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Thanks, finance is fine with annual up front. We'll come back on the final number soon.\n\nJane",
+      "goal_id": "q4",
+      "needs_reply": true
+    },
+    {
+      "id": "m09",
+      "direction": "out",
+      "person_id": "jane",
+      "days_ago": 14.7,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Sounds good, Jane. I'll keep the quoted price open for you until the quote expires.\n\nBest,\nAlex",
+      "goal_id": "q4",
+      "needs_reply": false
+    },
+    {
+      "id": "m10",
+      "direction": "in",
+      "person_id": "jane",
+      "days_ago": 9,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Quick heads-up: procurement wants to see if there is any room on price before sign-off. I'll send specifics shortly.\n\nJane",
+      "goal_id": "q4",
+      "needs_reply": false
+    },
+    {
+      "id": "m11",
+      "direction": "out",
+      "person_id": "jane",
+      "days_ago": 8.8,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Thanks for the heads-up, Jane. Send them over whenever you're ready.\n\nAlex",
+      "goal_id": "q4",
+      "needs_reply": false
+    },
+    {
+      "id": "m12",
+      "direction": "in",
+      "person_id": "jane",
+      "days_ago": 0.12,
+      "subject": "Re: Q4 quote for Fernway Business",
+      "body": "Hi Alex,\n\nThanks for the proposal. We can sign this quarter if the annual plan comes down 10%. Could you also confirm onboarding is included, and send the updated quote as a PDF?\n\nThanks,\nJane",
+      "goal_id": "q4",
+      "needs_reply": true
+    },
+    {
+      "id": "m13",
+      "direction": "in",
+      "person_id": "sam",
+      "days_ago": 6,
+      "subject": "Billing contact for Northwind",
+      "body": "Dear Alex,\n\nPlease send all future Fernway invoices to ap@northwind.example instead of my address.\n\nKind regards,\nSam Ortiz\nFinance Manager, Northwind",
+      "goal_id": "billing",
+      "needs_reply": true
+    },
+    {
+      "id": "m14",
+      "direction": "out",
+      "person_id": "sam",
+      "days_ago": 5.8,
+      "subject": "Re: Billing contact for Northwind",
+      "body": "Dear Sam,\n\nDone. Future invoices will go to ap@northwind.example.\n\nKind regards,\nAlex",
+      "goal_id": "billing",
+      "needs_reply": false
+    },
+    {
+      "id": "m30",
+      "direction": "in",
+      "person_id": "marco",
+      "days_ago": 35,
+      "subject": "We're all set up",
+      "body": "Hey Alex, quick note to say the whole team is set up on Fernway now. Thanks for the help!\n\nMarco",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "m15",
+      "direction": "in",
+      "person_id": "marco",
+      "days_ago": 12,
+      "subject": "SSO login broken for some of our users",
+      "body": "Hey Alex, since this morning a few of our people can't sign in with SSO. They get bounced back to the login page. Can you look?\n\nMarco",
+      "goal_id": "login",
+      "needs_reply": true
+    },
+    {
+      "id": "m16",
+      "direction": "out",
+      "person_id": "marco",
+      "days_ago": 11.8,
+      "subject": "Re: SSO login broken for some of our users",
+      "body": "Hi Marco, sorry about that. We're on it. Could you send the error ID shown on the login page and which browser they use?\n\nAlex",
+      "goal_id": "login",
+      "needs_reply": false
+    },
+    {
+      "id": "m17",
+      "direction": "in",
+      "person_id": "marco",
+      "days_ago": 11.2,
+      "subject": "Re: SSO login broken for some of our users",
+      "body": "Error ID is LGN-4471. Looks like it only happens on Safari.\n\nMarco",
+      "goal_id": "login",
+      "needs_reply": true
+    },
+    {
+      "id": "m18",
+      "direction": "out",
+      "person_id": "marco",
+      "days_ago": 10.9,
+      "subject": "Re: SSO login broken for some of our users",
+      "body": "Thanks Marco, we reproduced it. Engineering is working on a fix and I'll update you.\n\nAlex",
+      "goal_id": "login",
+      "needs_reply": false
+    },
+    {
+      "id": "m19",
+      "direction": "in",
+      "person_id": "nina",
+      "days_ago": 2.5,
+      "subject": "Re: SSO login broken for some of our users",
+      "body": "Hello Alex,\n\nMarco told me about the sign-in issue. Please keep me copied on updates.\n\nBest regards,\nNina Park\nCTO, Bluebird Labs",
+      "goal_id": "login",
+      "needs_reply": true
+    },
+    {
+      "id": "m20",
+      "direction": "in",
+      "person_id": "marco",
+      "days_ago": 2,
+      "subject": "Re: SSO login broken for some of our users",
+      "body": "Any update on this? People are using passwords as a workaround, but it's annoying. Is there an ETA?\n\nMarco",
+      "goal_id": "login",
+      "needs_reply": true
+    },
+    {
+      "id": "m21",
+      "direction": "in",
+      "person_id": "priya",
+      "days_ago": 4,
+      "subject": "Kickoff call",
+      "body": "Hi Alex,\n\nWe just signed up for the Team plan. Could we schedule a kickoff call next week?\n\nThanks,\nPriya Shah\nHelio Health",
+      "goal_id": "kickoff",
+      "needs_reply": true
+    },
+    {
+      "id": "m22",
+      "direction": "out",
+      "person_id": "priya",
+      "days_ago": 1,
+      "subject": "Re: Kickoff call",
+      "body": "Hi Priya,\n\nWelcome aboard! How about Tuesday at 10:00 or Thursday at 14:00, your time? The call takes 45 minutes.\n\nBest,\nAlex",
+      "goal_id": "kickoff",
+      "needs_reply": false
+    },
+    {
+      "id": "m23",
+      "direction": "in",
+      "person_id": "tom",
+      "days_ago": 26,
+      "subject": "NDA before the pilot",
+      "body": "Dear Alex,\n\nBefore we share shipment data for the pilot, our policy requires a mutual NDA. Could you send yours?\n\nRegards,\nTom Becker\nProcurement Lead, Acme Logistics",
+      "goal_id": "nda",
+      "needs_reply": true
+    },
+    {
+      "id": "m24",
+      "direction": "out",
+      "person_id": "tom",
+      "days_ago": 9,
+      "subject": "Re: NDA before the pilot",
+      "body": "Dear Tom,\n\nAttached is our mutual NDA for review. Once it is signed, we can start the pilot with your data.\n\nKind regards,\nAlex",
+      "goal_id": "nda",
+      "needs_reply": false
+    },
+    {
+      "id": "m25",
+      "direction": "in",
+      "person_id": "tom",
+      "days_ago": 8.8,
+      "subject": "Re: NDA before the pilot",
+      "body": "Thank you. Our legal team will review it and return it early next week.\n\nTom",
+      "goal_id": "nda",
+      "needs_reply": false
+    },
+    {
+      "id": "m26",
+      "direction": "in",
+      "person_id": "lena",
+      "days_ago": 8,
+      "subject": "CSV export?",
+      "body": "Hi Alex, does Fernway export reports to CSV? Our board wants the raw numbers each month.\n\nLena",
+      "goal_id": "csv",
+      "needs_reply": true
+    },
+    {
+      "id": "m27",
+      "direction": "out",
+      "person_id": "lena",
+      "days_ago": 7.8,
+      "subject": "Re: CSV export?",
+      "body": "Hi Lena, yes. Every report has Export > CSV, and scheduled monthly exports are on the Business plan you're on.\n\nAlex",
+      "goal_id": "csv",
+      "needs_reply": false
+    },
+    {
+      "id": "m28",
+      "direction": "in",
+      "person_id": "lena",
+      "days_ago": 5,
+      "subject": "Re: CSV export?",
+      "body": "Found it and set up the monthly export. Works great, thanks!\n\nLena",
+      "goal_id": "csv",
+      "needs_reply": false
+    },
+    {
+      "id": "m29",
+      "direction": "in",
+      "person_id": "ken",
+      "days_ago": 96,
+      "subject": "Thanks for the demo",
+      "body": "Hi Alex, thanks for the demo last week. We'll revisit analytics tooling next year.\n\nKen",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n01",
+      "direction": "in",
+      "from": {
+        "name": "Cloudnest Billing",
+        "email": "billing@cloudnest.example"
+      },
+      "days_ago": 1.5,
+      "subject": "Your receipt for October",
+      "body": "Thanks for your payment. This is an automated receipt. Do not reply to this email.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n02",
+      "direction": "in",
+      "from": {
+        "name": "Stackwise Weekly",
+        "email": "news@stackwise.example"
+      },
+      "days_ago": 2.5,
+      "subject": "10 tips for faster dashboards",
+      "body": "This week: ten ways to make your dashboards load faster. Unsubscribe at any time.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n03",
+      "direction": "in",
+      "from": {
+        "name": "Fernway Calendar",
+        "email": "calendar@fernway.example"
+      },
+      "days_ago": 3.5,
+      "subject": "Reminder: team standup",
+      "body": "Reminder: Team standup starts in 15 minutes.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n04",
+      "direction": "in",
+      "from": {
+        "name": "Paygrid",
+        "email": "no-reply@paygrid.example"
+      },
+      "days_ago": 5.5,
+      "subject": "Payout sent",
+      "body": "Your payout has been sent and should arrive within 2 business days.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n05",
+      "direction": "in",
+      "from": {
+        "name": "Eventhall",
+        "email": "invites@eventhall.example"
+      },
+      "days_ago": 7,
+      "subject": "Webinar: The future of operations",
+      "body": "Join our free webinar next Thursday. Seats are limited, register today.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n06",
+      "direction": "in",
+      "from": {
+        "name": "Fernway IT",
+        "email": "it@fernway.example"
+      },
+      "days_ago": 10,
+      "subject": "Your password was changed",
+      "body": "Your password was changed. If this was you, no action is needed.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n07",
+      "direction": "in",
+      "from": {
+        "name": "Stackwise Weekly",
+        "email": "news@stackwise.example"
+      },
+      "days_ago": 9.5,
+      "subject": "What's new in data tooling",
+      "body": "New releases and reading picks for this week. Unsubscribe at any time.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n08",
+      "direction": "in",
+      "from": {
+        "name": "Docusafe",
+        "email": "notify@docusafe.example"
+      },
+      "days_ago": 18,
+      "subject": "Storage almost full",
+      "body": "You are using 92% of your storage. Upgrade to get more space.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n09",
+      "direction": "in",
+      "from": {
+        "name": "Cloudnest Billing",
+        "email": "billing@cloudnest.example"
+      },
+      "days_ago": 31,
+      "subject": "Your receipt for September",
+      "body": "Thanks for your payment. This is an automated receipt. Do not reply to this email.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n10",
+      "direction": "in",
+      "from": {
+        "name": "Fernway Calendar",
+        "email": "calendar@fernway.example"
+      },
+      "days_ago": 24,
+      "subject": "Accepted: Quarterly planning",
+      "body": "Your invitation was accepted.",
+      "goal_id": null,
+      "needs_reply": false
+    },
+    {
+      "id": "n11",
+      "direction": "in",
+      "from": {
+        "name": "Travelpoint",
+        "email": "deals@travelpoint.example"
+      },
+      "days_ago": 27,
+      "subject": "Weekend fares are here",
+      "body": "Fly for less this weekend. Offer ends Sunday.",
+      "goal_id": null,
+      "needs_reply": false
+    }
+  ],
+  "goals": [
+    {
+      "id": "q4",
+      "person_id": "jane",
+      "title": "Q4 quote",
+      "kind": "deal",
+      "stage": "Negotiating",
+      "turn": "me",
+      "status": "open",
+      "stage_history": [
+        {
+          "stage": "Requested",
+          "turn": "me",
+          "days_ago": 41,
+          "mail_id": "m01",
+          "evidence": null
+        },
+        {
+          "stage": "Requested",
+          "turn": "them",
+          "days_ago": 40.8,
+          "mail_id": "m02",
+          "evidence": null
+        },
+        {
+          "stage": "Requested",
+          "turn": "me",
+          "days_ago": 39.6,
+          "mail_id": "m03",
+          "evidence": null
+        },
+        {
+          "stage": "Proposal sent",
+          "turn": "them",
+          "days_ago": 37,
+          "mail_id": "m04",
+          "evidence": null
+        },
+        {
+          "stage": "Proposal sent",
+          "turn": "me",
+          "days_ago": 22,
+          "mail_id": "m06",
+          "evidence": null
+        },
+        {
+          "stage": "Proposal sent",
+          "turn": "them",
+          "days_ago": 21.6,
+          "mail_id": "m07",
+          "evidence": null
+        },
+        {
+          "stage": "Proposal sent",
+          "turn": "me",
+          "days_ago": 15,
+          "mail_id": "m08",
+          "evidence": null
+        },
+        {
+          "stage": "Proposal sent",
+          "turn": "them",
+          "days_ago": 14.7,
+          "mail_id": "m09",
+          "evidence": null
+        },
+        {
+          "stage": "Negotiating",
+          "turn": "me",
+          "days_ago": 0.12,
+          "mail_id": "m12",
+          "evidence": null
+        }
+      ],
+      "mail_ids": [
+        "m01",
+        "m02",
+        "m03",
+        "m04",
+        "m05",
+        "m06",
+        "m07",
+        "m08",
+        "m09",
+        "m10",
+        "m11",
+        "m12"
+      ],
+      "last_moved_days_ago": 0.12,
+      "latest_mail_id": "m12",
+      "their_latest_mail_id": "m12",
+      "moved_reason": null,
+      "stage_change": {
+        "from": "Proposal sent",
+        "to": "Negotiating"
+      },
+      "draft": null,
+      "runs": []
+    },
+    {
+      "id": "nda",
+      "person_id": "tom",
+      "title": "Signed NDA",
+      "kind": "document",
+      "stage": "Sent",
+      "turn": "them",
+      "status": "open",
+      "stage_history": [
+        {
+          "stage": "Requested",
+          "turn": "me",
+          "days_ago": 26,
+          "mail_id": "m23",
+          "evidence": null
+        },
+        {
+          "stage": "Sent",
+          "turn": "them",
+          "days_ago": 9,
+          "mail_id": "m24",
+          "evidence": null
+        }
+      ],
+      "mail_ids": [
+        "m23",
+        "m24",
+        "m25"
+      ],
+      "last_moved_days_ago": 9,
+      "latest_mail_id": "m25",
+      "their_latest_mail_id": "m25",
+      "moved_reason": null,
+      "stage_change": {
+        "from": "Requested",
+        "to": "Sent"
+      },
+      "draft": null,
+      "runs": []
+    },
+    {
+      "id": "login",
+      "person_id": "marco",
+      "title": "Login error",
+      "kind": "issue",
+      "stage": "Investigating",
+      "turn": "me",
+      "status": "open",
+      "stage_history": [
+        {
+          "stage": "Reported",
+          "turn": "me",
+          "days_ago": 12,
+          "mail_id": "m15",
+          "evidence": null
+        },
+        {
+          "stage": "Investigating",
+          "turn": "them",
+          "days_ago": 11.8,
+          "mail_id": "m16",
+          "evidence": null
+        },
+        {
+          "stage": "Investigating",
+          "turn": "me",
+          "days_ago": 11.2,
+          "mail_id": "m17",
+          "evidence": null
+        },
+        {
+          "stage": "Investigating",
+          "turn": "them",
+          "days_ago": 10.9,
+          "mail_id": "m18",
+          "evidence": null
+        },
+        {
+          "stage": "Investigating",
+          "turn": "me",
+          "days_ago": 2.5,
+          "mail_id": "m19",
+          "evidence": null
+        }
+      ],
+      "mail_ids": [
+        "m15",
+        "m16",
+        "m17",
+        "m18",
+        "m19",
+        "m20"
+      ],
+      "last_moved_days_ago": 2.5,
+      "latest_mail_id": "m20",
+      "their_latest_mail_id": "m20",
+      "moved_reason": null,
+      "stage_change": null,
+      "draft": null,
+      "runs": []
+    },
+    {
+      "id": "csv",
+      "person_id": "lena",
+      "title": "CSV export",
+      "kind": "question",
+      "stage": "Confirmed",
+      "turn": "none",
+      "status": "done",
+      "stage_history": [
+        {
+          "stage": "Asked",
+          "turn": "me",
+          "days_ago": 8,
+          "mail_id": "m26",
+          "evidence": null
+        },
+        {
+          "stage": "Answered",
+          "turn": "them",
+          "days_ago": 7.8,
+          "mail_id": "m27",
+          "evidence": null
+        },
+        {
+          "stage": "Confirmed",
+          "turn": "none",
+          "days_ago": 5,
+          "mail_id": "m28",
+          "evidence": null
+        }
+      ],
+      "mail_ids": [
+        "m26",
+        "m27",
+        "m28"
+      ],
+      "last_moved_days_ago": 5,
+      "latest_mail_id": "m28",
+      "their_latest_mail_id": "m28",
+      "moved_reason": null,
+      "stage_change": {
+        "from": "Answered",
+        "to": "Confirmed"
+      },
+      "draft": null,
+      "runs": []
+    },
+    {
+      "id": "billing",
+      "person_id": "sam",
+      "title": "Billing contact",
+      "kind": "other",
+      "stage": "Done",
+      "turn": "none",
+      "status": "done",
+      "stage_history": [
+        {
+          "stage": "Open",
+          "turn": "me",
+          "days_ago": 6,
+          "mail_id": "m13",
+          "evidence": null
+        },
+        {
+          "stage": "Done",
+          "turn": "none",
+          "days_ago": 5.8,
+          "mail_id": "m14",
+          "evidence": null
+        }
+      ],
+      "mail_ids": [
+        "m13",
+        "m14"
+      ],
+      "last_moved_days_ago": 5.8,
+      "latest_mail_id": "m14",
+      "their_latest_mail_id": "m13",
+      "moved_reason": null,
+      "stage_change": {
+        "from": "Open",
+        "to": "Done"
+      },
+      "draft": null,
+      "runs": []
+    },
+    {
+      "id": "kickoff",
+      "person_id": "priya",
+      "title": "Kickoff meeting",
+      "kind": "meeting",
+      "stage": "Proposed",
+      "turn": "them",
+      "status": "open",
+      "stage_history": [
+        {
+          "stage": "Proposed",
+          "turn": "me",
+          "days_ago": 4,
+          "mail_id": "m21",
+          "evidence": null
+        },
+        {
+          "stage": "Proposed",
+          "turn": "them",
+          "days_ago": 1,
+          "mail_id": "m22",
+          "evidence": null
+        }
+      ],
+      "mail_ids": [
+        "m21",
+        "m22"
+      ],
+      "last_moved_days_ago": 1,
+      "latest_mail_id": "m22",
+      "their_latest_mail_id": "m21",
+      "moved_reason": null,
+      "stage_change": null,
+      "draft": null,
+      "runs": []
+    }
+  ],
+  "no_reply_mail_ids": [
+    "m30",
+    "m29",
+    "n01",
+    "n02",
+    "n03",
+    "n04",
+    "n05",
+    "n06",
+    "n07",
+    "n08",
+    "n09",
+    "n10",
+    "n11"
+  ],
+  "generator": "placeholder",
+  "note": "Placeholder built from hand-written labels. No AI was used. Replaced by the Gemini run."
+}

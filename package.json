@@ -1,0 +1,16 @@
+{
+  "name": "rapport",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Your email, as a board that moves itself. AI Builder Cup 2026 entry.",
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test \"test/*.test.mjs\"",
+    "seed:placeholder": "node scripts/process-seed.mjs --placeholder",
+    "guard": "node scripts/leak-guard.mjs",
+    "prepare": "node scripts/install-hooks.mjs"
+  }
+}

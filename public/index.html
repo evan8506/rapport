@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rapport</title>
+  <meta name="description" content="Your email, as a board that moves itself.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true">R</span><span class="name">Rapport</span></div>
+    <button type="button" class="btn btn-quiet" data-action="reset" data-testid="reset">Reset demo</button>
+  </header>
+  <main class="page">
+    <p class="guide" data-testid="guide">Your email, as a board that moves itself.</p>
+    <div id="board" class="board" aria-live="polite"></div>
+    <div id="noreply" class="noreply"></div>
+  </main>
+  <div id="scrim" class="scrim" hidden data-action="close"></div>
+  <aside id="panel" class="panel" hidden aria-label="Card details" tabindex="-1"></aside>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
