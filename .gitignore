@@ -16,3 +16,6 @@ tmp/
 
 # local editor/tool settings
 .claude/
+
+# autonomous-work notes (local only)
+implementation-notes.md
