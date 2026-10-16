@@ -19,3 +19,6 @@ tmp/
 
 # autonomous-work notes (local only)
 implementation-notes.md
+
+# local Korean review overlay (never published)
+public/review/

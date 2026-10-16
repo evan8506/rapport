@@ -6,3 +6,4 @@ test
 scripts
 .claude
 *.log
+public/review
