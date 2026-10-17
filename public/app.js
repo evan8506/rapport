@@ -29,6 +29,8 @@ function freshState() {
     answers: {}, // goal id -> chosen option index
     edits: {}, // goal id -> edited draft text
     expanded: {}, // goal id -> "How Rapport decided" open
+    justSent: new Set(), // goal ids sent or nudged and not opened since
+    undo: null, // { goal, edits, answers } snapshot of the last sent card
   };
 }
 
@@ -64,8 +66,13 @@ function cardHtml(g) {
       ? `<button type="button" class="btn btn-stuck" data-action="open" data-id="${g.id}" data-testid="card-button">Nudge</button>`
       : '';
   const since = stuck ? `<span class="since is-stuck">Stuck · ${Math.floor(g.last_moved_days_ago)} days</span>` : `<span class="since">${g.sent ? 'just now' : daysLabel(g.last_moved_days_ago)}</span>`;
-  const reason = fresh ? `<div class="reason">${esc(g.moved_reason || `${firstName(p)} sent a new email, so it's your move.`)}</div>` : '';
-  return `<article class="card${stuck ? ' stuck' : ''}${fresh ? ' fresh' : ''}" data-action="open" data-id="${g.id}" data-testid="card" data-goal="${g.id}" tabindex="0">
+  const justSent = state.justSent.has(g.id);
+  const reason = fresh
+    ? `<div class="reason">${esc(g.moved_reason || `${firstName(p)} sent a new email, so it's your move.`)}</div>`
+    : justSent
+      ? `<div class="reason reason-sent" data-testid="sent-reason">${g.last_action === 'nudge' ? `You nudged ${esc(firstName(p))} just now.` : `You replied to ${esc(firstName(p))} just now.`}</div>`
+      : '';
+  return `<article class="card${stuck ? ' stuck' : ''}${fresh ? ' fresh' : ''}${justSent ? ' just-sent' : ''}" data-action="open" data-id="${g.id}" data-testid="card" data-goal="${g.id}" tabindex="0">
     <h3 class="card-title">${esc(g.title)}</h3>
     <div class="card-who">${esc(p.name)} · ${esc(company(p.company_id).name)}</div>
     <div class="stage">${stageDots(g)}<span>${esc(g.stage)}</span></div>
@@ -215,16 +222,20 @@ function renderPanel() {
 
 // ---------------- actions ----------------
 
-function toast(text) {
-  el.toast.textContent = text;
+function toast(text, { undo = false } = {}) {
+  el.toast.innerHTML = `<span>${esc(text)}</span>${undo ? '<button type="button" class="toast-undo" data-action="undo" data-testid="undo">Undo</button>' : ''}`;
   el.toast.hidden = false;
   clearTimeout(toast.t);
-  toast.t = setTimeout(() => (el.toast.hidden = true), 3200);
+  toast.t = setTimeout(() => {
+    el.toast.hidden = true;
+    state.undo = null;
+  }, undo ? 7000 : 3200);
 }
 
 function openGoal(id) {
   state.openId = id;
   state.opened.add(id);
+  state.justSent.delete(id);
   render();
   el.panel.focus();
 }
@@ -232,12 +243,27 @@ function openGoal(id) {
 function send(id) {
   const g = goal(id);
   const wasNudge = g.draft?.mode === 'nudge';
-  state.goals = state.goals.map((x) => (x.id === id ? applySend(x) : x));
+  state.undo = { goal: g, edits: state.edits[id], answers: state.answers[id] };
+  state.goals = state.goals.map((x) => (x.id === id ? { ...applySend(x), last_action: wasNudge ? 'nudge' : 'reply' } : x));
+  state.justSent.add(id);
   delete state.edits[id];
   delete state.answers[id];
   state.openId = null;
   render();
-  toast(`${wasNudge ? 'Nudge sent' : 'Sent'} to ${person(g.person_id).name}. (Demo: saved, not emailed.)`);
+  toast(`${wasNudge ? 'Nudge sent' : 'Sent'} to ${person(g.person_id).name}. (Demo: saved, not emailed.)`, { undo: true });
+}
+
+// Puts the last sent card back exactly as it was, draft and answer included.
+function undoSend() {
+  const u = state.undo;
+  if (!u) return;
+  state.goals = state.goals.map((x) => (x.id === u.goal.id ? u.goal : x));
+  state.justSent.delete(u.goal.id);
+  if (u.edits !== undefined) state.edits[u.goal.id] = u.edits;
+  if (u.answers !== undefined) state.answers[u.goal.id] = u.answers;
+  state.undo = null;
+  render();
+  toast('Undone. The card is back where it was.');
 }
 
 document.addEventListener('click', (e) => {
@@ -253,6 +279,7 @@ document.addEventListener('click', (e) => {
   else if (action === 'toggle-mail') { state.expanded['mail-' + id] = !state.expanded['mail-' + id]; renderPanel(); }
   else if (action === 'answer') { state.answers[id] = Number(t.dataset.index); delete state.edits[id]; renderPanel(); }
   else if (action === 'send') send(id);
+  else if (action === 'undo') undoSend();
 });
 
 document.addEventListener('input', (e) => {

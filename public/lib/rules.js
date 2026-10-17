@@ -55,14 +55,14 @@ export function columnOf(goal) {
 // Cards per column, in display order.
 //  Your move: a card that moved in the last day and was not opened yet goes first,
 //             then the one that has waited longest.
-//  Waiting:   stuck cards first, then longest waiting.
+//  Waiting:   stuck cards first, then cards you just sent or nudged, then longest waiting.
 //  Done:      most recently finished first.
 export function arrangeBoard(goals, opened = new Set()) {
   const cols = { your_move: [], waiting: [], done: [] };
   for (const g of goals) cols[columnOf(g)].push(g);
   const fresh = (g) => g.last_moved_days_ago < 1 && !opened.has(g.id);
   cols.your_move.sort((a, b) => (fresh(b) - fresh(a)) || (b.last_moved_days_ago - a.last_moved_days_ago));
-  cols.waiting.sort((a, b) => (isStuck(b) - isStuck(a)) || (b.last_moved_days_ago - a.last_moved_days_ago));
+  cols.waiting.sort((a, b) => (isStuck(b) - isStuck(a)) || (Boolean(b.sent) - Boolean(a.sent)) || (b.last_moved_days_ago - a.last_moved_days_ago));
   cols.done.sort((a, b) => a.last_moved_days_ago - b.last_moved_days_ago);
   return cols;
 }

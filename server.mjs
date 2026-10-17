@@ -35,6 +35,15 @@ function send(res, status, body, type = 'text/plain; charset=utf-8', extra = {})
   res.end(body);
 }
 
+// Link previews need an absolute image address. Cloud Run passes the host and the
+// original scheme; anything that does not look like a host name falls back to a relative path.
+function originOf(req) {
+  const host = req.headers['x-forwarded-host'] || req.headers.host || '';
+  if (!/^[A-Za-z0-9.-]+(:\d+)?$/.test(host)) return '';
+  const proto = String(req.headers['x-forwarded-proto'] || 'http').split(',')[0].trim() === 'https' ? 'https' : 'http';
+  return `${proto}://${host}`;
+}
+
 export function createServer() {
   return http.createServer((req, res) => {
     const url = new URL(req.url, 'http://localhost');
@@ -49,6 +58,13 @@ export function createServer() {
 
     if (url.pathname === '/data/processed.json') {
       return fs.readFile(dataFile, (err, buf) => (err ? send(res, 500, 'Demo data missing') : send(res, 200, buf, TYPES['.json'], { 'cache-control': 'no-cache' })));
+    }
+
+    if (url.pathname === '/' || url.pathname === '/index.html') {
+      return fs.readFile(path.join(publicDir, 'index.html'), 'utf8', (err, html) => {
+        if (err) return send(res, 500, 'Page missing');
+        send(res, 200, html.replaceAll('__ORIGIN__', originOf(req)), TYPES['.html'], { 'cache-control': 'no-cache' });
+      });
     }
 
     const rel = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname).replace(/^\/+/, '');

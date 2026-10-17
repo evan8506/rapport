@@ -64,3 +64,12 @@ test('nudge on a stuck card clears the stuck mark and restarts the count', () =>
 test('13 emails need no reply (automated mail and thank-you notes)', () => {
   assert.equal(built.no_reply_mail_ids.length, 13);
 });
+
+test('a card you just nudged sits right under the stuck cards in Waiting', () => {
+  const nudged = applySend({ ...g('nda'), draft: { mode: 'nudge' } });
+  const goals = built.goals.map((x) => (x.id === 'nda' ? nudged : x));
+  assert.deepEqual(arrangeBoard(goals).waiting.map((x) => x.id), ['nda', 'kickoff']);
+  const replied = applySend({ ...g('login'), draft: { mode: 'reply', next_stage: 'Fix proposed' } });
+  const goals2 = built.goals.map((x) => (x.id === 'login' ? replied : x));
+  assert.deepEqual(arrangeBoard(goals2).waiting.map((x) => x.id), ['nda', 'login', 'kickoff']);
+});

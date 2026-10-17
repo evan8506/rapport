@@ -165,3 +165,10 @@ textarea { font: inherit; }
   .panel { padding: 18px 16px 40px; }
   .noreply .from { min-width: 0; }
 }
+
+.card.just-sent { border: 2px solid var(--ok); }
+.reason-sent { background: #e6f4ec; color: #22643f; }
+.toast { display: flex; align-items: center; gap: 14px; }
+.toast-undo { background: none; border: 1px solid rgba(255, 255, 255, 0.5); color: #fff; border-radius: 6px; padding: 3px 12px; font-weight: 600; font-size: 13px; }
+.toast-undo:hover { background: rgba(255, 255, 255, 0.12); }
+.toast[hidden] { display: none; }
