@@ -1,12 +1,14 @@
 // Rapport demo board. Everything a visitor does stays in this browser tab's memory:
 // a refresh or "Reset demo" brings back the starting board. Nothing is written to the server.
 
-import { STAGES, arrangeBoard, isStuck, isFresh, daysLabel, spanLabel, applySend } from './lib/rules.js';
+import { STAGES, arrangeBoard, isStuck, isFresh, daysLabel, spanLabel, applySend, planView, nextStep } from './lib/rules.js';
+import { renderDates, fmtShort, fmtRange } from './lib/dates.js';
 
 const STEP_NAMES = { identify: 'Who is it', track: 'Which work', prepare: "What's needed", draft: 'Write the reply', judge: 'Check it' };
 
 const el = {
   board: document.getElementById('board'),
+  view: document.getElementById('view'),
   noreply: document.getElementById('noreply'),
   panel: document.getElementById('panel'),
   scrim: document.getElementById('scrim'),
@@ -24,6 +26,7 @@ function freshState() {
     goals: structuredClone(data.goals),
     opened: new Set(),
     openId: null,
+    view: state?.view || 'board', // board | timeline
     showDone: false,
     showNoReply: false,
     answers: {}, // goal id -> chosen option index
@@ -55,6 +58,37 @@ function stageDots(g) {
   return `<span class="dots" aria-hidden="true">${list.map((_, i) => `<span class="dot${i <= at ? ' on' : ''}"></span>`).join('')}</span>`;
 }
 
+// Small dots: one per step of the plan. Filled = done, amber = date passed.
+function planDots(g) {
+  const steps = planView(g.plan);
+  if (!steps.length) return stageDots(g);
+  return `<span class="dots" aria-hidden="true">${steps.map((s) => `<span class="dot${s.status === 'done' ? ' on' : s.status === 'overdue' ? ' late' : ''}"></span>`).join('')}</span>`;
+}
+
+function whenLabel(s) {
+  if (s.end !== undefined && Math.round(s.end) !== Math.round(s.start)) return fmtRange(s.start, s.end);
+  const d = Math.round(s.start);
+  if (d === 0) return 'today';
+  if (d === 1) return 'tomorrow';
+  if (d === -1) return 'yesterday';
+  return fmtShort(d);
+}
+
+function ownerLabel(s, g) {
+  if (s.owner === 'me') return 'You';
+  if (s.owner === 'both') return 'Both';
+  return firstName(person(g.person_id));
+}
+
+function nextLabel(g) {
+  if (g.status === 'done') return 'Done';
+  const late = planView(g.plan).find((s) => s.status === 'overdue' && s.owner !== 'me');
+  if (late) return `Late: ${late.title} · due ${whenLabel(late)}`;
+  const n = nextStep(g.plan);
+  if (!n) return g.stage;
+  return `Next: ${n.title} · ${whenLabel(n)}`;
+}
+
 function cardHtml(g) {
   const p = person(g.person_id);
   const stuck = isStuck(g);
@@ -75,7 +109,7 @@ function cardHtml(g) {
   return `<article class="card${stuck ? ' stuck' : ''}${fresh ? ' fresh' : ''}${justSent ? ' just-sent' : ''}" data-action="open" data-id="${g.id}" data-testid="card" data-goal="${g.id}" tabindex="0">
     <h3 class="card-title">${esc(g.title)}</h3>
     <div class="card-who">${esc(p.name)} · ${esc(company(p.company_id).name)}</div>
-    <div class="stage">${stageDots(g)}<span>${esc(g.stage)}</span></div>
+    <div class="stage">${planDots(g)}<span data-testid="next-step">${esc(nextLabel(g))}</span></div>
     ${reason}
     <div class="card-foot">${since}${button}</div>
   </article>`;
@@ -94,6 +128,17 @@ function render() {
   const doneBody = state.showDone
     ? `<div class="cards done-list" data-testid="done-list">${cols.done.map((g) => `<article class="card done-card" data-action="open" data-id="${g.id}" data-testid="card" data-goal="${g.id}" tabindex="0"><h3 class="card-title">${esc(g.title)}</h3><div class="card-who">${esc(person(g.person_id).name)}</div></article>`).join('')}</div>`
     : '';
+  el.view.innerHTML = ['board', 'timeline']
+    .map((v) => `<button type="button" data-action="view" data-view="${v}" aria-pressed="${state.view === v}" data-testid="view-${v}">${v === 'board' ? 'Board' : 'Timeline'}</button>`)
+    .join('');
+  el.board.className = state.view === 'timeline' ? 'timeline' : 'board';
+  if (state.view === 'timeline') {
+    el.board.innerHTML = timelineHtml(cols);
+    layoutTags();
+    el.noreply.innerHTML = '';
+    renderPanel();
+    return;
+  }
   el.board.innerHTML =
     columnHtml('your_move', 'Your move', '', cols.your_move) +
     columnHtml('waiting', 'Waiting on them', 'pip-waiting', cols.waiting) +
@@ -110,7 +155,80 @@ function render() {
   renderPanel();
 }
 
+// ---------------- timeline ----------------
+
+const TL_MIN = -42;
+const TL_MAX = 28;
+const pos = (o) => ((Math.min(TL_MAX, Math.max(TL_MIN, o)) - TL_MIN) / (TL_MAX - TL_MIN)) * 100;
+
+function timelineHtml(cols) {
+  const order = [...cols.your_move, ...cols.waiting, ...cols.done];
+  const ticks = [];
+  for (let o = TL_MIN; o <= TL_MAX; o += 7) ticks.push(o);
+  const head = `<div class="tl-row tl-head"><div class="tl-label"></div><div class="tl-track">${ticks
+    .map((o) => `<span class="tl-tick" style="left:${pos(o)}%">${o === 0 ? 'Today' : esc(fmtShort(o))}</span>`)
+    .join('')}</div></div>`;
+  const rows = order.map((g) => {
+    const p = person(g.person_id);
+    const steps = planView(g.plan);
+    const marks = steps.map((st) => {
+      const tip = esc(`${st.title} · ${whenLabel(st)} · ${ownerLabel(st, g)}${st.date_kind === 'estimated' ? ' · expected' : ''}`);
+      const cls = `${st.status}${st.date_kind === 'estimated' ? ' est' : ''}`;
+      const range = Math.round(st.end) !== Math.round(st.start);
+      const shape = range
+        ? `<span class="tl-bar ${cls}" style="left:${pos(st.start)}%;width:${Math.max(0.8, pos(st.end) - pos(st.start))}%" title="${tip}"></span>`
+        : `<span class="tl-dot ${cls}" style="left:${pos(st.start)}%" title="${tip}"></span>`;
+      const tag = st.status !== 'done'
+        ? `<span class="tl-tag ${st.status}" style="left:${pos(st.start)}%" data-testid="tl-${st.status}">${st.status === 'overdue' ? '⚠ ' : ''}${esc(st.title)} · ${esc(whenLabel(st))}</span>`
+        : '';
+      return shape + tag;
+    }).join('');
+    return `<div class="tl-row${g.status === 'done' ? ' tl-done' : ''}" data-action="open" data-id="${g.id}" data-testid="tl-row" data-goal="${g.id}" tabindex="0">
+      <div class="tl-label"><strong>${esc(g.title)}</strong><span>${esc(p.name)}</span></div>
+      <div class="tl-track"><span class="tl-today" style="left:${pos(0)}%"></span>${marks}</div>
+    </div>`;
+  }).join('');
+  return `<div class="tl-legend"><span><i class="lg done"></i>Done</span><span><i class="lg next"></i>Next</span><span><i class="lg upcoming"></i>Planned</span><span><i class="lg overdue"></i>Date passed</span><span><i class="lg est"></i>Expected</span></div>
+    <div class="tl-scroll"><div class="tl-inner">${head}${rows}</div></div>`;
+}
+
+// Step names under the timeline go on as many lines as needed so they never overlap,
+// and a name near the right edge is drawn to the left of its marker.
+function layoutTags() {
+  const LINE = 16;
+  for (const track of el.board.querySelectorAll('.tl-row:not(.tl-head) .tl-track')) {
+    const box = track.getBoundingClientRect();
+    const lanes = [];
+    const tags = [...track.querySelectorAll('.tl-tag')].sort((a, b) => a.getBoundingClientRect().left - b.getBoundingClientRect().left);
+    for (const tag of tags) {
+      let r = tag.getBoundingClientRect();
+      if (r.right > box.right) { tag.classList.add('flip'); r = tag.getBoundingClientRect(); }
+      let lane = lanes.findIndex((end) => r.left > end + 8);
+      if (lane === -1) { lane = lanes.length; lanes.push(0); }
+      lanes[lane] = r.right;
+      tag.style.top = `${34 + lane * LINE}px`;
+    }
+    track.style.height = `${44 + Math.max(1, lanes.length) * LINE}px`;
+  }
+}
+
 // ---------------- panel ----------------
+
+function planHtml(g) {
+  const steps = planView(g.plan);
+  if (!steps.length) return stageChips(g);
+  const icon = { done: '✓', next: '●', upcoming: '○', overdue: '!' };
+  return `<ol class="plan" data-testid="plan">${steps
+    .map((st) => `<li class="step ${st.status}" data-testid="plan-step" data-status="${st.status}">
+      <span class="step-icon" aria-hidden="true">${icon[st.status]}</span>
+      <span class="step-when">${esc(whenLabel(st))}</span>
+      <span class="step-body"><span class="step-title">${esc(st.title)}</span>
+        <span class="step-meta">${esc(ownerLabel(st, g))}${st.date_kind === 'estimated' ? ' · <span class="badge-est">expected</span>' : ''}${st.status === 'overdue' ? ' · <span class="badge-late">date passed</span>' : ''}</span>
+        ${st.note ? `<span class="step-note">${esc(st.note)}</span>` : ''}</span>
+    </li>`)
+    .join('')}</ol>`;
+}
+
 
 function stageChips(g) {
   const list = STAGES[g.kind];
@@ -186,7 +304,6 @@ function renderPanel() {
   if (g.sent) change = `Sent. Now waiting on ${esc(firstName(p))}.`;
   else if (stuck) change = `No reply for <strong>${Math.floor(g.last_moved_days_ago)} days</strong> after you sent it.`;
   else if (g.status === 'done') change = `Done ${daysLabel(g.last_moved_days_ago)} ago.`;
-  else if (g.stage_change) change = `This email moved it from <strong>${esc(g.stage_change.from)}</strong> to <strong>${esc(g.stage_change.to)}</strong>.`;
   else if (g.turn === 'them') change = `Waiting on ${esc(firstName(p))} for ${daysLabel(g.last_moved_days_ago)}.`;
 
   const d = draftFor(g);
@@ -210,9 +327,9 @@ function renderPanel() {
     <div class="panel-head"><div><h2 data-testid="panel-title">${esc(g.title)}</h2>
       <div class="who-line" data-testid="who-line">${whoLine(g)}</div>${lastPromise(g)}</div>
       <button type="button" class="x" data-action="close" aria-label="Close" data-testid="close">✕</button></div>
-    <div class="section">${stageChips(g)}${change ? `<p class="change" data-testid="change">${change}</p>` : ''}</div>
+    <div class="section"><div class="section-label">Plan</div>${planHtml(g)}${change ? `<p class="change" data-testid="change">${change}</p>` : ''}</div>
     <div class="section"><div class="section-label">${mailLabel}</div>
-      <div class="mail-box${state.expanded['mail-' + g.id] ? '' : ' clamp'}" data-testid="their-mail">${esc(shownMail.body)}</div>
+      <div class="mail-box${state.expanded['mail-' + g.id] ? '' : ' clamp'}" data-testid="their-mail">${esc(renderDates(shownMail.body))}</div>
       <button type="button" class="link" data-action="toggle-mail" data-id="${g.id}">${state.expanded['mail-' + g.id] ? 'Show less' : 'Show whole email'}</button></div>
     ${draftHtml}
     ${g.status === 'done' || g.sent ? '' : decidedHtml(g)}`;
@@ -280,6 +397,7 @@ document.addEventListener('click', (e) => {
   else if (action === 'answer') { state.answers[id] = Number(t.dataset.index); delete state.edits[id]; renderPanel(); }
   else if (action === 'send') send(id);
   else if (action === 'undo') undoSend();
+  else if (action === 'view') { state.view = t.dataset.view; render(); }
 });
 
 document.addEventListener('input', (e) => {
@@ -288,7 +406,7 @@ document.addEventListener('input', (e) => {
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && state?.openId) { state.openId = null; render(); }
-  if ((e.key === 'Enter' || e.key === ' ') && e.target.classList?.contains('card')) { e.preventDefault(); openGoal(e.target.dataset.id); }
+  if ((e.key === 'Enter' || e.key === ' ') && (e.target.classList?.contains('card') || e.target.classList?.contains('tl-row'))) { e.preventDefault(); openGoal(e.target.dataset.id); }
 });
 
 load().catch((err) => {

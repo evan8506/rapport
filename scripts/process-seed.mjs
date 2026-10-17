@@ -24,7 +24,7 @@ if (!placeholder) {
 // ---- per-mail "track" results (placeholder: copy the expected labels) ----
 const track = Object.fromEntries(seed.mails.map((m) => [m.id, { ...m.expected }]));
 
-const result = assemble(seed, track);
+const result = assemble(seed, track, seed.expected_plans);
 result.generator = 'placeholder';
 result.note = 'Placeholder built from hand-written labels. No AI was used. Replaced by the Gemini run.';
 const out = path.join(root, 'data/processed.json');

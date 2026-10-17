@@ -22,7 +22,10 @@
     <button type="button" class="btn btn-quiet" data-action="reset" data-testid="reset">Reset demo</button>
   </header>
   <main class="page">
-    <p class="guide" data-testid="guide">Your email, as a board that moves itself.</p>
+    <div class="viewbar">
+      <p class="guide" data-testid="guide">Your email, as a board that moves itself.</p>
+      <div id="view" class="seg" role="group" aria-label="View"></div>
+    </div>
     <div id="board" class="board" aria-live="polite"></div>
     <div id="noreply" class="noreply"></div>
   </main>

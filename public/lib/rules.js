@@ -130,6 +130,33 @@ export function spanLabel(days) {
   return `${w} weeks`;
 }
 
+// ---- plan (the schedule Rapport builds for each piece of work) ----
+
+// Each step: { title, start, end?, owner: me|them|both, done, date_kind: from_email|estimated, note? }
+// start/end are day offsets from today. Status is a rule, not an AI call:
+//   done      the emails show it happened
+//   overdue   not done and its date has passed
+//   next      the earliest step that is not done and not overdue
+//   upcoming  everything later
+export function planView(plan = []) {
+  const steps = [...plan]
+    .map((s, i) => ({ ...s, i, end: s.end ?? s.start }))
+    .sort((a, b) => a.start - b.start || a.i - b.i);
+  let nextFound = false;
+  return steps.map((s) => {
+    let status;
+    if (s.done) status = 'done';
+    else if (Math.round(s.end) < 0) status = 'overdue';
+    else if (!nextFound) { status = 'next'; nextFound = true; }
+    else status = 'upcoming';
+    return { ...s, status };
+  });
+}
+
+export function nextStep(plan) {
+  return planView(plan).find((s) => s.status === 'next') || null;
+}
+
 // ---- demo actions (pure: return a new goal, never mutate) ----
 
 // Send on a "Your move" card: the reply goes out, the turn passes to them.
@@ -138,8 +165,14 @@ export function applySend(goal) {
   const draft = goal.draft || {};
   const nextStage = draft.next_stage ? advanceStage(goal.kind, goal.stage, draft.next_stage) : goal.stage;
   const mode = draft.mode || 'reply';
+  // A reply finishes the step that was waiting on you today.
+  const due = mode === 'reply' ? nextStep(goal.plan) : null;
+  const plan = due && due.owner === 'me' && Math.round(due.start) <= 0
+    ? goal.plan.map((s) => (s.title === due.title && s.start === due.start ? { ...s, done: true } : s))
+    : goal.plan;
   return {
     ...goal,
+    plan,
     stage: nextStage,
     turn: 'them',
     last_moved_days_ago: 0,

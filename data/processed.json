@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T12:18:46.602Z",
+  "generated_at": "2026-10-17T00:51:05.806Z",
   "me": {
     "name": "Alex Kim",
     "title": "Account Manager",
@@ -188,7 +188,7 @@
       "person_id": "jane",
       "days_ago": 41,
       "subject": "Q4 quote for Fernway Business",
-      "body": "Hi Alex,\n\nWe'd like to move our operations team to Fernway in Q4. Could you send a quote for the Business plan, 40 seats, annual, starting November 1?\n\nThanks,\nJane Lee\nHead of Operations, Northwind",
+      "body": "Hi Alex,\n\nWe'd like to move our operations team to Fernway in Q4. Could you send a quote for the Business plan, 40 seats, annual, starting {{d:+15}}?\n\nThanks,\nJane Lee\nHead of Operations, Northwind",
       "goal_id": "q4",
       "needs_reply": true
     },
@@ -218,7 +218,7 @@
       "person_id": "jane",
       "days_ago": 37,
       "subject": "Re: Q4 quote for Fernway Business",
-      "body": "Hi Jane,\n\nHere is the quote: Business plan, 40 seats at $20 per seat per month, billed annually, $9,600 per year. SSO and guided onboarding are included. The quote is valid for 30 days.\n\nBest,\nAlex",
+      "body": "Hi Jane,\n\nHere is the quote: Business plan, 40 seats at $20 per seat per month, billed annually, $9,600 per year. SSO and guided onboarding are included. The quote is valid for 30 days, until {{d:-7}}.\n\nBest,\nAlex",
       "goal_id": "q4",
       "needs_reply": false
     },
@@ -228,7 +228,7 @@
       "person_id": "jane",
       "days_ago": 30,
       "subject": "Re: Q4 quote for Fernway Business",
-      "body": "Thanks Alex. I'm reviewing it with finance and will come back within two weeks.\n\nJane",
+      "body": "Thanks Alex. I'm reviewing it with finance and will come back by {{d:-16}}.\n\nJane",
       "goal_id": "q4",
       "needs_reply": false
     },
@@ -268,7 +268,7 @@
       "person_id": "jane",
       "days_ago": 14.7,
       "subject": "Re: Q4 quote for Fernway Business",
-      "body": "Sounds good, Jane. I'll keep the quoted price open for you until the quote expires.\n\nBest,\nAlex",
+      "body": "Sounds good, Jane. I'll keep the quoted price open for you until it expires on {{d:-7}}.\n\nBest,\nAlex",
       "goal_id": "q4",
       "needs_reply": false
     },
@@ -298,7 +298,7 @@
       "person_id": "jane",
       "days_ago": 0.12,
       "subject": "Re: Q4 quote for Fernway Business",
-      "body": "Hi Alex,\n\nThanks for the proposal. We can sign this quarter if the annual plan comes down 10%. Could you also confirm onboarding is included, and send the updated quote as a PDF?\n\nThanks,\nJane",
+      "body": "Hi Alex,\n\nThanks for the proposal. We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}. Could you also confirm onboarding is included, and send the updated quote as a PDF?\n\nThanks,\nJane",
       "goal_id": "q4",
       "needs_reply": true
     },
@@ -368,7 +368,7 @@
       "person_id": "marco",
       "days_ago": 10.9,
       "subject": "Re: SSO login broken for some of our users",
-      "body": "Thanks Marco, we reproduced it. Engineering is working on a fix and I'll update you.\n\nAlex",
+      "body": "Thanks Marco, we reproduced it. The fix is planned for release 4.12, going out on {{d:+1}}. It reaches every workspace within 48 hours, and I'll confirm once it's live for you.\n\nAlex",
       "goal_id": "login",
       "needs_reply": false
     },
@@ -408,7 +408,7 @@
       "person_id": "priya",
       "days_ago": 1,
       "subject": "Re: Kickoff call",
-      "body": "Hi Priya,\n\nWelcome aboard! How about Tuesday at 10:00 or Thursday at 14:00, your time? The call takes 45 minutes.\n\nBest,\nAlex",
+      "body": "Hi Priya,\n\nWelcome aboard! How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time? The call takes 45 minutes, and we set up your workspace within a week after it.\n\nBest,\nAlex",
       "goal_id": "kickoff",
       "needs_reply": false
     },
@@ -418,7 +418,7 @@
       "person_id": "tom",
       "days_ago": 26,
       "subject": "NDA before the pilot",
-      "body": "Dear Alex,\n\nBefore we share shipment data for the pilot, our policy requires a mutual NDA. Could you send yours?\n\nRegards,\nTom Becker\nProcurement Lead, Acme Logistics",
+      "body": "Dear Alex,\n\nBefore we share shipment data for the pilot, our policy requires a mutual NDA. Could you send yours? We would like to start the pilot by {{d:+10}}.\n\nRegards,\nTom Becker\nProcurement Lead, Acme Logistics",
       "goal_id": "nda",
       "needs_reply": true
     },
@@ -428,7 +428,7 @@
       "person_id": "tom",
       "days_ago": 9,
       "subject": "Re: NDA before the pilot",
-      "body": "Dear Tom,\n\nAttached is our mutual NDA for review. Once it is signed, we can start the pilot with your data.\n\nKind regards,\nAlex",
+      "body": "Dear Tom,\n\nAttached is our mutual NDA for review. Once it is signed, we can start the four-week pilot with your data.\n\nKind regards,\nAlex",
       "goal_id": "nda",
       "needs_reply": false
     },
@@ -438,7 +438,7 @@
       "person_id": "tom",
       "days_ago": 8.8,
       "subject": "Re: NDA before the pilot",
-      "body": "Thank you. Our legal team will review it and return it early next week.\n\nTom",
+      "body": "Thank you. Our legal team will review it and return it by {{d:-3}}.\n\nTom",
       "goal_id": "nda",
       "needs_reply": false
     },
@@ -722,6 +722,68 @@
         "from": "Proposal sent",
         "to": "Negotiating"
       },
+      "plan": [
+        {
+          "title": "Quote requested",
+          "start": -41,
+          "owner": "them",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m01"
+        },
+        {
+          "title": "Quote sent",
+          "start": -37,
+          "owner": "me",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m04"
+        },
+        {
+          "title": "Quote valid",
+          "start": -37,
+          "end": -7,
+          "owner": "me",
+          "done": false,
+          "date_kind": "from_email",
+          "mail": "m04",
+          "note": "Expired before signing. Send a fresh quote."
+        },
+        {
+          "title": "Reply on the 10% discount",
+          "start": 0,
+          "owner": "me",
+          "done": false,
+          "date_kind": "from_email",
+          "mail": "m12"
+        },
+        {
+          "title": "Contract signed",
+          "start": 7,
+          "owner": "both",
+          "done": false,
+          "date_kind": "from_email",
+          "mail": "m12"
+        },
+        {
+          "title": "Team starts on Fernway",
+          "start": 15,
+          "owner": "them",
+          "done": false,
+          "date_kind": "from_email",
+          "mail": "m12"
+        },
+        {
+          "title": "Onboarding, 2 sessions",
+          "start": 15,
+          "end": 29,
+          "owner": "me",
+          "done": false,
+          "date_kind": "estimated",
+          "mail": "m12",
+          "note": "Price list: two guided sessions. Assumed in the first two weeks."
+        }
+      ],
       "draft": null,
       "runs": []
     },
@@ -762,6 +824,43 @@
         "from": "Requested",
         "to": "Sent"
       },
+      "plan": [
+        {
+          "title": "NDA requested",
+          "start": -26,
+          "owner": "them",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m23"
+        },
+        {
+          "title": "NDA sent",
+          "start": -9,
+          "owner": "me",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m24"
+        },
+        {
+          "title": "Signed NDA back",
+          "start": -3,
+          "owner": "them",
+          "done": false,
+          "date_kind": "from_email",
+          "mail": "m25",
+          "note": "Tom promised it by this date."
+        },
+        {
+          "title": "Four-week pilot",
+          "start": 10,
+          "end": 38,
+          "owner": "both",
+          "done": false,
+          "date_kind": "estimated",
+          "mail": "m23",
+          "note": "Tom wants to start by this date. Length from your NDA email."
+        }
+      ],
       "draft": null,
       "runs": []
     },
@@ -823,6 +922,58 @@
       "their_latest_mail_id": "m20",
       "moved_reason": null,
       "stage_change": null,
+      "plan": [
+        {
+          "title": "Issue reported",
+          "start": -12,
+          "owner": "them",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m15"
+        },
+        {
+          "title": "Error details received",
+          "start": -11,
+          "owner": "them",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m17"
+        },
+        {
+          "title": "Reply to Marco with the date",
+          "start": 0,
+          "owner": "me",
+          "done": false,
+          "date_kind": "estimated",
+          "mail": "m20",
+          "note": "Marco asked for an ETA 2 days ago."
+        },
+        {
+          "title": "Release 4.12 ships",
+          "start": 1,
+          "owner": "me",
+          "done": false,
+          "date_kind": "from_email",
+          "mail": "m18"
+        },
+        {
+          "title": "Fix live for Bluebird",
+          "start": 1,
+          "end": 3,
+          "owner": "me",
+          "done": false,
+          "date_kind": "from_email",
+          "mail": "m18"
+        },
+        {
+          "title": "Marco confirms it works",
+          "start": 4,
+          "owner": "them",
+          "done": false,
+          "date_kind": "estimated",
+          "mail": "m18"
+        }
+      ],
       "draft": null,
       "runs": []
     },
@@ -870,6 +1021,32 @@
         "from": "Answered",
         "to": "Confirmed"
       },
+      "plan": [
+        {
+          "title": "Question asked",
+          "start": -8,
+          "owner": "them",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m26"
+        },
+        {
+          "title": "Answered",
+          "start": -8,
+          "owner": "me",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m27"
+        },
+        {
+          "title": "Lena confirmed it works",
+          "start": -5,
+          "owner": "them",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m28"
+        }
+      ],
       "draft": null,
       "runs": []
     },
@@ -909,6 +1086,24 @@
         "from": "Open",
         "to": "Done"
       },
+      "plan": [
+        {
+          "title": "Change requested",
+          "start": -6,
+          "owner": "them",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m13"
+        },
+        {
+          "title": "Billing contact updated",
+          "start": -6,
+          "owner": "me",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m14"
+        }
+      ],
       "draft": null,
       "runs": []
     },
@@ -945,6 +1140,52 @@
       "their_latest_mail_id": "m21",
       "moved_reason": null,
       "stage_change": null,
+      "plan": [
+        {
+          "title": "Kickoff requested",
+          "start": -4,
+          "owner": "them",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m21"
+        },
+        {
+          "title": "Two times proposed",
+          "start": -1,
+          "owner": "me",
+          "done": true,
+          "date_kind": "from_email",
+          "mail": "m22"
+        },
+        {
+          "title": "Priya picks a time",
+          "start": 0,
+          "end": 3,
+          "owner": "them",
+          "done": false,
+          "date_kind": "estimated",
+          "mail": "m22",
+          "note": "Needed before the first proposed time."
+        },
+        {
+          "title": "Kickoff call, 45 min",
+          "start": 4,
+          "owner": "both",
+          "done": false,
+          "date_kind": "estimated",
+          "mail": "m22",
+          "note": "First of the two proposed times."
+        },
+        {
+          "title": "Workspace set up",
+          "start": 4,
+          "end": 11,
+          "owner": "me",
+          "done": false,
+          "date_kind": "from_email",
+          "mail": "m22"
+        }
+      ],
       "draft": null,
       "runs": []
     }

@@ -1,7 +1,7 @@
 import { STAGES, advanceStage, isFinalStage, relationshipStage, RELATIONSHIP_LABEL } from '../../public/lib/rules.js';
 
 // Builds goals, stage history and relationship stages from per-mail track results.
-export function assemble(seed, track) {
+export function assemble(seed, track, plans = {}) {
   const titles = Object.fromEntries(seed.expected_goals.map((g) => [g.key, g.title]));
   const mailsChrono = [...seed.mails].sort((a, b) => b.days_ago - a.days_ago);
   const goals = new Map();
@@ -34,6 +34,7 @@ export function assemble(seed, track) {
     const prev = g.stage_history.length > 1 ? g.stage_history[g.stage_history.length - 2] : null;
     g.moved_reason = track[last.mail_id]?.reason || null;
     g.stage_change = prev && prev.stage !== last.stage ? { from: prev.stage, to: last.stage } : null;
+    g.plan = (plans[g.id] || []).map((s) => ({ ...s }));
     g.draft = null;
     g.runs = [];
   }
