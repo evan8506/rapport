@@ -52,3 +52,18 @@ test('a nudge does not tick off anything', () => {
   const goal = { status: 'open', kind: 'document', stage: 'Sent', turn: 'them', plan: seed.expected_plans.nda, draft: { mode: 'nudge' } };
   assert.deepEqual(applySend(goal).plan, goal.plan);
 });
+
+test('my schedule groups open steps by when they happen and skips finished work', async () => {
+  const { agenda } = await import('../public/lib/rules.js');
+  const goals = Object.entries(seed.expected_plans).map(([id, plan]) => ({ id, plan, status: ['csv', 'billing'].includes(id) ? 'done' : 'open' }));
+  const a = agenda(goals);
+  const titles = (k) => a[k].map((s) => s.title);
+  assert.deepEqual(titles('overdue'), ['Quote valid', 'Signed NDA back']);
+  assert.ok(titles('today').includes('Reply on the 10% discount'));
+  assert.ok(titles('this_week').includes('Contract signed'));
+  assert.deepEqual(titles('next_week'), ['Four-week pilot']);
+  assert.ok(titles('later').includes('Team starts on Fernway'));
+  const all = Object.values(a).flat();
+  assert.ok(all.every((s) => s.status !== 'done'));
+  assert.ok(!all.some((s) => s.goal_id === 'csv'));
+});

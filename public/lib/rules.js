@@ -153,6 +153,26 @@ export function planView(plan = []) {
   });
 }
 
+// "My schedule": every open step across all work, grouped by when it happens.
+// Groups: overdue, today, this_week (next 7 days), next_week (8-14), later (15+).
+export const AGENDA_GROUPS = ['overdue', 'today', 'this_week', 'next_week', 'later'];
+export function agenda(goals) {
+  const rows = [];
+  for (const g of goals) {
+    if (g.status !== 'open') continue;
+    for (const s of planView(g.plan)) {
+      if (s.status === 'done') continue;
+      const d = Math.round(s.start);
+      const group = s.status === 'overdue' ? 'overdue' : d <= 0 ? 'today' : d <= 7 ? 'this_week' : d <= 14 ? 'next_week' : 'later';
+      rows.push({ ...s, goal_id: g.id, group });
+    }
+  }
+  const out = Object.fromEntries(AGENDA_GROUPS.map((k) => [k, []]));
+  for (const r of rows) out[r.group].push(r);
+  for (const k of AGENDA_GROUPS) out[k].sort((a, b) => a.start - b.start || a.end - b.end || (a.owner === "me" ? -1 : 1));
+  return out;
+}
+
 export function nextStep(plan) {
   return planView(plan).find((s) => s.status === 'next') || null;
 }

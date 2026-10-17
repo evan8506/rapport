@@ -1,7 +1,7 @@
 // Rapport demo board. Everything a visitor does stays in this browser tab's memory:
 // a refresh or "Reset demo" brings back the starting board. Nothing is written to the server.
 
-import { STAGES, arrangeBoard, isStuck, isFresh, daysLabel, spanLabel, applySend, planView, nextStep } from './lib/rules.js';
+import { STAGES, arrangeBoard, isStuck, isFresh, daysLabel, spanLabel, applySend, planView, nextStep, agenda, AGENDA_GROUPS } from './lib/rules.js';
 import { renderDates, fmtShort, fmtRange } from './lib/dates.js';
 
 const STEP_NAMES = { identify: 'Who is it', track: 'Which work', prepare: "What's needed", draft: 'Write the reply', judge: 'Check it' };
@@ -9,6 +9,7 @@ const STEP_NAMES = { identify: 'Who is it', track: 'Which work', prepare: "What'
 const el = {
   board: document.getElementById('board'),
   view: document.getElementById('view'),
+  agenda: document.getElementById('agenda'),
   noreply: document.getElementById('noreply'),
   panel: document.getElementById('panel'),
   scrim: document.getElementById('scrim'),
@@ -133,12 +134,14 @@ function render() {
     .join('');
   el.board.className = state.view === 'timeline' ? 'timeline' : 'board';
   if (state.view === 'timeline') {
+    el.agenda.innerHTML = '';
     el.board.innerHTML = timelineHtml(cols);
     layoutTags();
     el.noreply.innerHTML = '';
     renderPanel();
     return;
   }
+  el.agenda.innerHTML = agendaHtml();
   el.board.innerHTML =
     columnHtml('your_move', 'Your move', '', cols.your_move) +
     columnHtml('waiting', 'Waiting on them', 'pip-waiting', cols.waiting) +
@@ -153,6 +156,36 @@ function render() {
     ${state.showNoReply ? `<ul data-testid="noreply-list">${nr.map((m) => `<li><span class="from">${esc(m.from?.name || person(m.person_id)?.name)}</span><span>${esc(m.subject)}</span></li>`).join('')}</ul>` : ''}`;
 
   renderPanel();
+}
+
+// ---------------- my schedule ----------------
+
+const GROUP_TITLE = { overdue: 'Date passed', today: 'Today', this_week: 'This week', next_week: 'Next week', later: 'Later' };
+
+function agendaHtml() {
+  const groups = agenda(state.goals);
+  const body = AGENDA_GROUPS.filter((k) => groups[k].length)
+    .map((k) => `<div class="ag-group ag-${k}" data-testid="ag-${k}"><div class="ag-head">${GROUP_TITLE[k]}</div>${groups[k].map(agendaRow).join('')}</div>`)
+    .join('');
+  return `<div class="ag-title">My schedule</div>${body || '<div class="empty">Nothing planned.</div>'}`;
+}
+
+function agendaRow(s) {
+  const g = goal(s.goal_id);
+  const p = person(g.person_id);
+  const who = s.owner === 'me' ? 'You' : s.owner === 'both' ? `You and ${firstName(p)}` : `${p.name} · ${company(p.company_id).name}`;
+  // The row's button is the card's own action: reply when it is your move today, nudge when they are late.
+  const btn = s.group === 'today' && s.owner === 'me' && g.turn === 'me'
+    ? `<button type="button" class="btn" data-action="open" data-id="${g.id}" data-testid="ag-button">Reply</button>`
+    : s.group === 'overdue' && s.owner !== 'me' && isStuck(g)
+      ? `<button type="button" class="btn btn-stuck" data-action="open" data-id="${g.id}" data-testid="ag-button">Nudge</button>`
+      : '';
+  return `<div class="ag-row${s.owner === 'me' ? ' mine' : ''}" data-action="open" data-id="${g.id}" data-testid="ag-row" tabindex="0">
+    <span class="ag-when">${esc(whenLabel(s))}</span>
+    <span class="ag-what"><span class="ag-step">${esc(s.title)}${s.date_kind === 'estimated' ? ' <span class="badge-est">expected</span>' : ''}</span>
+      <span class="ag-ctx">${esc(g.title)} · ${esc(who)}</span>${s.group === 'overdue' && s.note ? `<span class="ag-note">${esc(s.note)}</span>` : ''}</span>
+    <span class="ag-act">${btn}</span>
+  </div>`;
 }
 
 // ---------------- timeline ----------------
@@ -406,7 +439,7 @@ document.addEventListener('input', (e) => {
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && state?.openId) { state.openId = null; render(); }
-  if ((e.key === 'Enter' || e.key === ' ') && (e.target.classList?.contains('card') || e.target.classList?.contains('tl-row'))) { e.preventDefault(); openGoal(e.target.dataset.id); }
+  if ((e.key === 'Enter' || e.key === ' ') && (e.target.classList?.contains('card') || e.target.classList?.contains('tl-row') || e.target.classList?.contains('ag-row'))) { e.preventDefault(); openGoal(e.target.dataset.id); }
 });
 
 load().catch((err) => {
