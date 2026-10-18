@@ -12,7 +12,7 @@ export function assemble(seed, track, plans = {}) {
     if (!STAGES[t.kind]) throw new Error(`${m.id}: unknown kind ${t.kind}`);
     let g = goals.get(t.goal);
     if (!g) {
-      g = { id: t.goal, person_id: m.person_id, title: titles[t.goal] || t.goal, kind: t.kind, stage: STAGES[t.kind][0], turn: 'none', status: 'open', stage_history: [], mail_ids: [] };
+      g = { id: t.goal, person_id: m.person_id, title: t.title || titles[t.goal] || t.goal, kind: t.kind, stage: STAGES[t.kind][0], turn: 'none', status: 'open', stage_history: [], mail_ids: [] };
       goals.set(t.goal, g);
     }
     const before = { stage: g.stage, turn: g.turn };
