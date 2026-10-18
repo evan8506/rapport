@@ -155,7 +155,17 @@ function render() {
   el.noreply.innerHTML = `<button type="button" class="link" data-action="toggle-noreply" data-testid="noreply-toggle" aria-expanded="${state.showNoReply}">${nr.length} emails didn't need a reply</button>
     ${state.showNoReply ? `<ul data-testid="noreply-list">${nr.map((m) => `<li><span class="from">${esc(m.from?.name || person(m.person_id)?.name)}</span><span>${esc(m.subject)}</span></li>`).join('')}</ul>` : ''}`;
 
+  renderScore();
   renderPanel();
+}
+
+// One line of proof under the board: how Gemini's sorting compares with a hand-made answer key.
+function renderScore() {
+  const el2 = document.getElementById('score');
+  const sc = data.generator === 'gemini' ? data.score : null;
+  el2.hidden = !sc;
+  if (!sc) return;
+  el2.textContent = `Gemini sorted these ${sc.emails.total} emails before you opened the page. Checked against a hand-made answer key: ${sc.emails.right} of ${sc.emails.total} emails in the right place, ${sc.items.found} of ${sc.items.total} pieces of work found, ${sc.dated_steps.found} of ${sc.dated_steps.total} dated steps found.`;
 }
 
 // ---------------- my schedule ----------------
@@ -257,9 +267,22 @@ function planHtml(g) {
       <span class="step-when">${esc(whenLabel(st))}</span>
       <span class="step-body"><span class="step-title">${esc(st.title)}</span>
         <span class="step-meta">${esc(ownerLabel(st, g))}${st.date_kind === 'estimated' ? ' · <span class="badge-est">expected</span>' : ''}${st.status === 'overdue' ? ' · <span class="badge-late">date passed</span>' : ''}</span>
-        ${st.note ? `<span class="step-note">${esc(st.note)}</span>` : ''}</span>
+        ${st.note ? `<span class="step-note">${esc(st.note)}</span>` : ''}
+        ${sourceHtml(g, st)}</span>
     </li>`)
     .join('')}</ol>`;
+}
+
+// The email sentence a step (or its date) came from, one click away.
+function sourceHtml(g, st) {
+  if (!st.evidence) return '';
+  const key = `src-${g.id}-${st.i}`;
+  const open = state.expanded[key];
+  const m = st.mail ? mail(st.mail) : null;
+  const from = !m ? '' : m.direction === 'out' ? 'Your email' : `${firstName(person(m.person_id))}'s email`;
+  const when = m ? `${fmtShort(-m.days_ago)}` : '';
+  return `<button type="button" class="link src-toggle" data-action="toggle-src" data-id="${key}" aria-expanded="${Boolean(open)}" data-testid="src-toggle">${open ? 'Hide source' : 'Source'}</button>
+    ${open ? `<blockquote class="src" data-testid="src"><span class="src-text">“${esc(renderDates(st.evidence))}”</span>${m ? `<span class="src-from">${esc(from)} · ${esc(when)}</span>` : ''}</blockquote>` : ''}`;
 }
 
 
@@ -426,6 +449,7 @@ document.addEventListener('click', (e) => {
   else if (action === 'toggle-done') { state.showDone = !state.showDone; render(); }
   else if (action === 'toggle-noreply') { state.showNoReply = !state.showNoReply; render(); }
   else if (action === 'toggle-decided') { state.expanded[id] = !state.expanded[id]; renderPanel(); }
+  else if (action === 'toggle-src') { state.expanded[id] = !state.expanded[id]; renderPanel(); }
   else if (action === 'toggle-mail') { state.expanded['mail-' + id] = !state.expanded['mail-' + id]; renderPanel(); }
   else if (action === 'answer') { state.answers[id] = Number(t.dataset.index); delete state.edits[id]; renderPanel(); }
   else if (action === 'send') send(id);

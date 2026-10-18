@@ -269,3 +269,9 @@ textarea { font: inherit; }
 .ag-group { padding: 3px 0; }
 .ag-act .btn { min-height: 24px; padding: 2px 12px; font-size: 12.5px; }
 @media (max-width: 760px) { .ag-what { flex-direction: column; } }
+
+.src-toggle { font-size: 12px; margin-top: 2px; align-self: flex-start; }
+.src { margin: 4px 0 2px; padding: 6px 10px; border-left: 3px solid var(--line); background: #f7f9fc; border-radius: 0 6px 6px 0; display: flex; flex-direction: column; gap: 2px; }
+.src-text { font-size: 13px; color: var(--text); }
+.src-from { font-size: 12px; color: var(--faint); }
+.score-line { margin: 14px 0 0; color: var(--faint); font-size: 12.5px; }

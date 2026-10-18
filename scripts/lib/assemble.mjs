@@ -34,7 +34,7 @@ export function assemble(seed, track, plans = {}) {
     const prev = g.stage_history.length > 1 ? g.stage_history[g.stage_history.length - 2] : null;
     g.moved_reason = track[last.mail_id]?.reason || null;
     g.stage_change = prev && prev.stage !== last.stage ? { from: prev.stage, to: last.stage } : null;
-    g.plan = (plans[g.id] || []).map((s) => ({ ...s }));
+    g.plan = (plans[g.id] || []).map((s) => ({ ...s, evidence: s.evidence || sourceSentence(seed, s.mail) }));
     g.draft = null;
     g.runs = [];
   }
@@ -69,4 +69,14 @@ export function assemble(seed, track, plans = {}) {
     goals: goalList,
     no_reply_mail_ids: noReply,
   };
+}
+
+// For hand-written plans: the sentence of the source email that carries a date,
+// otherwise its first real sentence. Gemini plans bring their own evidence.
+function sourceSentence(seed, mailId) {
+  const m = seed.mails.find((x) => x.id === mailId);
+  if (!m) return null;
+  const lines = m.body.split(/\n+/).map((l) => l.trim().replace(/^(hi|hello|hey|dear)\s+[A-Z][a-z]+,\s*/i, '')).filter((l) =>!/^(best|thanks|kind regards|regards|best regards),?$/i.test(l.trim()) && l.trim().length > 12);
+  const sentences = lines.join(' ').split(/(?<=[.?!])\s+/);
+  return sentences.find((s) => s.includes('{{d:')) || sentences[0] || null;
 }

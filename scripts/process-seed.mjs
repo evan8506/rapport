@@ -49,6 +49,8 @@ if (placeholder) {
     p.stage_reason = r.stageReason[p.id] || null;
   }
   result.generator = 'gemini';
+  const { score } = await import('./lib/score.mjs');
+  result.score = score(seed, result);
   result.models = MODELS;
   result.run_seconds = Math.round((Date.now() - started) / 1000);
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T00:51:05.806Z",
+  "generated_at": "2026-10-18T08:33:10.422Z",
   "me": {
     "name": "Alex Kim",
     "title": "Account Manager",
@@ -729,7 +729,8 @@
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m01"
+          "mail": "m01",
+          "evidence": "Could you send a quote for the Business plan, 40 seats, annual, starting {{d:+15}}?"
         },
         {
           "title": "Quote sent",
@@ -737,7 +738,8 @@
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m04"
+          "mail": "m04",
+          "evidence": "The quote is valid for 30 days, until {{d:-7}}."
         },
         {
           "title": "Quote valid",
@@ -747,7 +749,8 @@
           "done": false,
           "date_kind": "from_email",
           "mail": "m04",
-          "note": "Expired before signing. Send a fresh quote."
+          "note": "Expired before signing. Send a fresh quote.",
+          "evidence": "The quote is valid for 30 days, until {{d:-7}}."
         },
         {
           "title": "Reply on the 10% discount",
@@ -755,7 +758,8 @@
           "owner": "me",
           "done": false,
           "date_kind": "from_email",
-          "mail": "m12"
+          "mail": "m12",
+          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}."
         },
         {
           "title": "Contract signed",
@@ -763,7 +767,8 @@
           "owner": "both",
           "done": false,
           "date_kind": "from_email",
-          "mail": "m12"
+          "mail": "m12",
+          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}."
         },
         {
           "title": "Team starts on Fernway",
@@ -771,7 +776,8 @@
           "owner": "them",
           "done": false,
           "date_kind": "from_email",
-          "mail": "m12"
+          "mail": "m12",
+          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}."
         },
         {
           "title": "Onboarding, 2 sessions",
@@ -781,7 +787,8 @@
           "done": false,
           "date_kind": "estimated",
           "mail": "m12",
-          "note": "Price list: two guided sessions. Assumed in the first two weeks."
+          "note": "Price list: two guided sessions. Assumed in the first two weeks.",
+          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}."
         }
       ],
       "draft": null,
@@ -831,7 +838,8 @@
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m23"
+          "mail": "m23",
+          "evidence": "We would like to start the pilot by {{d:+10}}."
         },
         {
           "title": "NDA sent",
@@ -839,7 +847,8 @@
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m24"
+          "mail": "m24",
+          "evidence": "Attached is our mutual NDA for review."
         },
         {
           "title": "Signed NDA back",
@@ -848,7 +857,8 @@
           "done": false,
           "date_kind": "from_email",
           "mail": "m25",
-          "note": "Tom promised it by this date."
+          "note": "Tom promised it by this date.",
+          "evidence": "Our legal team will review it and return it by {{d:-3}}."
         },
         {
           "title": "Four-week pilot",
@@ -858,7 +868,8 @@
           "done": false,
           "date_kind": "estimated",
           "mail": "m23",
-          "note": "Tom wants to start by this date. Length from your NDA email."
+          "note": "Tom wants to start by this date. Length from your NDA email.",
+          "evidence": "We would like to start the pilot by {{d:+10}}."
         }
       ],
       "draft": null,
@@ -929,7 +940,8 @@
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m15"
+          "mail": "m15",
+          "evidence": "since this morning a few of our people can't sign in with SSO."
         },
         {
           "title": "Error details received",
@@ -937,7 +949,8 @@
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m17"
+          "mail": "m17",
+          "evidence": "Error ID is LGN-4471."
         },
         {
           "title": "Reply to Marco with the date",
@@ -946,7 +959,8 @@
           "done": false,
           "date_kind": "estimated",
           "mail": "m20",
-          "note": "Marco asked for an ETA 2 days ago."
+          "note": "Marco asked for an ETA 2 days ago.",
+          "evidence": "Any update on this?"
         },
         {
           "title": "Release 4.12 ships",
@@ -954,7 +968,8 @@
           "owner": "me",
           "done": false,
           "date_kind": "from_email",
-          "mail": "m18"
+          "mail": "m18",
+          "evidence": "The fix is planned for release 4.12, going out on {{d:+1}}."
         },
         {
           "title": "Fix live for Bluebird",
@@ -963,7 +978,8 @@
           "owner": "me",
           "done": false,
           "date_kind": "from_email",
-          "mail": "m18"
+          "mail": "m18",
+          "evidence": "The fix is planned for release 4.12, going out on {{d:+1}}."
         },
         {
           "title": "Marco confirms it works",
@@ -971,7 +987,8 @@
           "owner": "them",
           "done": false,
           "date_kind": "estimated",
-          "mail": "m18"
+          "mail": "m18",
+          "evidence": "The fix is planned for release 4.12, going out on {{d:+1}}."
         }
       ],
       "draft": null,
@@ -1028,7 +1045,8 @@
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m26"
+          "mail": "m26",
+          "evidence": "does Fernway export reports to CSV?"
         },
         {
           "title": "Answered",
@@ -1036,7 +1054,8 @@
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m27"
+          "mail": "m27",
+          "evidence": "yes."
         },
         {
           "title": "Lena confirmed it works",
@@ -1044,7 +1063,8 @@
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m28"
+          "mail": "m28",
+          "evidence": "Found it and set up the monthly export."
         }
       ],
       "draft": null,
@@ -1093,7 +1113,8 @@
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m13"
+          "mail": "m13",
+          "evidence": "Please send all future Fernway invoices to ap@northwind.example instead of my address."
         },
         {
           "title": "Billing contact updated",
@@ -1101,7 +1122,8 @@
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m14"
+          "mail": "m14",
+          "evidence": "Done."
         }
       ],
       "draft": null,
@@ -1147,7 +1169,8 @@
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m21"
+          "mail": "m21",
+          "evidence": "We just signed up for the Team plan."
         },
         {
           "title": "Two times proposed",
@@ -1155,7 +1178,8 @@
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m22"
+          "mail": "m22",
+          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?"
         },
         {
           "title": "Priya picks a time",
@@ -1165,7 +1189,8 @@
           "done": false,
           "date_kind": "estimated",
           "mail": "m22",
-          "note": "Needed before the first proposed time."
+          "note": "Needed before the first proposed time.",
+          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?"
         },
         {
           "title": "Kickoff call, 45 min",
@@ -1174,7 +1199,8 @@
           "done": false,
           "date_kind": "estimated",
           "mail": "m22",
-          "note": "First of the two proposed times."
+          "note": "First of the two proposed times.",
+          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?"
         },
         {
           "title": "Workspace set up",
@@ -1183,7 +1209,8 @@
           "owner": "me",
           "done": false,
           "date_kind": "from_email",
-          "mail": "m22"
+          "mail": "m22",
+          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?"
         }
       ],
       "draft": null,
