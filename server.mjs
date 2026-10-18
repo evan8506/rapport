@@ -30,6 +30,11 @@ function send(res, status, body, type = 'text/plain; charset=utf-8', extra = {})
     'content-type': type,
     'x-content-type-options': 'nosniff',
     'referrer-policy': 'no-referrer',
+    // Only our own files may run or load; the page cannot be framed by other sites.
+    'content-security-policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'",
+    'x-frame-options': 'SAMEORIGIN',
+    'strict-transport-security': 'max-age=31536000',
+    'permissions-policy': 'camera=(), microphone=(), geolocation=()',
     ...extra,
   });
   res.end(body);

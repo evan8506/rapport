@@ -11,3 +11,7 @@ scripts/
 public/review/
 implementation-notes.md
 *.log
+
+# local scratch and hidden tool folders
+tmp/
+.*/

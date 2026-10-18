@@ -37,3 +37,10 @@ test('files outside the public folder are not served', async () => {
   const res = await fetch(`${base}/..%2Fserver.mjs`);
   assert.equal(res.status, 404);
 });
+
+test('responses carry security headers', async () => {
+  const res = await fetch(`${base}/`);
+  assert.match(res.headers.get('content-security-policy'), /script-src 'self'/);
+  assert.match(res.headers.get('content-security-policy'), /frame-ancestors 'self'/);
+  assert.equal(res.headers.get('x-frame-options'), 'SAMEORIGIN');
+});
