@@ -67,3 +67,30 @@ test('my schedule groups open steps by when they happen and skips finished work'
   assert.ok(all.every((s) => s.status !== 'done'));
   assert.ok(!all.some((s) => s.goal_id === 'csv'));
 });
+
+test('steps you can act on now land in Today with the card action', async () => {
+  const { agenda } = await import('../public/lib/rules.js');
+  const goals = [
+    { id: 'a', status: 'open', turn: 'me', last_moved_days_ago: 0, plan: [{ title: 'Send status update', start: 1, owner: 'me', done: false }] },
+    { id: 'b', status: 'open', turn: 'them', last_moved_days_ago: 9, plan: [{ title: 'Follow up on NDA', start: 1, owner: 'me', done: false }] },
+    { id: 'c', status: 'open', turn: 'them', last_moved_days_ago: 1, plan: [{ title: 'Kickoff call', start: 1, owner: 'both', done: false }] },
+  ];
+  const a = agenda(goals);
+  assert.deepEqual(a.today.map((s) => s.title).sort(), ['Follow up on NDA', 'Send status update']);
+  assert.ok(a.today.every((s) => s.act_now));
+  assert.deepEqual(a.this_week.map((s) => s.title), ['Kickoff call']);
+});
+
+test('a nudge on a stuck card ticks off your follow-up step', () => {
+  const goal = { status: 'open', kind: 'document', stage: 'Sent', turn: 'them', last_moved_days_ago: 9,
+    plan: [{ title: 'Signed NDA back', start: -3, owner: 'them', done: false }, { title: 'Follow up on NDA', start: 1, owner: 'me', done: false }],
+    draft: { mode: 'nudge' } };
+  const after = applySend(goal);
+  assert.equal(after.plan[1].done, true);
+  assert.equal(after.plan[0].done, false);
+});
+
+test('finished work shows nothing as next or late', () => {
+  const v = planView([{ title: 'Done', start: -6, owner: 'me', done: true }, { title: 'Next invoice', start: 20, owner: 'me', done: false }, { title: 'Old', start: -2, owner: 'them', done: false }], { closed: true });
+  assert.deepEqual(v.map((s) => s.status), ['done', 'upcoming', 'upcoming']);
+});

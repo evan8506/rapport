@@ -883,14 +883,14 @@
         "based_on": [
           "contact card for Jane Lee",
           "Jane's email history",
-          "Northwind Business Quote deal goal",
+          "Northwind Business Quote deal",
           "Fernway price list",
           "Customer FAQ"
         ],
         "unverified": [
           "10% discount approval for Northwind 40-seat annual Business plan ($8,640/year)"
         ],
-        "attachment": null,
+        "attachment": "updated quote PDF",
         "next_stage": "Negotiating",
         "question": {
           "text": "Jane requested a 10% discount on the 40-seat annual Business plan ($8,640/year vs. standard $9,600/year) to sign by {{d:+7}}—how would you like to proceed?",
@@ -1297,7 +1297,7 @@
             }
           ],
           "ms": 147613,
-          "summary": "Looked up get_contact, get_goal, get_history, search_knowledge. One decision is yours to make."
+          "summary": "Looked up the contact card, this piece of work, past emails and the price list and FAQ. One decision is yours to make."
         },
         {
           "step": "draft",
@@ -1500,7 +1500,7 @@
         "based_on": [
           "Tom Becker's contact card",
           "Email history with Tom Becker",
-          "Goal w2 (Acme Logistics NDA)",
+          "this piece of work (Acme Logistics NDA)",
           "Company knowledge base"
         ],
         "unverified": [],
@@ -1738,7 +1738,7 @@
             }
           ],
           "ms": 12949,
-          "summary": "Looked up get_contact, get_history, get_goal, search_knowledge."
+          "summary": "Looked up the contact card, past emails, this piece of work and the price list and FAQ."
         },
         {
           "step": "draft",
@@ -1940,7 +1940,7 @@
         "body": "The fix deploys tomorrow, reaching you by {{d:+3}}. Chrome enables SSO meanwhile. I'll confirm once live.\n\nAlex",
         "based_on": [
           "Marco's contact record",
-          "Goal w3 (Bluebird SSO Issue)",
+          "this piece of work (Bluebird SSO Issue)",
           "Email thread history with Marco",
           "Manual excerpt: SSO sign-in troubleshooting"
         ],
@@ -2236,7 +2236,7 @@
             }
           ],
           "ms": 16081,
-          "summary": "Looked up get_contact, get_history, get_goal, search_knowledge, get_history."
+          "summary": "Looked up the contact card, past emails, this piece of work and the price list and FAQ."
         },
         {
           "step": "draft",
@@ -2731,9 +2731,10 @@
           "end": 4,
           "owner": "both",
           "done": false,
-          "date_kind": "from_email",
+          "date_kind": "estimated",
           "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?",
-          "mail": "m22"
+          "mail": "m22",
+          "note": "Tentative until a time is agreed."
         },
         {
           "title": "Set up customer workspace",

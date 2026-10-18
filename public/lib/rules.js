@@ -138,7 +138,8 @@ export function spanLabel(days) {
 //   overdue   not done and its date has passed
 //   next      the earliest step that is not done and not overdue
 //   upcoming  everything later
-export function planView(plan = []) {
+// When the work itself is finished, leftover steps are only "upcoming": nothing is next or late.
+export function planView(plan = [], { closed = false } = {}) {
   const steps = [...plan]
     .map((s, i) => ({ ...s, i, end: s.end ?? s.start }))
     .sort((a, b) => a.start - b.start || a.i - b.i);
@@ -146,6 +147,7 @@ export function planView(plan = []) {
   return steps.map((s) => {
     let status;
     if (s.done) status = 'done';
+    else if (closed) status = 'upcoming';
     else if (Math.round(s.end) < 0) status = 'overdue';
     else if (!nextFound) { status = 'next'; nextFound = true; }
     else status = 'upcoming';
@@ -153,28 +155,37 @@ export function planView(plan = []) {
   });
 }
 
+// The step a send from you completes: your earliest open step due by tomorrow.
+export function dueStep(goal) {
+  return planView(goal.plan, { closed: goal.status === 'done' })
+    .find((s) => s.owner === 'me' && (s.status === 'next' || s.status === 'upcoming') && Math.round(s.start) <= 1) || null;
+}
+
 // "My schedule": every open step across all work, grouped by when it happens.
-// Groups: overdue, today, this_week (next 7 days), next_week (8-14), later (15+).
+// Groups: overdue, today, this_week (next 7 days), next_week (days 8-14), later (15+).
+// A step you can do right now (your move, or a nudge on a stuck card) counts as today.
 export const AGENDA_GROUPS = ['overdue', 'today', 'this_week', 'next_week', 'later'];
 export function agenda(goals) {
   const rows = [];
   for (const g of goals) {
     if (g.status !== 'open') continue;
+    const actNow = g.turn === 'me' || isStuck(g) ? dueStep(g) : null;
     for (const s of planView(g.plan)) {
       if (s.status === 'done') continue;
       const d = Math.round(s.start);
-      const group = s.status === 'overdue' ? 'overdue' : d <= 0 ? 'today' : d <= 7 ? 'this_week' : d <= 14 ? 'next_week' : 'later';
-      rows.push({ ...s, goal_id: g.id, group });
+      const now = actNow && s.i === actNow.i;
+      const group = s.status === 'overdue' ? 'overdue' : now || d <= 0 ? 'today' : d <= 7 ? 'this_week' : d <= 14 ? 'next_week' : 'later';
+      rows.push({ ...s, goal_id: g.id, group, act_now: Boolean(now) });
     }
   }
   const out = Object.fromEntries(AGENDA_GROUPS.map((k) => [k, []]));
   for (const r of rows) out[r.group].push(r);
-  for (const k of AGENDA_GROUPS) out[k].sort((a, b) => a.start - b.start || a.end - b.end || (a.owner === "me" ? -1 : 1));
+  for (const k of AGENDA_GROUPS) out[k].sort((a, b) => a.start - b.start || a.end - b.end || (a.owner === 'me' ? -1 : 1));
   return out;
 }
 
-export function nextStep(plan) {
-  return planView(plan).find((s) => s.status === 'next') || null;
+export function nextStep(plan, opts) {
+  return planView(plan, opts).find((s) => s.status === 'next') || null;
 }
 
 // ---- demo actions (pure: return a new goal, never mutate) ----
@@ -185,11 +196,9 @@ export function applySend(goal) {
   const draft = goal.draft || {};
   const nextStage = draft.next_stage ? advanceStage(goal.kind, goal.stage, draft.next_stage) : goal.stage;
   const mode = draft.mode || 'reply';
-  // A reply finishes the step that was waiting on you today.
-  const due = mode === 'reply' ? nextStep(goal.plan) : null;
-  const plan = due && due.owner === 'me' && Math.round(due.start) <= 0
-    ? goal.plan.map((s) => (s.title === due.title && s.start === due.start ? { ...s, done: true } : s))
-    : goal.plan;
+  // Sending (a reply or a nudge) finishes your step that was due now.
+  const due = dueStep(goal);
+  const plan = due ? goal.plan.map((s, i) => (i === due.i ? { ...s, done: true } : s)) : goal.plan;
   return {
     ...goal,
     plan,

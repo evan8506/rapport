@@ -50,6 +50,8 @@ if (placeholder) {
   }
   const { relativizeResult } = await import('./lib/relative-dates.mjs');
   relativizeResult(result, result.generated_at);
+  const { tidyResult } = await import('./lib/tidy.mjs');
+  tidyResult(result);
   result.generator = 'gemini';
   const { score } = await import('./lib/score.mjs');
   result.score = score(seed, result);

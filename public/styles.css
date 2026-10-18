@@ -4,13 +4,13 @@
   --column: #e4e8ee;
   --text: #17202e;
   --muted: #4a5568;
-  --faint: #7a8597;
+  --faint: #5d6878;
   --line: #cdd3dd;
   --line-soft: #e3e7ee;
   --primary: #2457d6;
   --primary-ink: #ffffff;
   --primary-soft: #e8eefc;
-  --stuck: #b7791f;
+  --stuck: #95600f;
   --stuck-soft: #fdf3e2;
   --warn-soft: #fff7d6;
   --warn-line: #e8c547;
@@ -275,3 +275,6 @@ textarea { font: inherit; }
 .src-text { font-size: 13px; color: var(--text); }
 .src-from { font-size: 12px; color: var(--faint); }
 .score-line { margin: 14px 0 0; color: var(--faint); font-size: 12.5px; }
+.ag-sample { font-weight: 400; color: var(--faint); font-size: 12.5px; margin-left: 8px; }
+.ag-more { margin: 4px 0 8px 122px; font-size: 13px; }
+@media (max-width: 760px) { .ag-more { margin-left: 0; } .ag-sample { display: block; margin: 2px 0 0; } }

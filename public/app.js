@@ -79,7 +79,7 @@ function stageDots(g) {
 
 // Small dots: one per step of the plan. Filled = done, amber = date passed.
 function planDots(g) {
-  const steps = planView(g.plan);
+  const steps = planView(g.plan, { closed: g.status === 'done' });
   if (!steps.length) return stageDots(g);
   return `<span class="dots" aria-hidden="true">${steps.map((s) => `<span class="dot${s.status === 'done' ? ' on' : s.status === 'overdue' ? ' late' : ''}"></span>`).join('')}</span>`;
 }
@@ -188,14 +188,19 @@ function renderScore() {
 
 // ---------------- my schedule ----------------
 
-const GROUP_TITLE = { overdue: 'Date passed', today: 'Today', this_week: 'This week', next_week: 'Next week', later: 'Later' };
+const GROUP_TITLE = { overdue: 'Date passed', today: 'Today', this_week: 'Next 7 days', next_week: 'The week after', later: 'Later' };
+const FOLDED = ['next_week', 'later'];
 
 function agendaHtml() {
   const groups = agenda(state.goals);
-  const body = AGENDA_GROUPS.filter((k) => groups[k].length)
+  // The far future is folded so the board stays in view.
+  const shown = AGENDA_GROUPS.filter((k) => groups[k].length && (state.showLater || !FOLDED.includes(k)));
+  const hidden = FOLDED.reduce((n, k) => n + groups[k].length, 0);
+  const body = shown
     .map((k) => `<div class="ag-group ag-${k}" data-testid="ag-${k}"><div class="ag-head">${GROUP_TITLE[k]}</div>${groups[k].map(agendaRow).join('')}</div>`)
     .join('');
-  return `<div class="ag-title">My schedule</div>${body || '<div class="empty">Nothing planned.</div>'}`;
+  const more = hidden ? `<button type="button" class="link ag-more" data-action="toggle-later" data-testid="ag-more" aria-expanded="${Boolean(state.showLater)}">${state.showLater ? 'Show less ▴' : `${hidden} more later ▾`}</button>` : '';
+  return `<div class="ag-title">My schedule <span class="ag-sample">Sample inbox. Nothing you send leaves this page.</span></div>${body || '<div class="empty">Nothing planned.</div>'}${more}`;
 }
 
 function agendaRow(s) {
@@ -203,13 +208,12 @@ function agendaRow(s) {
   const p = person(g.person_id);
   const who = s.owner === 'me' ? 'You' : s.owner === 'both' ? `You and ${firstName(p)}` : `${p.name} · ${company(p.company_id).name}`;
   // The row's button is the card's own action: reply when it is your move today, nudge when they are late.
-  const btn = s.group === 'today' && s.owner === 'me' && g.turn === 'me'
-    ? `<button type="button" class="btn" data-action="open" data-id="${g.id}" data-testid="ag-button">Reply</button>`
-    : s.group === 'overdue' && s.owner !== 'me' && isStuck(g)
-      ? `<button type="button" class="btn btn-stuck" data-action="open" data-id="${g.id}" data-testid="ag-button">Nudge</button>`
-      : '';
+  const btn = !s.act_now ? ''
+    : g.turn === 'me'
+      ? `<button type="button" class="btn" data-action="open" data-id="${g.id}" data-testid="ag-button">Reply</button>`
+      : `<button type="button" class="btn btn-stuck" data-action="open" data-id="${g.id}" data-testid="ag-button">Nudge</button>`;
   return `<div class="ag-row${s.owner === 'me' ? ' mine' : ''}" data-action="open" data-id="${g.id}" data-testid="ag-row" tabindex="0">
-    <span class="ag-when">${esc(whenLabel(s))}</span>
+    <span class="ag-when">${s.act_now ? 'Now' : esc(whenLabel(s))}</span>
     <span class="ag-what"><span class="ag-step">${esc(s.title)}${s.date_kind === 'estimated' ? ' <span class="badge-est">expected</span>' : ''}</span>
       <span class="ag-ctx">${esc(g.title)} · ${esc(who)}</span>${s.group === 'overdue' && s.note ? `<span class="ag-note">${esc(s.note)}</span>` : ''}</span>
     <span class="ag-act">${btn}</span>
@@ -231,7 +235,7 @@ function timelineHtml(cols) {
     .join('')}</div></div>`;
   const rows = order.map((g) => {
     const p = person(g.person_id);
-    const steps = planView(g.plan);
+    const steps = planView(g.plan, { closed: g.status === 'done' });
     const marks = steps.map((st) => {
       const tip = esc(`${st.title} · ${whenLabel(st)} · ${ownerLabel(st, g)}${st.date_kind === 'estimated' ? ' · expected' : ''}`);
       const cls = `${st.status}${st.date_kind === 'estimated' ? ' est' : ''}`;
@@ -276,7 +280,7 @@ function layoutTags() {
 // ---------------- panel ----------------
 
 function planHtml(g) {
-  const steps = planView(g.plan);
+  const steps = planView(g.plan, { closed: g.status === 'done' });
   if (!steps.length) return stageChips(g);
   const icon = { done: '✓', next: '●', upcoming: '○', overdue: '!' };
   return `<ol class="plan" data-testid="plan">${steps
@@ -424,10 +428,12 @@ function toast(text, { undo = false } = {}) {
 }
 
 function openGoal(id) {
+  const other = state.openId !== id;
   state.openId = id;
   state.opened.add(id);
   state.justSent.delete(id);
   render();
+  if (other) el.panel.scrollTop = 0; // a different card starts at its title
   el.panel.focus();
 }
 
@@ -469,7 +475,15 @@ document.addEventListener('click', (e) => {
   else if (action === 'toggle-decided') { state.expanded[id] = !state.expanded[id]; renderPanel(); }
   else if (action === 'toggle-src') { state.expanded[id] = !state.expanded[id]; renderPanel(); }
   else if (action === 'toggle-mail') { state.expanded['mail-' + id] = !state.expanded['mail-' + id]; renderPanel(); }
-  else if (action === 'answer') { state.answers[id] = Number(t.dataset.index); delete state.edits[id]; renderPanel(); }
+  else if (action === 'answer') {
+    const i = Number(t.dataset.index);
+    if (state.answers[id] === i) return; // same answer again: keep the draft as it is
+    if (state.edits[id] !== undefined && !window.confirm('Replace your edits with the draft for this answer?')) return;
+    state.answers[id] = i;
+    delete state.edits[id];
+    renderPanel();
+  }
+  else if (action === 'toggle-later') { state.showLater = !state.showLater; render(); }
   else if (action === 'send') send(id);
   else if (action === 'undo') undoSend();
   else if (action === 'view') { state.view = t.dataset.view; render(); }

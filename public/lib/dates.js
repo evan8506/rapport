@@ -10,7 +10,10 @@ export function startOfDay(d) {
 }
 
 export function dateAt(offsetDays, now = new Date()) {
-  return new Date(startOfDay(now).getTime() + Math.round(offsetDays) * DAY);
+  // Calendar days, not 24-hour blocks, so daylight-saving changes never shift a date.
+  const d = startOfDay(now);
+  d.setDate(d.getDate() + Math.round(offsetDays));
+  return d;
 }
 
 export function fmtDay(offsetDays, now = new Date()) {

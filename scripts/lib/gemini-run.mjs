@@ -4,6 +4,7 @@
 import { ask, MODELS, SCHEMA, TOOLS, RULES } from './gemini-steps.mjs';
 import { STAGES, advanceStage, isStuck } from '../../public/lib/rules.js';
 import { renderDates, offsetOf } from '../../public/lib/dates.js';
+import { plainLookups } from './tidy.mjs';
 
 const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
@@ -182,7 +183,7 @@ function summaryFor(r) {
   const o = r.output || {};
   if (r.step === 'track') return `${o.reason || ''}`.trim();
   if (r.step === 'plan') return `Built a plan of ${o.steps?.length || 0} steps from the emails, with dates.`;
-  if (r.step === 'prepare') return `Looked up ${r.tool_calls.map((c) => c.name).join(', ') || 'nothing'}. ${o.blocker === 'needs_decision' ? 'One decision is yours to make.' : ''}`.trim();
+  if (r.step === 'prepare') return `Looked up ${plainLookups(r.tool_calls)}. ${o.blocker === 'needs_decision' ? 'One decision is yours to make.' : ''}`.trim();
   if (r.step === 'draft') return 'Wrote the email that moves this work to its next step.';
   if (r.step === 'judge') { const f = (o.checks || []).filter((c) => c.verdict === 'fail').length; return f ? `${f} of ${o.checks.length} checks need your eye.` : `All ${o.checks?.length || 0} checks passed.`; }
   return '';
