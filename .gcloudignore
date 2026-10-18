@@ -1,0 +1,14 @@
+# Files never uploaded to Cloud Build. The container needs only package.json, server.mjs, public/ and data/processed.json.
+.git
+.gitignore
+.gcloudignore
+.env
+.env.*
+!.env.example
+.claude/
+node_modules/
+test/
+scripts/
+public/review/
+implementation-notes.md
+*.log
