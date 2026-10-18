@@ -48,6 +48,8 @@ if (placeholder) {
     p.facts = r.facts[p.id] || [];
     p.stage_reason = r.stageReason[p.id] || null;
   }
+  const { relativizeResult } = await import('./lib/relative-dates.mjs');
+  relativizeResult(result, result.generated_at);
   result.generator = 'gemini';
   const { score } = await import('./lib/score.mjs');
   result.score = score(seed, result);

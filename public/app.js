@@ -47,8 +47,26 @@ async function load() {
   const res = await fetch('/data/processed.json', { cache: 'no-cache' });
   if (!res.ok) throw new Error(`demo data: ${res.status}`);
   data = await res.json();
+  fillDates(data);
   state = freshState();
   render();
+}
+
+// Turn {{d:N}} markers in everything the page shows into real dates, counted from today.
+// The AI records under "How Rapport decided" stay exactly as Gemini wrote them.
+function fillDates(d) {
+  const walk = (v, skip) => {
+    if (typeof v === 'string') return renderDates(v);
+    if (Array.isArray(v)) return v.map((x) => walk(x, skip));
+    if (v && typeof v === 'object') {
+      for (const k of Object.keys(v)) if (!skip.has(k)) v[k] = walk(v[k], skip);
+      return v;
+    }
+    return v;
+  };
+  const skip = new Set(['runs', 'body_raw']);
+  d.goals = walk(d.goals, skip);
+  d.people = walk(d.people, skip);
 }
 
 // ---------------- board ----------------

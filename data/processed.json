@@ -61,7 +61,7 @@
       "tone": "normal",
       "stage": "trusted",
       "stage_label": "Close",
-      "stage_reason": "Northwind is negotiating a 10% discount on the annual plan with a potential sign-off by Oct 25 for a Nov 2 start.",
+      "stage_reason": "Northwind is negotiating a 10% discount on the annual plan with a potential sign-off by {{d:+7}} for a {{d:+15}} start.",
       "received_count": 7,
       "sent_count": 5,
       "first_contact_days_ago": 41,
@@ -75,9 +75,9 @@
           "status": "unconfirmed"
         },
         {
-          "fact": "Northwind wants to move operations team to Fernway starting Mon, Nov 2, with 40 seats on an annual plan.",
+          "fact": "Northwind wants to move operations team to Fernway starting {{d:+15}}, with 40 seats on an annual plan.",
           "kind": "preference",
-          "evidence": "We'd like to move our operations team to Fernway in Q4. Could you send a quote for the Business plan, 40 seats, annual, starting Mon, Nov 2?",
+          "evidence": "We'd like to move our operations team to Fernway in Q4. Could you send a quote for the Business plan, 40 seats, annual, starting {{d:+15}}?",
           "source_mail_id": "m01",
           "status": "unconfirmed"
         },
@@ -96,9 +96,9 @@
           "status": "unconfirmed"
         },
         {
-          "fact": "Jane Lee promised to review the quote with finance and come back by Fri, Oct 2.",
+          "fact": "Jane Lee promised to review the quote with finance and come back by {{d:-16}}.",
           "kind": "promise",
-          "evidence": "I'm reviewing it with finance and will come back by Fri, Oct 2.",
+          "evidence": "I'm reviewing it with finance and will come back by {{d:-16}}.",
           "source_mail_id": "m05",
           "status": "unconfirmed"
         },
@@ -117,9 +117,9 @@
           "status": "unconfirmed"
         },
         {
-          "fact": "Northwind can sign by Sun, Oct 25 if the annual plan comes down 10%.",
+          "fact": "Northwind can sign by {{d:+7}} if the annual plan comes down 10%.",
           "kind": "deadline",
-          "evidence": "We can sign by Sun, Oct 25 if the annual plan comes down 10%, so the team can start on Mon, Nov 2.",
+          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}.",
           "source_mail_id": "m12",
           "status": "unconfirmed"
         }
@@ -158,7 +158,7 @@
       "tone": "casual",
       "stage": "active",
       "stage_label": "Ongoing",
-      "stage_reason": "Marco Diaz reached out regarding an SSO login issue on Safari, which is scheduled to be fixed in release 4.12 on October 19.",
+      "stage_reason": "Marco Diaz reached out regarding an SSO login issue on Safari, which is scheduled to be fixed in release 4.12 on {{d:+1}}.",
       "received_count": 4,
       "sent_count": 2,
       "first_contact_days_ago": 35,
@@ -222,7 +222,7 @@
       "tone": "formal",
       "stage": "cooling",
       "stage_label": "Going quiet",
-      "stage_reason": "The mutual NDA has been sent to Tom Becker and is currently under review by their legal team, with the pilot targeted to start by October 28.",
+      "stage_reason": "The mutual NDA has been sent to Tom Becker and is currently under review by their legal team, with the pilot targeted to start by {{d:+10}}.",
       "received_count": 2,
       "sent_count": 1,
       "first_contact_days_ago": 26,
@@ -236,16 +236,16 @@
           "status": "unconfirmed"
         },
         {
-          "fact": "Tom Becker would like to start the pilot by Wed, Oct 28.",
+          "fact": "Tom Becker would like to start the pilot by {{d:+10}}.",
           "kind": "deadline",
-          "evidence": "We would like to start the pilot by Wed, Oct 28.",
+          "evidence": "We would like to start the pilot by {{d:+10}}.",
           "source_mail_id": "m23",
           "status": "unconfirmed"
         },
         {
-          "fact": "Tom Becker stated that their legal team will review the NDA and return it by Thu, Oct 15.",
+          "fact": "Tom Becker stated that their legal team will review the NDA and return it by {{d:-3}}.",
           "kind": "deadline",
-          "evidence": "Our legal team will review it and return it by Thu, Oct 15.",
+          "evidence": "Our legal team will review it and return it by {{d:-3}}.",
           "source_mail_id": "m25",
           "status": "unconfirmed"
         }
@@ -842,7 +842,7 @@
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "evidence": "I'm reviewing it with finance and will come back by Fri, Oct 2.",
+          "evidence": "I'm reviewing it with finance and will come back by {{d:-16}}.",
           "mail": "m05"
         },
         {
@@ -854,7 +854,7 @@
           "date_kind": "estimated",
           "evidence": "Could you also confirm onboarding is included, and send the updated quote as a PDF?",
           "mail": "m12",
-          "note": "Estimated for Monday, the next business day after Jane's request on Sunday, Oct 18."
+          "note": "Estimated for Monday, the next business day after Jane's request on {{d:+0}}."
         },
         {
           "title": "Sign agreement",
@@ -863,7 +863,7 @@
           "owner": "them",
           "done": false,
           "date_kind": "from_email",
-          "evidence": "We can sign by Sun, Oct 25 if the annual plan comes down 10%, so the team can start on Mon, Nov 2.",
+          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}.",
           "mail": "m12"
         },
         {
@@ -873,13 +873,13 @@
           "owner": "both",
           "done": false,
           "date_kind": "from_email",
-          "evidence": "We can sign by Sun, Oct 25 if the annual plan comes down 10%, so the team can start on Mon, Nov 2.",
+          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}.",
           "mail": "m12"
         }
       ],
       "draft": {
         "mode": "reply",
-        "body": "Hi Jane, yes, guided onboarding is fully included for your November 2 start. I am reviewing your discount request with our sales lead and will send the updated quote PDF tomorrow, October 19, keeping us on track to sign by October 25. Alex",
+        "body": "Hi Jane, yes, guided onboarding is fully included for your {{d:+15}} start. I am reviewing your discount request with our sales lead and will send the updated quote PDF tomorrow, {{d:+1}}, keeping us on track to sign by {{d:+7}}. Alex",
         "based_on": [
           "contact card for Jane Lee",
           "Jane's email history",
@@ -893,21 +893,21 @@
         "attachment": null,
         "next_stage": "Negotiating",
         "question": {
-          "text": "Jane requested a 10% discount on the 40-seat annual Business plan ($8,640/year vs. standard $9,600/year) to sign by October 25—how would you like to proceed?",
+          "text": "Jane requested a 10% discount on the 40-seat annual Business plan ($8,640/year vs. standard $9,600/year) to sign by {{d:+7}}—how would you like to proceed?",
           "options": [
             {
               "label": "Approve the 10% discount ($18/seat/month, $8,640/year)",
-              "body": "Hi Jane, we have approved the 10% discount at $8,640 per year, and guided onboarding is fully included. Attached is the updated quote PDF so you can sign by October 25 for your November 2 start. Alex",
+              "body": "Hi Jane, we have approved the 10% discount at $8,640 per year, and guided onboarding is fully included. Attached is the updated quote PDF so you can sign by {{d:+7}} for your {{d:+15}} start. Alex",
               "unverified": []
             },
             {
               "label": "Counter with a 5% discount ($19/seat/month, $9,120/year)",
-              "body": "Hi Jane, we can offer a 5% discount at $9,120 per year, and guided onboarding is fully included. Attached is the updated quote PDF so you can sign by October 25 for your November 2 start. Alex",
+              "body": "Hi Jane, we can offer a 5% discount at $9,120 per year, and guided onboarding is fully included. Attached is the updated quote PDF so you can sign by {{d:+7}} for your {{d:+15}} start. Alex",
               "unverified": []
             },
             {
               "label": "Decline the discount and maintain list price ($20/seat/month, $9,600/year)",
-              "body": "Hi Jane, guided onboarding is fully included, but we must maintain our list price of $9,600 per year. Attached is the updated quote PDF so you can sign by October 25 for your November 2 start. Alex",
+              "body": "Hi Jane, guided onboarding is fully included, but we must maintain our list price of $9,600 per year. Attached is the updated quote PDF so you can sign by {{d:+7}} for your {{d:+15}} start. Alex",
               "unverified": []
             }
           ]
@@ -921,7 +921,7 @@
           {
             "rule": "2. Cover what they will ask next (terms, dates, next step)",
             "verdict": "pass",
-            "evidence": "Covers signing date October 25, start date November 2, and sending the PDF tomorrow."
+            "evidence": "Covers signing date {{d:+7}}, start date {{d:+15}}, and sending the PDF tomorrow."
           },
           {
             "rule": "3. Say how their stated conditions were handled",
@@ -1457,9 +1457,9 @@
           "owner": "them",
           "done": false,
           "date_kind": "from_email",
-          "evidence": "Our legal team will review it and return it by Thu, Oct 15.",
+          "evidence": "Our legal team will review it and return it by {{d:-3}}.",
           "mail": "m25",
-          "note": "Deadline passed on October 15 without the agreement being returned."
+          "note": "Deadline passed on {{d:-3}} without the agreement being returned."
         },
         {
           "title": "Follow up on overdue NDA",
@@ -1468,7 +1468,7 @@
           "owner": "me",
           "done": false,
           "date_kind": "estimated",
-          "evidence": "Our legal team will review it and return it by Thu, Oct 15.",
+          "evidence": "Our legal team will review it and return it by {{d:-3}}.",
           "mail": "m25",
           "note": "Estimated for the next business day following the missed deadline."
         },
@@ -1490,13 +1490,13 @@
           "owner": "both",
           "done": false,
           "date_kind": "from_email",
-          "evidence": "We would like to start the pilot by Wed, Oct 28.",
+          "evidence": "We would like to start the pilot by {{d:+10}}.",
           "mail": "m23"
         }
       ],
       "draft": {
         "mode": "nudge",
-        "body": "Dear Tom,\n\nI am following up on the reviewed mutual NDA promised by October 15, so that we can execute it and keep our October 28 pilot launch on schedule.\n\nKind regards,\nAlex",
+        "body": "Dear Tom,\n\nI am following up on the reviewed mutual NDA promised by {{d:-3}}, so that we can execute it and keep our {{d:+10}} pilot launch on schedule.\n\nKind regards,\nAlex",
         "based_on": [
           "Tom Becker's contact card",
           "Email history with Tom Becker",
@@ -1516,7 +1516,7 @@
           {
             "rule": "Cover what they will ask next (terms, dates, next step)",
             "verdict": "pass",
-            "evidence": "Mentions executing the NDA and keeping the October 28 pilot launch date."
+            "evidence": "Mentions executing the NDA and keeping the {{d:+10}} pilot launch date."
           },
           {
             "rule": "Say how their stated conditions were handled",
@@ -1920,7 +1920,7 @@
           "owner": "me",
           "done": false,
           "date_kind": "from_email",
-          "evidence": "The fix is planned for release 4.12, going out on Mon, Oct 19.",
+          "evidence": "The fix is planned for release 4.12, going out on {{d:+1}}.",
           "mail": "m18"
         },
         {
@@ -1932,12 +1932,12 @@
           "date_kind": "estimated",
           "evidence": "It reaches every workspace within 48 hours, and I'll confirm once it's live for you.",
           "mail": "m18",
-          "note": "Workspace rollout takes up to 48 hours following the October 19 release."
+          "note": "Workspace rollout takes up to 48 hours following the {{d:+1}} release."
         }
       ],
       "draft": {
         "mode": "reply",
-        "body": "The fix deploys tomorrow, reaching you by Oct 21. Chrome enables SSO meanwhile. I'll confirm once live.\n\nAlex",
+        "body": "The fix deploys tomorrow, reaching you by {{d:+3}}. Chrome enables SSO meanwhile. I'll confirm once live.\n\nAlex",
         "based_on": [
           "Marco's contact record",
           "Goal w3 (Bluebird SSO Issue)",
@@ -2711,7 +2711,7 @@
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "evidence": "How about Thu, Oct 22 at 10:00 or Sat, Oct 24 at 14:00, your time?",
+          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?",
           "mail": "m22"
         },
         {
@@ -2721,7 +2721,7 @@
           "owner": "them",
           "done": false,
           "date_kind": "estimated",
-          "evidence": "How about Thu, Oct 22 at 10:00 or Sat, Oct 24 at 14:00, your time?",
+          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?",
           "mail": "m22",
           "note": "Estimated for the next business day ahead of proposed meeting dates."
         },
@@ -2732,7 +2732,7 @@
           "owner": "both",
           "done": false,
           "date_kind": "from_email",
-          "evidence": "How about Thu, Oct 22 at 10:00 or Sat, Oct 24 at 14:00, your time?",
+          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?",
           "mail": "m22"
         },
         {
