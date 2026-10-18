@@ -2,138 +2,133 @@
 
 **Your email, as a board that moves itself.**
 
-Rapport shows an inbox as people and work in progress instead of a list of messages.
-Each email thread becomes a card ("Q4 quote", "Login error") on a three-column board:
-**Your move / Waiting on them / Done**. Gemini reads every email, decides which piece of
-work it belongs to and how far that work has come, and writes the next email that moves
-it forward. The person only approves.
+**Live demo:** https://rapport-535962174680.asia-northeast3.run.app (no sign-in)
+
+Rapport is an assistant that reads your work email and turns it into **people, pieces of work and a dated plan**.
+Gemini groups related emails into one piece of work ("Q4 quote", "Login error"), works out what has happened
+and what still has to happen, by when and by whom, notices when the other side misses a promise, and writes the
+next email that moves the work forward. The person only approves.
 
 Entry for the AI Builder Cup 2026, theme *Future of Work & Enterprise Productivity*. Team Zillinks.
 
-> Status (2026-10-16): skeleton. The board and card panel run on hand-labelled placeholder
-> data. The Gemini processing run and the Cloud Run deployment come next.
+## The problem
+
+The inbox is still a list of messages. What people actually manage is **work with other people**: a quote, an
+NDA, a bug, a kickoff call. That work is spread over many emails, and the state of it lives in someone's head:
+whose turn it is, what was promised, by when, and what is late. Gmail can summarise one thread or draft one
+reply, but it does not tell you "you owe Jane an answer on the discount today, Tom's signed NDA is three days
+late, and the pilot starts in ten days".
 
 ## What a visitor sees
 
-- A board already filled with six weeks of a fictional company's email (41 emails, 8 people, 6 pieces of work). No sign-in, no setup.
-- A card that has waited on the other side for more than 7 days is marked **Stuck · N days** and carries a short follow-up draft (**Nudge**).
-- Clicking a card opens a panel: who it is, where the work stands, their latest email, the draft, and a folded **How Rapport decided** with the full record of the AI steps.
-- **Send** moves the card to *Waiting on them*. Everything a visitor does stays in their own browser tab. A refresh or **Reset demo** brings back the starting board, so visitors never see each other's clicks.
+The demo opens on a fictional company's last six weeks of email (41 emails, 8 people, 5 companies).
 
-## How it works
+- **My schedule** at the top: every open step across all work, grouped as *Date passed / Today / This week / Next week / Later*. Steps you own are bold. A late promise from the other side carries a **Nudge** button.
+- **Board** below: *Your move / Waiting on them / Done*. A card waiting more than 7 days on the other side is marked **Stuck**. Each card shows its next step and date.
+- **Timeline** (switch at the top right): one row per piece of work, six weeks back to four weeks ahead, with a line for today.
+- **Card panel**: the plan with done, next, planned and date-passed steps; dates Gemini had to estimate are marked *expected*. Every step has a **Source** link that shows the email sentence it came from. Below it: their latest email, one question when a decision is yours (for example a discount), the draft that changes with your answer, **Send**, and a folded **How Rapport decided** with the full record of every AI step.
+- **Send** moves the card, ticks off the step and can be undone for a few seconds. Everything stays in the visitor's own tab: a refresh or **Reset demo** brings back the start, so visitors never see each other's clicks.
+
+## How Gemini is used
 
 ```
 data/seed.json ──► scripts/process-seed.mjs ──► data/processed.json ──► server.mjs ──► browser
- (fictional mail)    five Gemini steps, run once      saved results          static files    board + panel
+ (fictional mail)    six Gemini steps, run once      saved results + records   static files    board, schedule, panel
 ```
 
-The page never calls Gemini. The AI work is done once, ahead of time, and saved with a
-full record of every step (model, input summary, tool calls, output, checks). Opening the
-demo costs nothing and cannot fail because of a model outage. The server logs
-`gemini_calls: 0` on every request.
+| Step | Shown as | What Gemini does | Model |
+|---|---|---|---|
+| track | Which work | For each email in date order: does it need a reply, which piece of work it belongs to (or a new one), kind, stage (from a fixed list per kind, forward only), whose turn | `gemini-3.8-flash` |
+| identify | Who is it | Per contact: facts worth remembering (promises, deadlines, preferences). A fact is kept only if its evidence sentence appears word for word in an email | `gemini-3.5-flash-lite` |
+| plan | Plan | Per piece of work: a dated plan of 3 to 8 steps with owner, done or not, the date written in the emails or an estimate marked *expected*, and the sentence that supports it | `gemini-3.8-flash` |
+| prepare | What's needed | Function calling over four tools (`get_contact`, `get_history`, `get_goal`, `search_knowledge` on the price list, FAQ, manual and terms) to find what blocks the reply; a decision only the person can make becomes one question | `gemini-3.8-flash` |
+| draft | Write the reply | The email that moves the work to its next step, one version per answer to the question; prices only from the price list | `gemini-3.8-flash` |
+| judge | Check it | A separate call grades the draft on 10 rules (writing rules, every cited source was looked up, every price has a source). Failures are shown, never silently rewritten | `gemini-3.5-flash-lite` |
 
-### The five AI steps (per email)
+All steps use structured output (JSON Schema). The last run made about 64 calls in 6 minutes. Every call is
+saved with model, input summary, tool calls and output, and shown under **How Rapport decided**.
 
-| Step | Shown as | What it does |
-|---|---|---|
-| identify | Who is it | Matches the sender to a person and company, extracts facts worth remembering (promises, deadlines, preferences) with the sentence that supports each one |
-| track | Which work | Decides whether a reply is needed, which piece of work the email belongs to, its kind, its new stage and whose turn it is. Stages come from a fixed list per kind and only move forward |
-| prepare | What's needed | Finds what blocks the reply (a decision only the person can make, a value to look up, an attachment) and looks things up with tools: contact, history, the work item, and the knowledge base (price list, FAQ, manual) |
-| draft | Write the reply | Writes the email that moves the work to its next stage. Prices may only come from the price list. A decision the person must make becomes one question with 2–3 answers, each with its own draft |
-| judge | Check it | A separate call grades the draft against 10 rules (8 writing rules, every cited source was actually looked up, every price has a source). Failures are shown, never silently rewritten |
+Rules that must not drift are plain code, not AI (`public/lib/rules.js`): stuck after 7 days, column and order
+of cards, plan status (done, next, planned, date passed), schedule groups and the relationship word.
 
-Rules that must not drift are plain code, not AI (`public/lib/rules.js`): when a card is
-stuck (their turn for more than 7 days), which column it sits in, card order, and the
-relationship word (New / Ongoing / Close / Going quiet / Quiet).
+### How well it works
 
-| Kind | Stages |
+The seed carries a hand-made answer key. `node scripts/score.mjs` grades the saved Gemini result against it:
+
+| Check | Result |
 |---|---|
-| deal | Requested → Proposal sent → Negotiating → Agreed |
-| issue | Reported → Investigating → Fix proposed → Resolved |
-| question | Asked → Answered → Confirmed |
-| meeting | Proposed → Time agreed → Held |
-| document | Requested → Sent → Received |
-| other | Open → Done |
+| Emails sorted into the right piece of work (or correctly left out) | **41 of 41** |
+| Pieces of work found | **6 of 6** (kind right 6 of 6, column right 6 of 6) |
+| Dated steps from the emails found in the plan | **20 of 21** |
+| Draft self-checks passed | 20 pass, 2 fail (shown in the panel), 8 not applicable |
 
-## Stack and why
+### Why the page never calls Gemini
+
+The AI work is done once, ahead of time. Opening the demo costs nothing, cannot fail because of a model
+outage during judging, and every visitor sees the same, checkable result. Dates are stored as day offsets from
+the run (`{{d:+7}}`) and shown as real dates counted from the day the page is opened, so the demo reads the
+same whenever it is opened.
+
+### Beyond the demo
+
+The same pipeline runs per email, so a real inbox would process each new message as it arrives (a Cloud Run job
+or a Pub/Sub push per message) and update one work item at a time. The six steps and their records stay the same.
+
+## Stack
 
 | Choice | Why |
 |---|---|
-| Node.js 22, no web framework (`node:http`) | One small service, one command to run, no runtime dependencies to patch during judging |
-| Plain HTML, CSS and ES modules, no build step | The board is one screen. Nothing to compile means what is in the repo is what runs |
-| Saved JSON instead of a database | The demo is read-only on the server. Each visitor's clicks live in their own tab, so there is nothing to store and nothing to mix up between judges |
-| Gemini through the official `@google/genai` SDK, only in `scripts/process-seed.mjs` | The model does the real work (classification, lookup with tools, drafting, self-check) once, with a full record, instead of on every page view |
-| Cloud Run, one service, built from the `Dockerfile` | Required by the contest. Scales to zero, stays up through judging, costs close to nothing for static responses |
-| `node:test` for tests | Built into Node. No extra install |
+| Node.js 22, no web framework (`node:http`) | One small service, one command to run, no runtime dependencies |
+| Plain HTML, CSS and ES modules, no build step | What is in the repo is what runs |
+| Saved JSON instead of a database | The demo is read-only on the server; each visitor's clicks stay in their tab |
+| `@google/genai` 2.30.0, only in `scripts/` | The official Gemini SDK; not shipped in the container |
+| Cloud Run, one service, built from the `Dockerfile` | Required by the contest; scales to zero; capped at 3 instances |
+| `node:test` | Built into Node |
 
-### Gemini settings (from the official docs, read 2026-10-16)
-
-| Item | Value | Source |
-|---|---|---|
-| SDK | `@google/genai` (npm, latest 2.30.0) | https://ai.google.dev/gemini-api/docs/structured-output |
-| Models recommended for new projects | `gemini-3.8-flash` (most capable Flash), `gemini-3.5-flash-lite` (fastest, lowest cost) | https://ai.google.dev/gemini-api/docs/models |
-| Planned split | heavy steps (track, draft) on `gemini-3.8-flash`, light steps (identify, judge) on `gemini-3.5-flash-lite`. Confirmed on the first real run | same |
-| Structured output | JSON Schema through `response_format` (`mime_type: application/json`) | https://ai.google.dev/gemini-api/docs/structured-output |
-| Tool use | function declarations in `tools`, results returned as `function_result` steps | https://ai.google.dev/gemini-api/docs/function-calling |
-| API key | environment variable `GEMINI_API_KEY`, read from `.env`, never committed | same |
-| Billing | paid tier, so prompts are not used to improve Google products | https://ai.google.dev/gemini-api/terms |
-
-### Cloud Run (from the official docs, read 2026-10-16)
-
-Sources: https://docs.cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-nodejs-service and https://docs.cloud.google.com/sdk/gcloud/reference/run/deploy
-
-```bash
-gcloud services enable run.googleapis.com cloudbuild.googleapis.com
-gcloud config set project PROJECT_ID
-gcloud run deploy rapport --source . --region asia-northeast3 --allow-unauthenticated --max-instances 3
-```
-
-`--source .` builds with the `Dockerfile` when one is present. `--max-instances 3` caps cost.
-The server listens on `PORT` (Cloud Run sets it; default 8080).
-
-### Google AI Studio
-
-Prompts and response schemas for the five steps are drafted and tried in Google AI Studio
-before they go into `scripts/process-seed.mjs`. The record of that work will be added here.
+Sources read on 2026-10-16: Gemini models https://ai.google.dev/gemini-api/docs/models, structured output
+https://ai.google.dev/gemini-api/docs/structured-output, function calling
+https://ai.google.dev/gemini-api/docs/function-calling, paid-tier data use https://ai.google.dev/gemini-api/terms,
+Cloud Run https://docs.cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-nodejs-service.
+The API key comes from Google AI Studio.
 
 ## Run it locally
 
 ```bash
-node scripts/process-seed.mjs --placeholder
+npm install
 npm start
 ```
 
-Open http://localhost:8080. Run the tests with `npm test`.
+Open http://localhost:8080. Tests: `npm test`.
 
-To run the Gemini step (needs a paid-tier key):
+To run the Gemini step yourself, copy `.env.example` to `.env`, put a Gemini API key in it, then:
 
 ```bash
-cp .env.example .env
+node scripts/gemini-smoke.mjs
+node scripts/process-seed.mjs
+node scripts/score.mjs
 ```
 
-Put your key in `.env` yourself. Never paste it into a chat, an issue, or a commit.
+`node scripts/process-seed.mjs --placeholder` rebuilds the data from the hand labels without any AI.
+
+## Deploy
+
+```bash
+gcloud run deploy rapport --source . --region asia-northeast3 --allow-unauthenticated --max-instances 3
+```
 
 ## Keeping private data out
 
-This repository will be made public for judging, so every commit and push is checked first.
-
-- `scripts/leak-guard.mjs` scans every tracked and untracked file, every staged change and every commit message for a list of private terms, plus API-key shapes and a tracked `.env`. Before a push it also scans every file version in history.
-- The term list lives outside the repository and is never copied in. If it is missing, the check fails instead of skipping. Findings print the list's line number only, never the term.
-- `npm install` installs the git hooks (`pre-commit`, `commit-msg`, `pre-push`) through `scripts/install-hooks.mjs`.
 - All demo data is invented. Domains use the reserved `.example` suffix.
+- `scripts/leak-guard.mjs` runs before every commit and push (installed by `npm install`). It scans files, staged changes, commit messages and, before a push, every file version in history, for a private term list kept outside the repository and for API-key shapes. A missing list is a failure, not a skip, and findings print only a line number. Outside the team, point `LEAK_GUARD_FILE` at your own list (one term per line).
+- `.env` is never committed or uploaded.
 
 ## Decisions
 
-Short calls made to keep the two-day scope simple.
-
-- Scope is the demo board and Cloud Run only. Pasting new emails, per-visitor server storage, a database, the person page, drag and drop, and Gmail connection are left out.
-- The starting board puts Jane's "Q4 quote" in *Your move* (her latest email asks for 10% off), so the one-question-and-draft flow is visible without pasting anything. Counts stay as planned: 2 your move, 1 waiting, 1 stuck, 2 done.
-- Relationship stages use internal ids `new / active / trusted / cooling / dormant` and show as **New / Ongoing / Close / Going quiet / Quiet**.
-- One fictional contact (Ken) has a single email from 96 days ago so that the *Quiet* stage appears. Everything else falls inside six weeks.
-- No **Skip** button in the panel. Closing the panel does the same thing, and one fewer button is easier.
-- Card buttons open the panel rather than sending straight away, so the draft is always seen before **Send**.
-- The "N done this week" and "N emails didn't need a reply" toggles are styled as links, not buttons.
-- No browser storage. A refresh is the simplest possible reset.
+- Two-day scope: the demo board and Cloud Run. Pasting new emails, a database, a person page, drag and drop and Gmail sign-in are left out.
+- The plan replaces fixed stage chips on screen. Stages still exist underneath to keep the board consistent.
+- When an email gives no date, Gemini estimates one and the step is marked *expected* with a reason.
+- One fictional contact has a single email from 96 days ago so the *Quiet* relationship appears.
+- No Skip button; closing the panel does the same.
 
 ## License
 
