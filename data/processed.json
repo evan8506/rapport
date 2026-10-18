@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T08:33:10.422Z",
+  "generated_at": "2026-10-18T12:01:04.169Z",
   "me": {
     "name": "Alex Kim",
     "title": "Account Manager",
@@ -61,12 +61,69 @@
       "tone": "normal",
       "stage": "trusted",
       "stage_label": "Close",
-      "stage_reason": null,
+      "stage_reason": "Northwind is negotiating a 10% discount on the annual plan with a potential sign-off by Oct 25 for a Nov 2 start.",
       "received_count": 7,
       "sent_count": 5,
       "first_contact_days_ago": 41,
       "last_contact_days_ago": 0.12,
-      "facts": []
+      "facts": [
+        {
+          "fact": "Jane Lee is Head of Operations at Northwind.",
+          "kind": "org_info",
+          "evidence": "Head of Operations, Northwind",
+          "source_mail_id": "m01",
+          "status": "unconfirmed"
+        },
+        {
+          "fact": "Northwind wants to move operations team to Fernway starting Mon, Nov 2, with 40 seats on an annual plan.",
+          "kind": "preference",
+          "evidence": "We'd like to move our operations team to Fernway in Q4. Could you send a quote for the Business plan, 40 seats, annual, starting Mon, Nov 2?",
+          "source_mail_id": "m01",
+          "status": "unconfirmed"
+        },
+        {
+          "fact": "SSO is a must for Northwind.",
+          "kind": "preference",
+          "evidence": "Yes, SSO is a must.",
+          "source_mail_id": "m03",
+          "status": "unconfirmed"
+        },
+        {
+          "fact": "Northwind would like onboarding help for team leads.",
+          "kind": "preference",
+          "evidence": "We'd also like onboarding help for the team leads.",
+          "source_mail_id": "m03",
+          "status": "unconfirmed"
+        },
+        {
+          "fact": "Jane Lee promised to review the quote with finance and come back by Fri, Oct 2.",
+          "kind": "promise",
+          "evidence": "I'm reviewing it with finance and will come back by Fri, Oct 2.",
+          "source_mail_id": "m05",
+          "status": "unconfirmed"
+        },
+        {
+          "fact": "Finance confirmed they are fine with annual up front.",
+          "kind": "preference",
+          "evidence": "Thanks, finance is fine with annual up front.",
+          "source_mail_id": "m08",
+          "status": "unconfirmed"
+        },
+        {
+          "fact": "Procurement wants to see if there is any room on price before sign-off.",
+          "kind": "preference",
+          "evidence": "Quick heads-up: procurement wants to see if there is any room on price before sign-off.",
+          "source_mail_id": "m10",
+          "status": "unconfirmed"
+        },
+        {
+          "fact": "Northwind can sign by Sun, Oct 25 if the annual plan comes down 10%.",
+          "kind": "deadline",
+          "evidence": "We can sign by Sun, Oct 25 if the annual plan comes down 10%, so the team can start on Mon, Nov 2.",
+          "source_mail_id": "m12",
+          "status": "unconfirmed"
+        }
+      ]
     },
     {
       "id": "sam",
@@ -77,12 +134,20 @@
       "tone": "formal",
       "stage": "new",
       "stage_label": "New",
-      "stage_reason": null,
+      "stage_reason": "The billing contact preference has been updated and confirmed successfully.",
       "received_count": 1,
       "sent_count": 1,
       "first_contact_days_ago": 6,
       "last_contact_days_ago": 5.8,
-      "facts": []
+      "facts": [
+        {
+          "fact": "Send future Fernway invoices to ap@northwind.example",
+          "kind": "preference",
+          "evidence": "Please send all future Fernway invoices to ap@northwind.example instead of my address.",
+          "source_mail_id": "m13",
+          "status": "unconfirmed"
+        }
+      ]
     },
     {
       "id": "marco",
@@ -93,7 +158,7 @@
       "tone": "casual",
       "stage": "active",
       "stage_label": "Ongoing",
-      "stage_reason": null,
+      "stage_reason": "Marco Diaz reached out regarding an SSO login issue on Safari, which is scheduled to be fixed in release 4.12 on October 19.",
       "received_count": 4,
       "sent_count": 2,
       "first_contact_days_ago": 35,
@@ -109,12 +174,20 @@
       "tone": "formal",
       "stage": "new",
       "stage_label": "New",
-      "stage_reason": null,
+      "stage_reason": "The relationship is currently focused on resolving an SSO login issue for Bluebird Labs, with Nina Park requesting direct updates.",
       "received_count": 1,
       "sent_count": 0,
       "first_contact_days_ago": 2.5,
       "last_contact_days_ago": 2.5,
-      "facts": []
+      "facts": [
+        {
+          "fact": "Nina Park wants to be kept copied on updates regarding the sign-in issue.",
+          "kind": "preference",
+          "evidence": "Please keep me copied on updates.",
+          "source_mail_id": "m19",
+          "status": "unconfirmed"
+        }
+      ]
     },
     {
       "id": "priya",
@@ -125,12 +198,20 @@
       "tone": "normal",
       "stage": "new",
       "stage_label": "New",
-      "stage_reason": null,
+      "stage_reason": "Priya reached out to schedule a kickoff call after signing up for the Team plan, and Alex has proposed meeting times.",
       "received_count": 1,
       "sent_count": 1,
       "first_contact_days_ago": 4,
       "last_contact_days_ago": 1,
-      "facts": []
+      "facts": [
+        {
+          "fact": "Helio Health signed up for the Team plan.",
+          "kind": "org_info",
+          "evidence": "We just signed up for the Team plan.",
+          "source_mail_id": "m21",
+          "status": "unconfirmed"
+        }
+      ]
     },
     {
       "id": "tom",
@@ -141,12 +222,34 @@
       "tone": "formal",
       "stage": "cooling",
       "stage_label": "Going quiet",
-      "stage_reason": null,
+      "stage_reason": "The mutual NDA has been sent to Tom Becker and is currently under review by their legal team, with the pilot targeted to start by October 28.",
       "received_count": 2,
       "sent_count": 1,
       "first_contact_days_ago": 26,
       "last_contact_days_ago": 8.8,
-      "facts": []
+      "facts": [
+        {
+          "fact": "Acme Logistics requires a mutual NDA before sharing shipment data for the pilot.",
+          "kind": "org_info",
+          "evidence": "Before we share shipment data for the pilot, our policy requires a mutual NDA.",
+          "source_mail_id": "m23",
+          "status": "unconfirmed"
+        },
+        {
+          "fact": "Tom Becker would like to start the pilot by Wed, Oct 28.",
+          "kind": "deadline",
+          "evidence": "We would like to start the pilot by Wed, Oct 28.",
+          "source_mail_id": "m23",
+          "status": "unconfirmed"
+        },
+        {
+          "fact": "Tom Becker stated that their legal team will review the NDA and return it by Thu, Oct 15.",
+          "kind": "deadline",
+          "evidence": "Our legal team will review it and return it by Thu, Oct 15.",
+          "source_mail_id": "m25",
+          "status": "unconfirmed"
+        }
+      ]
     },
     {
       "id": "lena",
@@ -157,12 +260,20 @@
       "tone": "normal",
       "stage": "new",
       "stage_label": "New",
-      "stage_reason": null,
+      "stage_reason": "The client successfully set up the monthly CSV export feature and is satisfied with the functionality.",
       "received_count": 2,
       "sent_count": 1,
       "first_contact_days_ago": 8,
       "last_contact_days_ago": 5,
-      "facts": []
+      "facts": [
+        {
+          "fact": "Orchard & Co's board wants the raw numbers each month.",
+          "kind": "org_info",
+          "evidence": "Our board wants the raw numbers each month.",
+          "source_mail_id": "m26",
+          "status": "unconfirmed"
+        }
+      ]
     },
     {
       "id": "ken",
@@ -173,12 +284,20 @@
       "tone": "normal",
       "stage": "dormant",
       "stage_label": "Quiet",
-      "stage_reason": null,
+      "stage_reason": "The contact Ken Watanabe thanked us for the demo, but stated they will revisit analytics tooling next year, putting the relationship on hold for now.",
       "received_count": 1,
       "sent_count": 0,
       "first_contact_days_ago": 96,
       "last_contact_days_ago": 96,
-      "facts": []
+      "facts": [
+        {
+          "fact": "Orchard & Co will revisit analytics tooling next year.",
+          "kind": "org_info",
+          "evidence": "We'll revisit analytics tooling next year.",
+          "source_mail_id": "m29",
+          "status": "unconfirmed"
+        }
+      ]
     }
   ],
   "mails": [
@@ -189,7 +308,7 @@
       "days_ago": 41,
       "subject": "Q4 quote for Fernway Business",
       "body": "Hi Alex,\n\nWe'd like to move our operations team to Fernway in Q4. Could you send a quote for the Business plan, 40 seats, annual, starting {{d:+15}}?\n\nThanks,\nJane Lee\nHead of Operations, Northwind",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": true
     },
     {
@@ -199,7 +318,7 @@
       "days_ago": 40.8,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Hi Jane,\n\nGreat to hear. I'll send the quote this week. One question first: do you need SSO for the team?\n\nBest,\nAlex",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": false
     },
     {
@@ -209,7 +328,7 @@
       "days_ago": 39.6,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Yes, SSO is a must. We'd also like onboarding help for the team leads.\n\nJane",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": true
     },
     {
@@ -219,7 +338,7 @@
       "days_ago": 37,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Hi Jane,\n\nHere is the quote: Business plan, 40 seats at $20 per seat per month, billed annually, $9,600 per year. SSO and guided onboarding are included. The quote is valid for 30 days, until {{d:-7}}.\n\nBest,\nAlex",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": false
     },
     {
@@ -229,7 +348,7 @@
       "days_ago": 30,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Thanks Alex. I'm reviewing it with finance and will come back by {{d:-16}}.\n\nJane",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": false
     },
     {
@@ -239,7 +358,7 @@
       "days_ago": 22,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Hi Alex, finance asked whether we could pay quarterly instead of annually up front. Is that possible?\n\nJane",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": true
     },
     {
@@ -249,7 +368,7 @@
       "days_ago": 21.6,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Hi Jane,\n\nYes. Quarterly invoicing is available on annual plans with a 3% surcharge. Annual up front stays at $9,600.\n\nBest,\nAlex",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": false
     },
     {
@@ -259,8 +378,8 @@
       "days_ago": 15,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Thanks, finance is fine with annual up front. We'll come back on the final number soon.\n\nJane",
-      "goal_id": "q4",
-      "needs_reply": true
+      "goal_id": "w1",
+      "needs_reply": false
     },
     {
       "id": "m09",
@@ -269,7 +388,7 @@
       "days_ago": 14.7,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Sounds good, Jane. I'll keep the quoted price open for you until it expires on {{d:-7}}.\n\nBest,\nAlex",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": false
     },
     {
@@ -279,7 +398,7 @@
       "days_ago": 9,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Quick heads-up: procurement wants to see if there is any room on price before sign-off. I'll send specifics shortly.\n\nJane",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": false
     },
     {
@@ -289,7 +408,7 @@
       "days_ago": 8.8,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Thanks for the heads-up, Jane. Send them over whenever you're ready.\n\nAlex",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": false
     },
     {
@@ -299,7 +418,7 @@
       "days_ago": 0.12,
       "subject": "Re: Q4 quote for Fernway Business",
       "body": "Hi Alex,\n\nThanks for the proposal. We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}. Could you also confirm onboarding is included, and send the updated quote as a PDF?\n\nThanks,\nJane",
-      "goal_id": "q4",
+      "goal_id": "w1",
       "needs_reply": true
     },
     {
@@ -309,7 +428,7 @@
       "days_ago": 6,
       "subject": "Billing contact for Northwind",
       "body": "Dear Alex,\n\nPlease send all future Fernway invoices to ap@northwind.example instead of my address.\n\nKind regards,\nSam Ortiz\nFinance Manager, Northwind",
-      "goal_id": "billing",
+      "goal_id": "w5",
       "needs_reply": true
     },
     {
@@ -319,7 +438,7 @@
       "days_ago": 5.8,
       "subject": "Re: Billing contact for Northwind",
       "body": "Dear Sam,\n\nDone. Future invoices will go to ap@northwind.example.\n\nKind regards,\nAlex",
-      "goal_id": "billing",
+      "goal_id": "w5",
       "needs_reply": false
     },
     {
@@ -339,7 +458,7 @@
       "days_ago": 12,
       "subject": "SSO login broken for some of our users",
       "body": "Hey Alex, since this morning a few of our people can't sign in with SSO. They get bounced back to the login page. Can you look?\n\nMarco",
-      "goal_id": "login",
+      "goal_id": "w3",
       "needs_reply": true
     },
     {
@@ -349,7 +468,7 @@
       "days_ago": 11.8,
       "subject": "Re: SSO login broken for some of our users",
       "body": "Hi Marco, sorry about that. We're on it. Could you send the error ID shown on the login page and which browser they use?\n\nAlex",
-      "goal_id": "login",
+      "goal_id": "w3",
       "needs_reply": false
     },
     {
@@ -359,7 +478,7 @@
       "days_ago": 11.2,
       "subject": "Re: SSO login broken for some of our users",
       "body": "Error ID is LGN-4471. Looks like it only happens on Safari.\n\nMarco",
-      "goal_id": "login",
+      "goal_id": "w3",
       "needs_reply": true
     },
     {
@@ -369,7 +488,7 @@
       "days_ago": 10.9,
       "subject": "Re: SSO login broken for some of our users",
       "body": "Thanks Marco, we reproduced it. The fix is planned for release 4.12, going out on {{d:+1}}. It reaches every workspace within 48 hours, and I'll confirm once it's live for you.\n\nAlex",
-      "goal_id": "login",
+      "goal_id": "w3",
       "needs_reply": false
     },
     {
@@ -379,8 +498,8 @@
       "days_ago": 2.5,
       "subject": "Re: SSO login broken for some of our users",
       "body": "Hello Alex,\n\nMarco told me about the sign-in issue. Please keep me copied on updates.\n\nBest regards,\nNina Park\nCTO, Bluebird Labs",
-      "goal_id": "login",
-      "needs_reply": true
+      "goal_id": "w3",
+      "needs_reply": false
     },
     {
       "id": "m20",
@@ -389,7 +508,7 @@
       "days_ago": 2,
       "subject": "Re: SSO login broken for some of our users",
       "body": "Any update on this? People are using passwords as a workaround, but it's annoying. Is there an ETA?\n\nMarco",
-      "goal_id": "login",
+      "goal_id": "w3",
       "needs_reply": true
     },
     {
@@ -399,7 +518,7 @@
       "days_ago": 4,
       "subject": "Kickoff call",
       "body": "Hi Alex,\n\nWe just signed up for the Team plan. Could we schedule a kickoff call next week?\n\nThanks,\nPriya Shah\nHelio Health",
-      "goal_id": "kickoff",
+      "goal_id": "w6",
       "needs_reply": true
     },
     {
@@ -409,7 +528,7 @@
       "days_ago": 1,
       "subject": "Re: Kickoff call",
       "body": "Hi Priya,\n\nWelcome aboard! How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time? The call takes 45 minutes, and we set up your workspace within a week after it.\n\nBest,\nAlex",
-      "goal_id": "kickoff",
+      "goal_id": "w6",
       "needs_reply": false
     },
     {
@@ -419,7 +538,7 @@
       "days_ago": 26,
       "subject": "NDA before the pilot",
       "body": "Dear Alex,\n\nBefore we share shipment data for the pilot, our policy requires a mutual NDA. Could you send yours? We would like to start the pilot by {{d:+10}}.\n\nRegards,\nTom Becker\nProcurement Lead, Acme Logistics",
-      "goal_id": "nda",
+      "goal_id": "w2",
       "needs_reply": true
     },
     {
@@ -429,7 +548,7 @@
       "days_ago": 9,
       "subject": "Re: NDA before the pilot",
       "body": "Dear Tom,\n\nAttached is our mutual NDA for review. Once it is signed, we can start the four-week pilot with your data.\n\nKind regards,\nAlex",
-      "goal_id": "nda",
+      "goal_id": "w2",
       "needs_reply": false
     },
     {
@@ -439,7 +558,7 @@
       "days_ago": 8.8,
       "subject": "Re: NDA before the pilot",
       "body": "Thank you. Our legal team will review it and return it by {{d:-3}}.\n\nTom",
-      "goal_id": "nda",
+      "goal_id": "w2",
       "needs_reply": false
     },
     {
@@ -449,7 +568,7 @@
       "days_ago": 8,
       "subject": "CSV export?",
       "body": "Hi Alex, does Fernway export reports to CSV? Our board wants the raw numbers each month.\n\nLena",
-      "goal_id": "csv",
+      "goal_id": "w4",
       "needs_reply": true
     },
     {
@@ -459,7 +578,7 @@
       "days_ago": 7.8,
       "subject": "Re: CSV export?",
       "body": "Hi Lena, yes. Every report has Export > CSV, and scheduled monthly exports are on the Business plan you're on.\n\nAlex",
-      "goal_id": "csv",
+      "goal_id": "w4",
       "needs_reply": false
     },
     {
@@ -469,7 +588,7 @@
       "days_ago": 5,
       "subject": "Re: CSV export?",
       "body": "Found it and set up the monthly export. Works great, thanks!\n\nLena",
-      "goal_id": "csv",
+      "goal_id": "w4",
       "needs_reply": false
     },
     {
@@ -628,9 +747,9 @@
   ],
   "goals": [
     {
-      "id": "q4",
+      "id": "w1",
       "person_id": "jane",
-      "title": "Q4 quote",
+      "title": "Northwind Business Quote",
       "kind": "deal",
       "stage": "Negotiating",
       "turn": "me",
@@ -665,31 +784,17 @@
           "evidence": null
         },
         {
-          "stage": "Proposal sent",
+          "stage": "Negotiating",
           "turn": "me",
           "days_ago": 22,
           "mail_id": "m06",
           "evidence": null
         },
         {
-          "stage": "Proposal sent",
+          "stage": "Negotiating",
           "turn": "them",
           "days_ago": 21.6,
           "mail_id": "m07",
-          "evidence": null
-        },
-        {
-          "stage": "Proposal sent",
-          "turn": "me",
-          "days_ago": 15,
-          "mail_id": "m08",
-          "evidence": null
-        },
-        {
-          "stage": "Proposal sent",
-          "turn": "them",
-          "days_ago": 14.7,
-          "mail_id": "m09",
           "evidence": null
         },
         {
@@ -717,87 +822,580 @@
       "last_moved_days_ago": 0.12,
       "latest_mail_id": "m12",
       "their_latest_mail_id": "m12",
-      "moved_reason": null,
-      "stage_change": {
-        "from": "Proposal sent",
-        "to": "Negotiating"
-      },
+      "moved_reason": "Jane responded with requested changes to the pricing and asked for an updated quote PDF.",
+      "stage_change": null,
       "plan": [
         {
-          "title": "Quote requested",
-          "start": -41,
-          "owner": "them",
-          "done": true,
-          "date_kind": "from_email",
-          "mail": "m01",
-          "evidence": "Could you send a quote for the Business plan, 40 seats, annual, starting {{d:+15}}?"
-        },
-        {
-          "title": "Quote sent",
+          "title": "Send initial Business quote",
           "start": -37,
+          "end": -37,
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m04",
-          "evidence": "The quote is valid for 30 days, until {{d:-7}}."
+          "evidence": "Here is the quote: Business plan, 40 seats at $20 per seat per month, billed annually, $9,600 per year.",
+          "mail": "m04"
         },
         {
-          "title": "Quote valid",
-          "start": -37,
-          "end": -7,
-          "owner": "me",
-          "done": false,
-          "date_kind": "from_email",
-          "mail": "m04",
-          "note": "Expired before signing. Send a fresh quote.",
-          "evidence": "The quote is valid for 30 days, until {{d:-7}}."
-        },
-        {
-          "title": "Reply on the 10% discount",
-          "start": 0,
-          "owner": "me",
-          "done": false,
-          "date_kind": "from_email",
-          "mail": "m12",
-          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}."
-        },
-        {
-          "title": "Contract signed",
-          "start": 7,
-          "owner": "both",
-          "done": false,
-          "date_kind": "from_email",
-          "mail": "m12",
-          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}."
-        },
-        {
-          "title": "Team starts on Fernway",
-          "start": 15,
+          "title": "Review quote with finance",
+          "start": -30,
+          "end": -16,
           "owner": "them",
-          "done": false,
+          "done": true,
           "date_kind": "from_email",
-          "mail": "m12",
-          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}."
+          "evidence": "I'm reviewing it with finance and will come back by Fri, Oct 2.",
+          "mail": "m05"
         },
         {
-          "title": "Onboarding, 2 sessions",
-          "start": 15,
-          "end": 29,
+          "title": "Send updated quote PDF",
+          "start": 1,
+          "end": 1,
           "owner": "me",
           "done": false,
           "date_kind": "estimated",
+          "evidence": "Could you also confirm onboarding is included, and send the updated quote as a PDF?",
           "mail": "m12",
-          "note": "Price list: two guided sessions. Assumed in the first two weeks.",
-          "evidence": "We can sign by {{d:+7}} if the annual plan comes down 10%, so the team can start on {{d:+15}}."
+          "note": "Estimated for Monday, the next business day after Jane's request on Sunday, Oct 18."
+        },
+        {
+          "title": "Sign agreement",
+          "start": 7,
+          "end": 7,
+          "owner": "them",
+          "done": false,
+          "date_kind": "from_email",
+          "evidence": "We can sign by Sun, Oct 25 if the annual plan comes down 10%, so the team can start on Mon, Nov 2.",
+          "mail": "m12"
+        },
+        {
+          "title": "Operations team start date",
+          "start": 15,
+          "end": 15,
+          "owner": "both",
+          "done": false,
+          "date_kind": "from_email",
+          "evidence": "We can sign by Sun, Oct 25 if the annual plan comes down 10%, so the team can start on Mon, Nov 2.",
+          "mail": "m12"
         }
       ],
-      "draft": null,
-      "runs": []
+      "draft": {
+        "mode": "reply",
+        "body": "Hi Jane, yes, guided onboarding is fully included for your November 2 start. I am reviewing your discount request with our sales lead and will send the updated quote PDF tomorrow, October 19, keeping us on track to sign by October 25. Alex",
+        "based_on": [
+          "contact card for Jane Lee",
+          "Jane's email history",
+          "Northwind Business Quote deal goal",
+          "Fernway price list",
+          "Customer FAQ"
+        ],
+        "unverified": [
+          "10% discount approval for Northwind 40-seat annual Business plan ($8,640/year)"
+        ],
+        "attachment": null,
+        "next_stage": "Negotiating",
+        "question": {
+          "text": "Jane requested a 10% discount on the 40-seat annual Business plan ($8,640/year vs. standard $9,600/year) to sign by October 25—how would you like to proceed?",
+          "options": [
+            {
+              "label": "Approve the 10% discount ($18/seat/month, $8,640/year)",
+              "body": "Hi Jane, we have approved the 10% discount at $8,640 per year, and guided onboarding is fully included. Attached is the updated quote PDF so you can sign by October 25 for your November 2 start. Alex",
+              "unverified": []
+            },
+            {
+              "label": "Counter with a 5% discount ($19/seat/month, $9,120/year)",
+              "body": "Hi Jane, we can offer a 5% discount at $9,120 per year, and guided onboarding is fully included. Attached is the updated quote PDF so you can sign by October 25 for your November 2 start. Alex",
+              "unverified": []
+            },
+            {
+              "label": "Decline the discount and maintain list price ($20/seat/month, $9,600/year)",
+              "body": "Hi Jane, guided onboarding is fully included, but we must maintain our list price of $9,600 per year. Attached is the updated quote PDF so you can sign by October 25 for your November 2 start. Alex",
+              "unverified": []
+            }
+          ]
+        },
+        "checks": [
+          {
+            "rule": "1. Lead with the answer in the first sentence",
+            "verdict": "pass",
+            "evidence": "Starts directly by confirming onboarding is included."
+          },
+          {
+            "rule": "2. Cover what they will ask next (terms, dates, next step)",
+            "verdict": "pass",
+            "evidence": "Covers signing date October 25, start date November 2, and sending the PDF tomorrow."
+          },
+          {
+            "rule": "3. Say how their stated conditions were handled",
+            "verdict": "pass",
+            "evidence": "Addresses the 10% discount request by stating it is being reviewed with the sales lead."
+          },
+          {
+            "rule": "4. Look things up before asking them",
+            "verdict": "pass",
+            "evidence": "Did not ask Jane any questions."
+          },
+          {
+            "rule": "5. Match the contact's tone",
+            "verdict": "pass",
+            "evidence": "Matches Jane's direct, professional tone."
+          },
+          {
+            "rule": "6. A thank-you comes with a reason",
+            "verdict": "n.a.",
+            "evidence": "No thank-you was included in the draft."
+          },
+          {
+            "rule": "7. Shorter than their email",
+            "verdict": "pass",
+            "evidence": "Draft is 35 words; Jane's email is 45 words."
+          },
+          {
+            "rule": "8. No notes to self in the body",
+            "verdict": "pass",
+            "evidence": "No internal notes included."
+          },
+          {
+            "rule": "9. Every cited source was actually looked up",
+            "verdict": "pass",
+            "evidence": "Sources searched match the context provided."
+          },
+          {
+            "rule": "10. Every price comes from the price list",
+            "verdict": "n.a.",
+            "evidence": "No prices were cited in the draft."
+          }
+        ]
+      },
+      "runs": [
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m01 \"Q4 quote for Fernway Business\" from Jane Lee <jane@northwind.example>; 0 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "new",
+            "new_title": "Northwind Business Quote",
+            "kind": "deal",
+            "stage": "Requested",
+            "turn": "me",
+            "reason": "Jane requested a quote for a 40-seat Business plan starting in November.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 3381,
+          "summary": "Jane requested a quote for a 40-seat Business plan starting in November."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m02 \"Re: Q4 quote for Fernway Business\" from Alex Kim <alex@fernway.example> (me); 1 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Requested",
+            "turn": "them",
+            "reason": "You asked Jane whether Northwind needs SSO before preparing the quote, so you are waiting on her reply.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 3783,
+          "summary": "You asked Jane whether Northwind needs SSO before preparing the quote, so you are waiting on her reply."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m03 \"Re: Q4 quote for Fernway Business\" from Jane Lee <jane@northwind.example>; 1 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "w1",
+            "new_title": "Northwind Business Quote",
+            "kind": "deal",
+            "stage": "Requested",
+            "turn": "me",
+            "reason": "Jane provided the requested feature requirements for the quote, so you need to follow up with a proposal.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 4382,
+          "summary": "Jane provided the requested feature requirements for the quote, so you need to follow up with a proposal."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m04 \"Re: Q4 quote for Fernway Business\" from Alex Kim <alex@fernway.example> (me); 1 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Proposal sent",
+            "turn": "them",
+            "reason": "You sent the quote to Jane Lee and are waiting for Northwind's response.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 4545,
+          "summary": "You sent the quote to Jane Lee and are waiting for Northwind's response."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m05 \"Re: Q4 quote for Fernway Business\" from Jane Lee <jane@northwind.example>; 1 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Proposal sent",
+            "turn": "them",
+            "reason": "Jane confirmed she is reviewing the quote with finance and will get back to you by October 2nd.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 3882,
+          "summary": "Jane confirmed she is reviewing the quote with finance and will get back to you by October 2nd."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m06 \"Re: Q4 quote for Fernway Business\" from Jane Lee <jane@northwind.example>; 2 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Negotiating",
+            "turn": "me",
+            "reason": "Jane is asking if payment terms can be quarterly instead of annual for the Northwind quote.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 3805,
+          "summary": "Jane is asking if payment terms can be quarterly instead of annual for the Northwind quote."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m07 \"Re: Q4 quote for Fernway Business\" from Alex Kim <alex@fernway.example> (me); 2 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Negotiating",
+            "turn": "them",
+            "reason": "You replied to Jane with pricing details regarding quarterly invoicing, so Northwind needs to respond next.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 3801,
+          "summary": "You replied to Jane with pricing details regarding quarterly invoicing, so Northwind needs to respond next."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m08 \"Re: Q4 quote for Fernway Business\" from Jane Lee <jane@northwind.example>; 2 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Negotiating",
+            "turn": "them",
+            "reason": "Jane confirmed finance approved annual billing and indicated Northwind will follow up soon with the final number.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 3977,
+          "summary": "Jane confirmed finance approved annual billing and indicated Northwind will follow up soon with the final number."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m09 \"Re: Q4 quote for Fernway Business\" from Alex Kim <alex@fernway.example> (me); 2 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Negotiating",
+            "turn": "them",
+            "reason": "You sent an email to Jane keeping the quote open, so we are waiting on Northwind to respond.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 4603,
+          "summary": "You sent an email to Jane keeping the quote open, so we are waiting on Northwind to respond."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m10 \"Re: Q4 quote for Fernway Business\" from Jane Lee <jane@northwind.example>; 3 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Negotiating",
+            "turn": "them",
+            "reason": "Jane mentioned procurement is reviewing the price and that she will follow up shortly with specifics.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 3344,
+          "summary": "Jane mentioned procurement is reviewing the price and that she will follow up shortly with specifics."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m11 \"Re: Q4 quote for Fernway Business\" from Alex Kim <alex@fernway.example> (me); 3 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Negotiating",
+            "turn": "them",
+            "reason": "You replied to Jane and are waiting for her to send the information over.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 3979,
+          "summary": "You replied to Jane and are waiting for her to send the information over."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m12 \"Re: Q4 quote for Fernway Business\" from Jane Lee <jane@northwind.example>; 6 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "w1",
+            "kind": "deal",
+            "stage": "Negotiating",
+            "turn": "me",
+            "reason": "Jane responded with requested changes to the pricing and asked for an updated quote PDF.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 3958,
+          "summary": "Jane responded with requested changes to the pricing and asked for an updated quote PDF."
+        },
+        {
+          "step": "plan",
+          "model": "gemini-3.8-flash",
+          "input_summary": "12 emails in \"Northwind Business Quote\"",
+          "output": {
+            "steps": [
+              {
+                "title": "Send initial Business quote",
+                "start": "2026-09-11",
+                "end": "2026-09-11",
+                "owner": "me",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Here is the quote: Business plan, 40 seats at $20 per seat per month, billed annually, $9,600 per year.",
+                "mail_id": "m04"
+              },
+              {
+                "title": "Review quote with finance",
+                "start": "2026-09-18",
+                "end": "2026-10-02",
+                "owner": "them",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "I'm reviewing it with finance and will come back by Fri, Oct 2.",
+                "mail_id": "m05"
+              },
+              {
+                "title": "Send updated quote PDF",
+                "start": "2026-10-19",
+                "end": "2026-10-19",
+                "owner": "me",
+                "done": false,
+                "date_kind": "estimated",
+                "evidence": "Could you also confirm onboarding is included, and send the updated quote as a PDF?",
+                "mail_id": "m12",
+                "note": "Estimated for Monday, the next business day after Jane's request on Sunday, Oct 18."
+              },
+              {
+                "title": "Sign agreement",
+                "start": "2026-10-25",
+                "end": "2026-10-25",
+                "owner": "them",
+                "done": false,
+                "date_kind": "from_email",
+                "evidence": "We can sign by Sun, Oct 25 if the annual plan comes down 10%, so the team can start on Mon, Nov 2.",
+                "mail_id": "m12"
+              },
+              {
+                "title": "Operations team start date",
+                "start": "2026-11-02",
+                "end": "2026-11-02",
+                "owner": "both",
+                "done": false,
+                "date_kind": "from_email",
+                "evidence": "We can sign by Sun, Oct 25 if the annual plan comes down 10%, so the team can start on Mon, Nov 2.",
+                "mail_id": "m12"
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 17715,
+          "summary": "Built a plan of 5 steps from the emails, with dates."
+        },
+        {
+          "step": "prepare",
+          "model": "gemini-3.8-flash",
+          "input_summary": "reply for \"Northwind Business Quote\", latest m12",
+          "output": {
+            "blocker": "needs_decision",
+            "question": {
+              "text": "Jane requested a 10% discount on the 40-seat annual Business plan ($8,640/year vs. standard $9,600/year) to sign by October 25—how would you like to proceed?",
+              "options": [
+                "Approve the 10% discount ($18/seat/month, $8,640/year)",
+                "Counter with a 5% discount ($19/seat/month, $9,120/year)",
+                "Decline the discount and maintain list price ($20/seat/month, $9,600/year)"
+              ],
+              "evidence": "Jane Lee wrote that Northwind can sign by Sun, Oct 25 if the annual plan comes down 10%. Fernway price list states discounts up to 5% may be offered for 50+ seats, and any other discount needs approval from the sales lead and must not be promised in writing before approval."
+            },
+            "found": [
+              "Northwind wants 40 seats on an annual Business plan starting Nov 2, 2026, and needs onboarding and SSO (source: contact card for Jane Lee)",
+              "Standard Business plan pricing is $20 per seat per month billed annually ($9,600/year for 40 seats), which includes SSO, scheduled CSV exports, and guided onboarding of two 60-minute sessions (source: Fernway price list)",
+              "Discounts up to 5% are only standard for 50+ seats; any other discount requires sales lead approval and must not be promised in writing before approval (source: Fernway price list)",
+              "Guided onboarding is confirmed included in the annual Business plan (source: Customer FAQ)",
+              "An initial quote of $9,600/year was sent on Sept 11, and the next step is sending an updated quote PDF (source: Northwind Business Quote deal goal)"
+            ],
+            "sources": [
+              "contact card for Jane Lee",
+              "Jane's email history",
+              "Northwind Business Quote deal goal",
+              "Fernway price list",
+              "Customer FAQ"
+            ]
+          },
+          "tool_calls": [
+            {
+              "name": "get_contact",
+              "args": {
+                "person_id": "jane"
+              },
+              "result_summary": "{\"id\":\"jane\",\"name\":\"Jane Lee\",\"email\":\"jane@northwind.example\",\"title\":\"Head of Operations\",\"company_id\":\"northwind\",\"tone\":\"normal\",\"company\":\"Northwind\",\"facts\":[{\"fact\":\"Jane Lee is Head of Operations at Northwind.\",\"kind\":\"org_info\",\"evidence\":\"Head of Operations, Northwind\",\"source_mail_id\"..."
+            },
+            {
+              "name": "get_goal",
+              "args": {
+                "goal_id": "w1"
+              },
+              "result_summary": "{\"id\":\"w1\",\"title\":\"Northwind Business Quote\",\"kind\":\"deal\",\"stage\":\"Negotiating\",\"plan\":[{\"title\":\"Send initial Business quote\",\"start\":\"2026-09-11\",\"end\":\"2026-09-11\",\"owner\":\"me\",\"done\":true,\"date_kind\":\"from_email\",\"evidence\":\"Here is the quote: Business plan, 40 seats at $20 per seat per mon..."
+            },
+            {
+              "name": "get_history",
+              "args": {
+                "limit": 5,
+                "person_id": "jane"
+              },
+              "result_summary": "[{\"id\":\"m12\",\"direction\":\"in\",\"date\":\"2026-10-18\",\"subject\":\"Re: Q4 quote for Fernway Business\",\"body\":\"Hi Alex,\\n\\nThanks for the proposal. We can sign by Sun, Oct 25 if the annual plan comes down 10%, so the team can start on Mon, Nov 2. Could you also confirm onboarding is included, and send t..."
+            },
+            {
+              "name": "search_knowledge",
+              "args": {
+                "query": "annual plan discount onboarding quote PDF"
+              },
+              "result_summary": "[{\"doc\":\"Fernway price list\",\"lines\":[\"Team plan: $12 per seat per month, billed monthly or annually.\",\"Business plan: $20 per seat per month, billed annually. Includes SSO, scheduled CSV exports and guided onboarding (two 60-minute sessions).\",\"Quarterly invoicing on annual plans: available with..."
+            }
+          ],
+          "ms": 147613,
+          "summary": "Looked up get_contact, get_goal, get_history, search_knowledge. One decision is yours to make."
+        },
+        {
+          "step": "draft",
+          "model": "gemini-3.8-flash",
+          "input_summary": "reply draft for \"Northwind Business Quote\"",
+          "output": {
+            "body": "Hi Jane, yes, guided onboarding is fully included for your November 2 start. I am reviewing your discount request with our sales lead and will send the updated quote PDF tomorrow, October 19, keeping us on track to sign by October 25. Alex",
+            "unverified": [
+              "10% discount approval for Northwind 40-seat annual Business plan ($8,640/year)"
+            ],
+            "next_stage": "Negotiating",
+            "options": [
+              {
+                "label": "Approve the 10% discount ($18/seat/month, $8,640/year)",
+                "body": "Hi Jane, we have approved the 10% discount at $8,640 per year, and guided onboarding is fully included. Attached is the updated quote PDF so you can sign by October 25 for your November 2 start. Alex"
+              },
+              {
+                "label": "Counter with a 5% discount ($19/seat/month, $9,120/year)",
+                "body": "Hi Jane, we can offer a 5% discount at $9,120 per year, and guided onboarding is fully included. Attached is the updated quote PDF so you can sign by October 25 for your November 2 start. Alex"
+              },
+              {
+                "label": "Decline the discount and maintain list price ($20/seat/month, $9,600/year)",
+                "body": "Hi Jane, guided onboarding is fully included, but we must maintain our list price of $9,600 per year. Attached is the updated quote PDF so you can sign by October 25 for your November 2 start. Alex"
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 25412,
+          "summary": "Wrote the email that moves this work to its next step."
+        },
+        {
+          "step": "judge",
+          "model": "gemini-3.5-flash-lite",
+          "input_summary": "10 checks on the reply draft",
+          "output": {
+            "checks": [
+              {
+                "rule": "1. Lead with the answer in the first sentence",
+                "verdict": "pass",
+                "evidence": "Starts directly by confirming onboarding is included."
+              },
+              {
+                "rule": "2. Cover what they will ask next (terms, dates, next step)",
+                "verdict": "pass",
+                "evidence": "Covers signing date October 25, start date November 2, and sending the PDF tomorrow."
+              },
+              {
+                "rule": "3. Say how their stated conditions were handled",
+                "verdict": "pass",
+                "evidence": "Addresses the 10% discount request by stating it is being reviewed with the sales lead."
+              },
+              {
+                "rule": "4. Look things up before asking them",
+                "verdict": "pass",
+                "evidence": "Did not ask Jane any questions."
+              },
+              {
+                "rule": "5. Match the contact's tone",
+                "verdict": "pass",
+                "evidence": "Matches Jane's direct, professional tone."
+              },
+              {
+                "rule": "6. A thank-you comes with a reason",
+                "verdict": "n.a.",
+                "evidence": "No thank-you was included in the draft."
+              },
+              {
+                "rule": "7. Shorter than their email",
+                "verdict": "pass",
+                "evidence": "Draft is 35 words; Jane's email is 45 words."
+              },
+              {
+                "rule": "8. No notes to self in the body",
+                "verdict": "pass",
+                "evidence": "No internal notes included."
+              },
+              {
+                "rule": "9. Every cited source was actually looked up",
+                "verdict": "pass",
+                "evidence": "Sources searched match the context provided."
+              },
+              {
+                "rule": "10. Every price comes from the price list",
+                "verdict": "n.a.",
+                "evidence": "No prices were cited in the draft."
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 1609,
+          "summary": "All 10 checks passed."
+        }
+      ]
     },
     {
-      "id": "nda",
+      "id": "w2",
       "person_id": "tom",
-      "title": "Signed NDA",
+      "title": "Acme Logistics NDA",
       "kind": "document",
       "stage": "Sent",
       "turn": "them",
@@ -826,61 +1424,405 @@
       "last_moved_days_ago": 9,
       "latest_mail_id": "m25",
       "their_latest_mail_id": "m25",
-      "moved_reason": null,
+      "moved_reason": "You sent the requested NDA to Tom Becker and are waiting on their signature.",
       "stage_change": {
         "from": "Requested",
         "to": "Sent"
       },
       "plan": [
         {
-          "title": "NDA requested",
+          "title": "Request mutual NDA",
           "start": -26,
+          "end": -26,
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m23",
-          "evidence": "We would like to start the pilot by {{d:+10}}."
+          "evidence": "Before we share shipment data for the pilot, our policy requires a mutual NDA.",
+          "mail": "m23"
         },
         {
-          "title": "NDA sent",
+          "title": "Send mutual NDA",
           "start": -9,
+          "end": -9,
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m24",
-          "evidence": "Attached is our mutual NDA for review."
+          "evidence": "Attached is our mutual NDA for review.",
+          "mail": "m24"
         },
         {
-          "title": "Signed NDA back",
+          "title": "Return reviewed NDA",
           "start": -3,
+          "end": -3,
           "owner": "them",
           "done": false,
           "date_kind": "from_email",
+          "evidence": "Our legal team will review it and return it by Thu, Oct 15.",
           "mail": "m25",
-          "note": "Tom promised it by this date.",
-          "evidence": "Our legal team will review it and return it by {{d:-3}}."
+          "note": "Deadline passed on October 15 without the agreement being returned."
         },
         {
-          "title": "Four-week pilot",
-          "start": 10,
-          "end": 38,
+          "title": "Follow up on overdue NDA",
+          "start": 1,
+          "end": 1,
+          "owner": "me",
+          "done": false,
+          "date_kind": "estimated",
+          "evidence": "Our legal team will review it and return it by Thu, Oct 15.",
+          "mail": "m25",
+          "note": "Estimated for the next business day following the missed deadline."
+        },
+        {
+          "title": "Execute signed NDA",
+          "start": 3,
+          "end": 3,
           "owner": "both",
           "done": false,
           "date_kind": "estimated",
-          "mail": "m23",
-          "note": "Tom wants to start by this date. Length from your NDA email.",
-          "evidence": "We would like to start the pilot by {{d:+10}}."
+          "evidence": "Once it is signed, we can start the four-week pilot with your data.",
+          "mail": "m24",
+          "note": "Estimated time needed to countersign and complete the agreement before the pilot."
+        },
+        {
+          "title": "Start shipment data pilot",
+          "start": 10,
+          "end": 10,
+          "owner": "both",
+          "done": false,
+          "date_kind": "from_email",
+          "evidence": "We would like to start the pilot by Wed, Oct 28.",
+          "mail": "m23"
         }
       ],
-      "draft": null,
-      "runs": []
+      "draft": {
+        "mode": "nudge",
+        "body": "Dear Tom,\n\nI am following up on the reviewed mutual NDA promised by October 15, so that we can execute it and keep our October 28 pilot launch on schedule.\n\nKind regards,\nAlex",
+        "based_on": [
+          "Tom Becker's contact card",
+          "Email history with Tom Becker",
+          "Goal w2 (Acme Logistics NDA)",
+          "Company knowledge base"
+        ],
+        "unverified": [],
+        "attachment": null,
+        "next_stage": "Sent",
+        "question": null,
+        "checks": [
+          {
+            "rule": "Lead with the answer in the first sentence",
+            "verdict": "fail",
+            "evidence": "The first sentence is a follow-up statement, not a direct answer."
+          },
+          {
+            "rule": "Cover what they will ask next (terms, dates, next step)",
+            "verdict": "pass",
+            "evidence": "Mentions executing the NDA and keeping the October 28 pilot launch date."
+          },
+          {
+            "rule": "Say how their stated conditions were handled",
+            "verdict": "n.a.",
+            "evidence": "The contact stated no conditions, only a timeline for their legal team."
+          },
+          {
+            "rule": "Look things up before asking them",
+            "verdict": "pass",
+            "evidence": "No requests are made to the contact."
+          },
+          {
+            "rule": "Match the contact's tone",
+            "verdict": "pass",
+            "evidence": "The tone is professional and concise, matching the contact."
+          },
+          {
+            "rule": "A thank-you comes with a reason",
+            "verdict": "n.a.",
+            "evidence": "No thank-you was included in the draft."
+          },
+          {
+            "rule": "Shorter than their email",
+            "verdict": "fail",
+            "evidence": "The draft is longer than the contact's brief two-sentence email."
+          },
+          {
+            "rule": "No notes to self in the body",
+            "verdict": "pass",
+            "evidence": "There are no internal notes in the draft."
+          },
+          {
+            "rule": "Every cited source was actually looked up",
+            "verdict": "pass",
+            "evidence": "No external unverified sources are cited."
+          },
+          {
+            "rule": "Every price comes from the price list",
+            "verdict": "n.a.",
+            "evidence": "No prices are mentioned in the draft."
+          }
+        ]
+      },
+      "runs": [
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m23 \"NDA before the pilot\" from Tom Becker <tom@acmelogistics.example>; 1 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "new",
+            "new_title": "Acme Logistics NDA",
+            "kind": "document",
+            "stage": "Requested",
+            "turn": "me",
+            "reason": "Tom Becker requested a mutual NDA from us before starting the pilot.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 4708,
+          "summary": "Tom Becker requested a mutual NDA from us before starting the pilot."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m24 \"Re: NDA before the pilot\" from Alex Kim <alex@fernway.example> (me); 3 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w2",
+            "kind": "document",
+            "stage": "Sent",
+            "turn": "them",
+            "reason": "You sent the requested NDA to Tom Becker and are waiting on their signature.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 2949,
+          "summary": "You sent the requested NDA to Tom Becker and are waiting on their signature."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m25 \"Re: NDA before the pilot\" from Tom Becker <tom@acmelogistics.example>; 3 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w2",
+            "kind": "document",
+            "stage": "Sent",
+            "turn": "them",
+            "reason": "Tom confirmed their legal team is reviewing the NDA and will return it to us.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 3190,
+          "summary": "Tom confirmed their legal team is reviewing the NDA and will return it to us."
+        },
+        {
+          "step": "plan",
+          "model": "gemini-3.8-flash",
+          "input_summary": "3 emails in \"Acme Logistics NDA\"",
+          "output": {
+            "steps": [
+              {
+                "title": "Request mutual NDA",
+                "start": "2026-09-22",
+                "end": "2026-09-22",
+                "owner": "them",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Before we share shipment data for the pilot, our policy requires a mutual NDA.",
+                "mail_id": "m23"
+              },
+              {
+                "title": "Send mutual NDA",
+                "start": "2026-10-09",
+                "end": "2026-10-09",
+                "owner": "me",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Attached is our mutual NDA for review.",
+                "mail_id": "m24"
+              },
+              {
+                "title": "Return reviewed NDA",
+                "start": "2026-10-15",
+                "end": "2026-10-15",
+                "owner": "them",
+                "done": false,
+                "date_kind": "from_email",
+                "evidence": "Our legal team will review it and return it by Thu, Oct 15.",
+                "mail_id": "m25",
+                "note": "Deadline passed on October 15 without the agreement being returned."
+              },
+              {
+                "title": "Follow up on overdue NDA",
+                "start": "2026-10-19",
+                "end": "2026-10-19",
+                "owner": "me",
+                "done": false,
+                "date_kind": "estimated",
+                "evidence": "Our legal team will review it and return it by Thu, Oct 15.",
+                "mail_id": "m25",
+                "note": "Estimated for the next business day following the missed deadline."
+              },
+              {
+                "title": "Execute signed NDA",
+                "start": "2026-10-21",
+                "end": "2026-10-21",
+                "owner": "both",
+                "done": false,
+                "date_kind": "estimated",
+                "evidence": "Once it is signed, we can start the four-week pilot with your data.",
+                "mail_id": "m24",
+                "note": "Estimated time needed to countersign and complete the agreement before the pilot."
+              },
+              {
+                "title": "Start shipment data pilot",
+                "start": "2026-10-28",
+                "end": "2026-10-28",
+                "owner": "both",
+                "done": false,
+                "date_kind": "from_email",
+                "evidence": "We would like to start the pilot by Wed, Oct 28.",
+                "mail_id": "m23"
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 19296,
+          "summary": "Built a plan of 6 steps from the emails, with dates."
+        },
+        {
+          "step": "prepare",
+          "model": "gemini-3.8-flash",
+          "input_summary": "nudge for \"Acme Logistics NDA\", latest m25",
+          "output": {
+            "blocker": "none",
+            "found": [
+              "Tom Becker stated their legal team would review and return the NDA by Thu, Oct 15, 2026 (email m25)",
+              "Acme Logistics requires a mutual NDA before sharing shipment data for the pilot (email m23)",
+              "Acme Logistics aims to begin the pilot on Wed, Oct 28, 2026 (email m23)",
+              "Goal w2 marks the NDA review as overdue since Oct 15, 2026 and schedules a follow-up (goal w2)"
+            ],
+            "sources": [
+              "Tom Becker's contact card",
+              "Email history with Tom Becker",
+              "Goal w2 (Acme Logistics NDA)",
+              "Company knowledge base"
+            ]
+          },
+          "tool_calls": [
+            {
+              "name": "get_contact",
+              "args": {
+                "person_id": "tom"
+              },
+              "result_summary": "{\"id\":\"tom\",\"name\":\"Tom Becker\",\"email\":\"tom@acmelogistics.example\",\"title\":\"Procurement Lead\",\"company_id\":\"acme\",\"tone\":\"formal\",\"company\":\"Acme Logistics\",\"facts\":[{\"fact\":\"Acme Logistics requires a mutual NDA before sharing shipment data for the pilot.\",\"kind\":\"org_info\",\"evidence\":\"Before we..."
+            },
+            {
+              "name": "get_history",
+              "args": {
+                "person_id": "tom"
+              },
+              "result_summary": "[{\"id\":\"m25\",\"direction\":\"in\",\"date\":\"2026-10-10\",\"subject\":\"Re: NDA before the pilot\",\"body\":\"Thank you. Our legal team will review it and return it by Thu, Oct 15.\\n\\nTom\"},{\"id\":\"m24\",\"direction\":\"out\",\"date\":\"2026-10-09\",\"subject\":\"Re: NDA before the pilot\",\"body\":\"Dear Tom,\\n\\nAttached is ou..."
+            },
+            {
+              "name": "get_goal",
+              "args": {
+                "goal_id": "w2"
+              },
+              "result_summary": "{\"id\":\"w2\",\"title\":\"Acme Logistics NDA\",\"kind\":\"document\",\"stage\":\"Sent\",\"plan\":[{\"title\":\"Request mutual NDA\",\"start\":\"2026-09-22\",\"end\":\"2026-09-22\",\"owner\":\"them\",\"done\":true,\"date_kind\":\"from_email\",\"evidence\":\"Before we share shipment data for the pilot, our policy requires a mutual NDA.\",\"m..."
+            },
+            {
+              "name": "search_knowledge",
+              "args": {
+                "query": "pilot NDA"
+              },
+              "result_summary": "[{\"doc\":\"Customer FAQ\",\"lines\":[\"Q: Do you sign NDAs? A: Yes. We use a standard mutual NDA and can review the customer's paper on request.\"]},{\"doc\":\"Service terms summary\",\"lines\":[\"Annual plans renew automatically unless cancelled 30 days before renewal. Price changes apply at renewal only. Kic..."
+            }
+          ],
+          "ms": 12949,
+          "summary": "Looked up get_contact, get_history, get_goal, search_knowledge."
+        },
+        {
+          "step": "draft",
+          "model": "gemini-3.8-flash",
+          "input_summary": "nudge draft for \"Acme Logistics NDA\"",
+          "output": {
+            "body": "Dear Tom,\n\nI am following up on the reviewed mutual NDA promised by October 15, so that we can execute it and keep our October 28 pilot launch on schedule.\n\nKind regards,\nAlex",
+            "unverified": [],
+            "next_stage": "Sent"
+          },
+          "tool_calls": [],
+          "ms": 21597,
+          "summary": "Wrote the email that moves this work to its next step."
+        },
+        {
+          "step": "judge",
+          "model": "gemini-3.5-flash-lite",
+          "input_summary": "10 checks on the nudge draft",
+          "output": {
+            "checks": [
+              {
+                "rule": "Lead with the answer in the first sentence",
+                "verdict": "fail",
+                "evidence": "The first sentence is a follow-up statement, not a direct answer."
+              },
+              {
+                "rule": "Cover what they will ask next (terms, dates, next step)",
+                "verdict": "pass",
+                "evidence": "Mentions executing the NDA and keeping the October 28 pilot launch date."
+              },
+              {
+                "rule": "Say how their stated conditions were handled",
+                "verdict": "n.a.",
+                "evidence": "The contact stated no conditions, only a timeline for their legal team."
+              },
+              {
+                "rule": "Look things up before asking them",
+                "verdict": "pass",
+                "evidence": "No requests are made to the contact."
+              },
+              {
+                "rule": "Match the contact's tone",
+                "verdict": "pass",
+                "evidence": "The tone is professional and concise, matching the contact."
+              },
+              {
+                "rule": "A thank-you comes with a reason",
+                "verdict": "n.a.",
+                "evidence": "No thank-you was included in the draft."
+              },
+              {
+                "rule": "Shorter than their email",
+                "verdict": "fail",
+                "evidence": "The draft is longer than the contact's brief two-sentence email."
+              },
+              {
+                "rule": "No notes to self in the body",
+                "verdict": "pass",
+                "evidence": "There are no internal notes in the draft."
+              },
+              {
+                "rule": "Every cited source was actually looked up",
+                "verdict": "pass",
+                "evidence": "No external unverified sources are cited."
+              },
+              {
+                "rule": "Every price comes from the price list",
+                "verdict": "n.a.",
+                "evidence": "No prices are mentioned in the draft."
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 2030,
+          "summary": "2 of 10 checks need your eye."
+        }
+      ]
     },
     {
-      "id": "login",
+      "id": "w3",
       "person_id": "marco",
-      "title": "Login error",
+      "title": "Bluebird SSO Issue",
       "kind": "issue",
-      "stage": "Investigating",
+      "stage": "Fix proposed",
       "turn": "me",
       "status": "open",
       "stage_history": [
@@ -906,17 +1848,10 @@
           "evidence": null
         },
         {
-          "stage": "Investigating",
-          "turn": "them",
+          "stage": "Fix proposed",
+          "turn": "me",
           "days_ago": 10.9,
           "mail_id": "m18",
-          "evidence": null
-        },
-        {
-          "stage": "Investigating",
-          "turn": "me",
-          "days_ago": 2.5,
-          "mail_id": "m19",
           "evidence": null
         }
       ],
@@ -928,76 +1863,462 @@
         "m19",
         "m20"
       ],
-      "last_moved_days_ago": 2.5,
+      "last_moved_days_ago": 10.9,
       "latest_mail_id": "m20",
       "their_latest_mail_id": "m20",
-      "moved_reason": null,
-      "stage_change": null,
+      "moved_reason": "You updated Marco with the planned release date for the fix and promised to follow up once it goes live.",
+      "stage_change": {
+        "from": "Investigating",
+        "to": "Fix proposed"
+      },
       "plan": [
         {
-          "title": "Issue reported",
+          "title": "Report SSO login issue",
           "start": -12,
+          "end": -12,
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m15",
-          "evidence": "since this morning a few of our people can't sign in with SSO."
+          "evidence": "Hey Alex, since this morning a few of our people can't sign in with SSO.",
+          "mail": "m15"
         },
         {
-          "title": "Error details received",
+          "title": "Provide error details",
           "start": -11,
+          "end": -11,
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m17",
-          "evidence": "Error ID is LGN-4471."
+          "evidence": "Error ID is LGN-4471.",
+          "mail": "m17"
         },
         {
-          "title": "Reply to Marco with the date",
-          "start": 0,
+          "title": "Request progress update",
+          "start": -2,
+          "end": -2,
+          "owner": "them",
+          "done": true,
+          "date_kind": "from_email",
+          "evidence": "Any update on this?",
+          "mail": "m20"
+        },
+        {
+          "title": "Send status update",
+          "start": 1,
+          "end": 1,
           "owner": "me",
           "done": false,
           "date_kind": "estimated",
-          "mail": "m20",
-          "note": "Marco asked for an ETA 2 days ago.",
-          "evidence": "Any update on this?"
+          "evidence": "Please keep me copied on updates.",
+          "mail": "m19",
+          "note": "Replying on the next business day after the Friday request."
         },
         {
-          "title": "Release 4.12 ships",
+          "title": "Deploy release 4.12",
           "start": 1,
+          "end": 1,
           "owner": "me",
           "done": false,
           "date_kind": "from_email",
-          "mail": "m18",
-          "evidence": "The fix is planned for release 4.12, going out on {{d:+1}}."
+          "evidence": "The fix is planned for release 4.12, going out on Mon, Oct 19.",
+          "mail": "m18"
         },
         {
-          "title": "Fix live for Bluebird",
-          "start": 1,
+          "title": "Confirm fix is live",
+          "start": 3,
           "end": 3,
           "owner": "me",
           "done": false,
-          "date_kind": "from_email",
-          "mail": "m18",
-          "evidence": "The fix is planned for release 4.12, going out on {{d:+1}}."
-        },
-        {
-          "title": "Marco confirms it works",
-          "start": 4,
-          "owner": "them",
-          "done": false,
           "date_kind": "estimated",
+          "evidence": "It reaches every workspace within 48 hours, and I'll confirm once it's live for you.",
           "mail": "m18",
-          "evidence": "The fix is planned for release 4.12, going out on {{d:+1}}."
+          "note": "Workspace rollout takes up to 48 hours following the October 19 release."
         }
       ],
-      "draft": null,
-      "runs": []
+      "draft": {
+        "mode": "reply",
+        "body": "The fix deploys tomorrow, reaching you by Oct 21. Chrome enables SSO meanwhile. I'll confirm once live.\n\nAlex",
+        "based_on": [
+          "Marco's contact record",
+          "Goal w3 (Bluebird SSO Issue)",
+          "Email thread history with Marco",
+          "Manual excerpt: SSO sign-in troubleshooting"
+        ],
+        "unverified": [],
+        "attachment": null,
+        "next_stage": "Fix proposed",
+        "question": null,
+        "checks": [
+          {
+            "rule": "1. Lead with the answer in the first sentence",
+            "verdict": "pass",
+            "evidence": "The first sentence directly states when the fix deploys."
+          },
+          {
+            "rule": "2. Cover what they will ask next (terms, dates, next step)",
+            "verdict": "pass",
+            "evidence": "Mentions the next step of confirming once live."
+          },
+          {
+            "rule": "3. Say how their stated conditions were handled",
+            "verdict": "n.a.",
+            "evidence": "No stated conditions were provided in their email."
+          },
+          {
+            "rule": "4. Look things up before asking them",
+            "verdict": "pass",
+            "evidence": "No questions were asked of the contact."
+          },
+          {
+            "rule": "5. Match the contact's tone",
+            "verdict": "pass",
+            "evidence": "Direct and concise tone matches Marco's short inquiry."
+          },
+          {
+            "rule": "6. A thank-you comes with a reason",
+            "verdict": "n.a.",
+            "evidence": "No thank-you was included in the draft."
+          },
+          {
+            "rule": "7. Shorter than their email",
+            "verdict": "pass",
+            "evidence": "Draft has 18 words compared to Marco's 20 words."
+          },
+          {
+            "rule": "8. No notes to self in the body",
+            "verdict": "pass",
+            "evidence": "No internal notes found in the text."
+          },
+          {
+            "rule": "9. Every cited source was actually looked up",
+            "verdict": "pass",
+            "evidence": "Knowledge search regarding SSO was performed."
+          },
+          {
+            "rule": "10. Every price comes from the price list",
+            "verdict": "n.a.",
+            "evidence": "No prices are mentioned in the draft."
+          }
+        ]
+      },
+      "runs": [
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m15 \"SSO login broken for some of our users\" from Marco Diaz <marco@bluebirdlabs.example>; 2 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "new",
+            "new_title": "Bluebird SSO Issue",
+            "kind": "issue",
+            "stage": "Reported",
+            "turn": "me",
+            "reason": "Marco reported that some users are unable to sign in via SSO and asked for help.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 2817,
+          "summary": "Marco reported that some users are unable to sign in via SSO and asked for help."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m16 \"Re: SSO login broken for some of our users\" from Alex Kim <alex@fernway.example> (me); 3 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w3",
+            "kind": "issue",
+            "stage": "Investigating",
+            "turn": "them",
+            "reason": "You asked Marco for diagnostic details about the SSO issue, so you are waiting for his reply.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 3799,
+          "summary": "You asked Marco for diagnostic details about the SSO issue, so you are waiting for his reply."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m17 \"Re: SSO login broken for some of our users\" from Marco Diaz <marco@bluebirdlabs.example>; 3 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "w3",
+            "kind": "issue",
+            "stage": "Investigating",
+            "turn": "me",
+            "reason": "Marco provided additional error details for the SSO issue, so the next action is on our team to investigate and reply.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 3669,
+          "summary": "Marco provided additional error details for the SSO issue, so the next action is on our team to investigate and reply."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m18 \"Re: SSO login broken for some of our users\" from Alex Kim <alex@fernway.example> (me); 3 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w3",
+            "kind": "issue",
+            "stage": "Fix proposed",
+            "turn": "me",
+            "reason": "You updated Marco with the planned release date for the fix and promised to follow up once it goes live.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 7078,
+          "summary": "You updated Marco with the planned release date for the fix and promised to follow up once it goes live."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m19 \"Re: SSO login broken for some of our users\" from Nina Park <nina@bluebirdlabs.example>; 6 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w3",
+            "kind": "issue",
+            "stage": "Fix proposed",
+            "turn": "me",
+            "reason": "Nina from Bluebird Labs asked to be looped in on the ongoing SSO issue, which still requires action from you.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 4747,
+          "summary": "Nina from Bluebird Labs asked to be looped in on the ongoing SSO issue, which still requires action from you."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m20 \"Re: SSO login broken for some of our users\" from Marco Diaz <marco@bluebirdlabs.example>; 6 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "w3",
+            "kind": "issue",
+            "stage": "Fix proposed",
+            "turn": "me",
+            "reason": "Marco Diaz is asking for an ETA and an update on the ongoing SSO login problem.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 4370,
+          "summary": "Marco Diaz is asking for an ETA and an update on the ongoing SSO login problem."
+        },
+        {
+          "step": "plan",
+          "model": "gemini-3.8-flash",
+          "input_summary": "6 emails in \"Bluebird SSO Issue\"",
+          "output": {
+            "steps": [
+              {
+                "title": "Report SSO login issue",
+                "start": "2026-10-06",
+                "end": "2026-10-06",
+                "owner": "them",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Hey Alex, since this morning a few of our people can't sign in with SSO.",
+                "mail_id": "m15"
+              },
+              {
+                "title": "Provide error details",
+                "start": "2026-10-07",
+                "end": "2026-10-07",
+                "owner": "them",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Error ID is LGN-4471.",
+                "mail_id": "m17"
+              },
+              {
+                "title": "Request progress update",
+                "start": "2026-10-16",
+                "end": "2026-10-16",
+                "owner": "them",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Any update on this?",
+                "mail_id": "m20"
+              },
+              {
+                "title": "Send status update",
+                "start": "2026-10-19",
+                "end": "2026-10-19",
+                "owner": "me",
+                "done": false,
+                "date_kind": "estimated",
+                "evidence": "Please keep me copied on updates.",
+                "mail_id": "m19",
+                "note": "Replying on the next business day after the Friday request."
+              },
+              {
+                "title": "Deploy release 4.12",
+                "start": "2026-10-19",
+                "end": "2026-10-19",
+                "owner": "me",
+                "done": false,
+                "date_kind": "from_email",
+                "evidence": "The fix is planned for release 4.12, going out on Mon, Oct 19.",
+                "mail_id": "m18"
+              },
+              {
+                "title": "Confirm fix is live",
+                "start": "2026-10-21",
+                "end": "2026-10-21",
+                "owner": "me",
+                "done": false,
+                "date_kind": "estimated",
+                "evidence": "It reaches every workspace within 48 hours, and I'll confirm once it's live for you.",
+                "mail_id": "m18",
+                "note": "Workspace rollout takes up to 48 hours following the October 19 release."
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 24186,
+          "summary": "Built a plan of 6 steps from the emails, with dates."
+        },
+        {
+          "step": "prepare",
+          "model": "gemini-3.8-flash",
+          "input_summary": "reply for \"Bluebird SSO Issue\", latest m20",
+          "output": {
+            "blocker": "none",
+            "found": [
+              "Contact card: Marco Diaz prefers a casual tone and is Engineering Lead at Bluebird Labs",
+              "Goal w3: Release 4.12 is scheduled to deploy on Mon, Oct 19, 2026, reaching all workspaces within 48 hours (by Oct 21)",
+              "Manual excerpt 'SSO sign-in troubleshooting': Known issue SSO-112 on Safari 18 causes error LGN-4471; interim workaround is signing in with Chrome or Firefox, or clearing site cookies"
+            ],
+            "sources": [
+              "Marco's contact record",
+              "Goal w3 (Bluebird SSO Issue)",
+              "Email thread history with Marco",
+              "Manual excerpt: SSO sign-in troubleshooting"
+            ]
+          },
+          "tool_calls": [
+            {
+              "name": "get_contact",
+              "args": {
+                "person_id": "marco"
+              },
+              "result_summary": "{\"id\":\"marco\",\"name\":\"Marco Diaz\",\"email\":\"marco@bluebirdlabs.example\",\"title\":\"Engineering Lead\",\"company_id\":\"bluebird\",\"tone\":\"casual\",\"company\":\"Bluebird Labs\",\"facts\":[]}"
+            },
+            {
+              "name": "get_history",
+              "args": {
+                "person_id": "marco"
+              },
+              "result_summary": "[{\"id\":\"m20\",\"direction\":\"in\",\"date\":\"2026-10-16\",\"subject\":\"Re: SSO login broken for some of our users\",\"body\":\"Any update on this? People are using passwords as a workaround, but it's annoying. Is there an ETA?\\n\\nMarco\"},{\"id\":\"m18\",\"direction\":\"out\",\"date\":\"2026-10-07\",\"subject\":\"Re: SSO logi..."
+            },
+            {
+              "name": "get_goal",
+              "args": {
+                "goal_id": "w3"
+              },
+              "result_summary": "{\"id\":\"w3\",\"title\":\"Bluebird SSO Issue\",\"kind\":\"issue\",\"stage\":\"Fix proposed\",\"plan\":[{\"title\":\"Report SSO login issue\",\"start\":\"2026-10-06\",\"end\":\"2026-10-06\",\"owner\":\"them\",\"done\":true,\"date_kind\":\"from_email\",\"evidence\":\"Hey Alex, since this morning a few of our people can't sign in with SSO.\"..."
+            },
+            {
+              "name": "search_knowledge",
+              "args": {
+                "query": "SSO login broken"
+              },
+              "result_summary": "[{\"doc\":\"Fernway price list\",\"lines\":[\"Business plan: $20 per seat per month, billed annually. Includes SSO, scheduled CSV exports and guided onboarding (two 60-minute sessions).\"]},{\"doc\":\"Customer FAQ\",\"lines\":[\"Q: Do you support SSO? A: Yes, SAML SSO on the Business plan.\"]},{\"doc\":\"Manual exc..."
+            },
+            {
+              "name": "get_history",
+              "args": {
+                "limit": 10,
+                "person_id": "marco"
+              },
+              "result_summary": "[{\"id\":\"m20\",\"direction\":\"in\",\"date\":\"2026-10-16\",\"subject\":\"Re: SSO login broken for some of our users\",\"body\":\"Any update on this? People are using passwords as a workaround, but it's annoying. Is there an ETA?\\n\\nMarco\"},{\"id\":\"m18\",\"direction\":\"out\",\"date\":\"2026-10-07\",\"subject\":\"Re: SSO logi..."
+            }
+          ],
+          "ms": 16081,
+          "summary": "Looked up get_contact, get_history, get_goal, search_knowledge, get_history."
+        },
+        {
+          "step": "draft",
+          "model": "gemini-3.8-flash",
+          "input_summary": "reply draft for \"Bluebird SSO Issue\"",
+          "output": {
+            "body": "The fix deploys tomorrow, reaching you by Oct 21. Chrome enables SSO meanwhile. I'll confirm once live.\n\nAlex",
+            "unverified": [],
+            "next_stage": "Fix proposed"
+          },
+          "tool_calls": [],
+          "ms": 41424,
+          "summary": "Wrote the email that moves this work to its next step."
+        },
+        {
+          "step": "judge",
+          "model": "gemini-3.5-flash-lite",
+          "input_summary": "10 checks on the reply draft",
+          "output": {
+            "checks": [
+              {
+                "rule": "1. Lead with the answer in the first sentence",
+                "verdict": "pass",
+                "evidence": "The first sentence directly states when the fix deploys."
+              },
+              {
+                "rule": "2. Cover what they will ask next (terms, dates, next step)",
+                "verdict": "pass",
+                "evidence": "Mentions the next step of confirming once live."
+              },
+              {
+                "rule": "3. Say how their stated conditions were handled",
+                "verdict": "n.a.",
+                "evidence": "No stated conditions were provided in their email."
+              },
+              {
+                "rule": "4. Look things up before asking them",
+                "verdict": "pass",
+                "evidence": "No questions were asked of the contact."
+              },
+              {
+                "rule": "5. Match the contact's tone",
+                "verdict": "pass",
+                "evidence": "Direct and concise tone matches Marco's short inquiry."
+              },
+              {
+                "rule": "6. A thank-you comes with a reason",
+                "verdict": "n.a.",
+                "evidence": "No thank-you was included in the draft."
+              },
+              {
+                "rule": "7. Shorter than their email",
+                "verdict": "pass",
+                "evidence": "Draft has 18 words compared to Marco's 20 words."
+              },
+              {
+                "rule": "8. No notes to self in the body",
+                "verdict": "pass",
+                "evidence": "No internal notes found in the text."
+              },
+              {
+                "rule": "9. Every cited source was actually looked up",
+                "verdict": "pass",
+                "evidence": "Knowledge search regarding SSO was performed."
+              },
+              {
+                "rule": "10. Every price comes from the price list",
+                "verdict": "n.a.",
+                "evidence": "No prices are mentioned in the draft."
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 1770,
+          "summary": "All 10 checks passed."
+        }
+      ]
     },
     {
-      "id": "csv",
+      "id": "w4",
       "person_id": "lena",
-      "title": "CSV export",
+      "title": "CSV Export Question",
       "kind": "question",
       "stage": "Confirmed",
       "turn": "none",
@@ -1033,47 +2354,145 @@
       "last_moved_days_ago": 5,
       "latest_mail_id": "m28",
       "their_latest_mail_id": "m28",
-      "moved_reason": null,
+      "moved_reason": "Lena confirmed the CSV export works, successfully completing the question.",
       "stage_change": {
         "from": "Answered",
         "to": "Confirmed"
       },
       "plan": [
         {
-          "title": "Question asked",
+          "title": "Inquire about CSV export",
           "start": -8,
+          "end": -8,
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m26",
-          "evidence": "does Fernway export reports to CSV?"
+          "evidence": "Hi Alex, does Fernway export reports to CSV?",
+          "mail": "m26"
         },
         {
-          "title": "Answered",
-          "start": -8,
+          "title": "Explain CSV export options",
+          "start": -7,
+          "end": -7,
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m27",
-          "evidence": "yes."
+          "evidence": "Every report has Export > CSV, and scheduled monthly exports are on the Business plan you're on.",
+          "mail": "m27"
         },
         {
-          "title": "Lena confirmed it works",
+          "title": "Configure monthly export",
           "start": -5,
+          "end": -5,
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m28",
-          "evidence": "Found it and set up the monthly export."
+          "evidence": "Found it and set up the monthly export.",
+          "mail": "m28"
         }
       ],
       "draft": null,
-      "runs": []
+      "runs": [
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m26 \"CSV export?\" from Lena Novak <lena@orchardco.example>; 3 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "new",
+            "new_title": "CSV Export Question",
+            "kind": "question",
+            "stage": "Asked",
+            "turn": "me",
+            "reason": "Lena is asking whether Fernway supports CSV report exports and is waiting for your answer.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 3171,
+          "summary": "Lena is asking whether Fernway supports CSV report exports and is waiting for your answer."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m27 \"Re: CSV export?\" from Alex Kim <alex@fernway.example> (me); 4 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w4",
+            "kind": "question",
+            "stage": "Answered",
+            "turn": "them",
+            "reason": "You answered Lena's question about CSV exports, so we are now waiting on her response.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 3007,
+          "summary": "You answered Lena's question about CSV exports, so we are now waiting on her response."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m28 \"Re: CSV export?\" from Lena Novak <lena@orchardco.example>; 5 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w4",
+            "kind": "question",
+            "stage": "Confirmed",
+            "turn": "none",
+            "reason": "Lena confirmed the CSV export works, successfully completing the question.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 3607,
+          "summary": "Lena confirmed the CSV export works, successfully completing the question."
+        },
+        {
+          "step": "plan",
+          "model": "gemini-3.8-flash",
+          "input_summary": "3 emails in \"CSV Export Question\"",
+          "output": {
+            "steps": [
+              {
+                "title": "Inquire about CSV export",
+                "start": "2026-10-10",
+                "end": "2026-10-10",
+                "owner": "them",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Hi Alex, does Fernway export reports to CSV?",
+                "mail_id": "m26"
+              },
+              {
+                "title": "Explain CSV export options",
+                "start": "2026-10-11",
+                "end": "2026-10-11",
+                "owner": "me",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Every report has Export > CSV, and scheduled monthly exports are on the Business plan you're on.",
+                "mail_id": "m27"
+              },
+              {
+                "title": "Configure monthly export",
+                "start": "2026-10-13",
+                "end": "2026-10-13",
+                "owner": "them",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Found it and set up the monthly export.",
+                "mail_id": "m28"
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 9265,
+          "summary": "Built a plan of 3 steps from the emails, with dates."
+        }
+      ]
     },
     {
-      "id": "billing",
+      "id": "w5",
       "person_id": "sam",
-      "title": "Billing contact",
+      "title": "Northwind Billing Contact",
       "kind": "other",
       "stage": "Done",
       "turn": "none",
@@ -1101,38 +2520,150 @@
       "last_moved_days_ago": 5.8,
       "latest_mail_id": "m14",
       "their_latest_mail_id": "m13",
-      "moved_reason": null,
+      "moved_reason": "You confirmed to Sam that the billing contact update has been completed.",
       "stage_change": {
         "from": "Open",
         "to": "Done"
       },
       "plan": [
         {
-          "title": "Change requested",
+          "title": "Request billing contact change",
           "start": -6,
+          "end": -6,
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m13",
-          "evidence": "Please send all future Fernway invoices to ap@northwind.example instead of my address."
+          "evidence": "Please send all future Fernway invoices to ap@northwind.example instead of my address.",
+          "mail": "m13"
         },
         {
-          "title": "Billing contact updated",
-          "start": -6,
+          "title": "Update billing contact record",
+          "start": -5,
+          "end": -5,
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
+          "evidence": "Done.",
+          "mail": "m14"
+        },
+        {
+          "title": "Confirm update with customer",
+          "start": -5,
+          "end": -5,
+          "owner": "me",
+          "done": true,
+          "date_kind": "from_email",
+          "evidence": "Future invoices will go to ap@northwind.example.",
+          "mail": "m14"
+        },
+        {
+          "title": "Send next invoice to AP",
+          "start": 25,
+          "end": 25,
+          "owner": "me",
+          "done": false,
+          "date_kind": "estimated",
+          "evidence": "Future invoices will go to ap@northwind.example.",
           "mail": "m14",
-          "evidence": "Done."
+          "note": "Estimated based on the next monthly billing cycle following the request."
         }
       ],
       "draft": null,
-      "runs": []
+      "runs": [
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m13 \"Billing contact for Northwind\" from Sam Ortiz <sam@northwind.example>; 4 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "new",
+            "new_title": "Northwind Billing Contact",
+            "kind": "other",
+            "stage": "Open",
+            "turn": "me",
+            "reason": "Sam Ortiz requested to update Northwind's invoicing email address, which requires confirmation and updating records.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 4303,
+          "summary": "Sam Ortiz requested to update Northwind's invoicing email address, which requires confirmation and updating records."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m14 \"Re: Billing contact for Northwind\" from Alex Kim <alex@fernway.example> (me); 5 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w5",
+            "kind": "other",
+            "stage": "Done",
+            "turn": "none",
+            "reason": "You confirmed to Sam that the billing contact update has been completed.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 3185,
+          "summary": "You confirmed to Sam that the billing contact update has been completed."
+        },
+        {
+          "step": "plan",
+          "model": "gemini-3.8-flash",
+          "input_summary": "2 emails in \"Northwind Billing Contact\"",
+          "output": {
+            "steps": [
+              {
+                "title": "Request billing contact change",
+                "start": "2026-10-12",
+                "end": "2026-10-12",
+                "owner": "them",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Please send all future Fernway invoices to ap@northwind.example instead of my address.",
+                "mail_id": "m13"
+              },
+              {
+                "title": "Update billing contact record",
+                "start": "2026-10-13",
+                "end": "2026-10-13",
+                "owner": "me",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Done.",
+                "mail_id": "m14"
+              },
+              {
+                "title": "Confirm update with customer",
+                "start": "2026-10-13",
+                "end": "2026-10-13",
+                "owner": "me",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Future invoices will go to ap@northwind.example.",
+                "mail_id": "m14"
+              },
+              {
+                "title": "Send next invoice to AP",
+                "start": "2026-11-12",
+                "end": "2026-11-12",
+                "owner": "me",
+                "done": false,
+                "date_kind": "estimated",
+                "evidence": "Future invoices will go to ap@northwind.example.",
+                "mail_id": "m14",
+                "note": "Estimated based on the next monthly billing cycle following the request."
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 15875,
+          "summary": "Built a plan of 4 steps from the emails, with dates."
+        }
+      ]
     },
     {
-      "id": "kickoff",
+      "id": "w6",
       "person_id": "priya",
-      "title": "Kickoff meeting",
+      "title": "Helio Health Kickoff",
       "kind": "meeting",
       "stage": "Proposed",
       "turn": "them",
@@ -1160,61 +2691,164 @@
       "last_moved_days_ago": 1,
       "latest_mail_id": "m22",
       "their_latest_mail_id": "m21",
-      "moved_reason": null,
+      "moved_reason": "I sent suggested meeting times to Priya and am waiting for her response.",
       "stage_change": null,
       "plan": [
         {
-          "title": "Kickoff requested",
+          "title": "Request kickoff call",
           "start": -4,
+          "end": -4,
           "owner": "them",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m21",
-          "evidence": "We just signed up for the Team plan."
+          "evidence": "Could we schedule a kickoff call next week?",
+          "mail": "m21"
         },
         {
-          "title": "Two times proposed",
+          "title": "Propose kickoff call times",
           "start": -1,
+          "end": -1,
           "owner": "me",
           "done": true,
           "date_kind": "from_email",
-          "mail": "m22",
-          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?"
+          "evidence": "How about Thu, Oct 22 at 10:00 or Sat, Oct 24 at 14:00, your time?",
+          "mail": "m22"
         },
         {
-          "title": "Priya picks a time",
-          "start": 0,
-          "end": 3,
+          "title": "Confirm kickoff call time",
+          "start": 1,
+          "end": 1,
           "owner": "them",
           "done": false,
           "date_kind": "estimated",
+          "evidence": "How about Thu, Oct 22 at 10:00 or Sat, Oct 24 at 14:00, your time?",
           "mail": "m22",
-          "note": "Needed before the first proposed time.",
-          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?"
+          "note": "Estimated for the next business day ahead of proposed meeting dates."
         },
         {
-          "title": "Kickoff call, 45 min",
+          "title": "Conduct kickoff call",
           "start": 4,
+          "end": 4,
           "owner": "both",
           "done": false,
-          "date_kind": "estimated",
-          "mail": "m22",
-          "note": "First of the two proposed times.",
-          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?"
+          "date_kind": "from_email",
+          "evidence": "How about Thu, Oct 22 at 10:00 or Sat, Oct 24 at 14:00, your time?",
+          "mail": "m22"
         },
         {
-          "title": "Workspace set up",
+          "title": "Set up customer workspace",
           "start": 4,
           "end": 11,
           "owner": "me",
           "done": false,
-          "date_kind": "from_email",
+          "date_kind": "estimated",
+          "evidence": "The call takes 45 minutes, and we set up your workspace within a week after it.",
           "mail": "m22",
-          "evidence": "How about {{d:+4}} at 10:00 or {{d:+6}} at 14:00, your time?"
+          "note": "Estimated within the promised one-week window following the kickoff call."
         }
       ],
       "draft": null,
-      "runs": []
+      "runs": [
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m21 \"Kickoff call\" from Priya Shah <priya@heliohealth.example>; 5 work items so far",
+          "output": {
+            "needs_reply": true,
+            "work": "new",
+            "new_title": "Helio Health Kickoff",
+            "kind": "meeting",
+            "stage": "Proposed",
+            "turn": "me",
+            "reason": "Priya requested to schedule a kickoff call for their new Team plan, so you need to reply with your availability.",
+            "confidence": 0.95
+          },
+          "tool_calls": [],
+          "ms": 2636,
+          "summary": "Priya requested to schedule a kickoff call for their new Team plan, so you need to reply with your availability."
+        },
+        {
+          "step": "track",
+          "model": "gemini-3.8-flash",
+          "input_summary": "m22 \"Re: Kickoff call\" from Alex Kim <alex@fernway.example> (me); 6 work items so far",
+          "output": {
+            "needs_reply": false,
+            "work": "w6",
+            "kind": "meeting",
+            "stage": "Proposed",
+            "turn": "them",
+            "reason": "I sent suggested meeting times to Priya and am waiting for her response.",
+            "confidence": 0.98
+          },
+          "tool_calls": [],
+          "ms": 3226,
+          "summary": "I sent suggested meeting times to Priya and am waiting for her response."
+        },
+        {
+          "step": "plan",
+          "model": "gemini-3.8-flash",
+          "input_summary": "2 emails in \"Helio Health Kickoff\"",
+          "output": {
+            "steps": [
+              {
+                "title": "Request kickoff call",
+                "start": "2026-10-14",
+                "end": "2026-10-14",
+                "owner": "them",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "Could we schedule a kickoff call next week?",
+                "mail_id": "m21"
+              },
+              {
+                "title": "Propose kickoff call times",
+                "start": "2026-10-17",
+                "end": "2026-10-17",
+                "owner": "me",
+                "done": true,
+                "date_kind": "from_email",
+                "evidence": "How about Thu, Oct 22 at 10:00 or Sat, Oct 24 at 14:00, your time?",
+                "mail_id": "m22"
+              },
+              {
+                "title": "Confirm kickoff call time",
+                "start": "2026-10-19",
+                "end": "2026-10-19",
+                "owner": "them",
+                "done": false,
+                "date_kind": "estimated",
+                "evidence": "How about Thu, Oct 22 at 10:00 or Sat, Oct 24 at 14:00, your time?",
+                "mail_id": "m22",
+                "note": "Estimated for the next business day ahead of proposed meeting dates."
+              },
+              {
+                "title": "Conduct kickoff call",
+                "start": "2026-10-22",
+                "end": "2026-10-22",
+                "owner": "both",
+                "done": false,
+                "date_kind": "from_email",
+                "evidence": "How about Thu, Oct 22 at 10:00 or Sat, Oct 24 at 14:00, your time?",
+                "mail_id": "m22"
+              },
+              {
+                "title": "Set up customer workspace",
+                "start": "2026-10-22",
+                "end": "2026-10-29",
+                "owner": "me",
+                "done": false,
+                "date_kind": "estimated",
+                "evidence": "The call takes 45 minutes, and we set up your workspace within a week after it.",
+                "mail_id": "m22",
+                "note": "Estimated within the promised one-week window following the kickoff call."
+              }
+            ]
+          },
+          "tool_calls": [],
+          "ms": 13456,
+          "summary": "Built a plan of 5 steps from the emails, with dates."
+        }
+      ]
     }
   ],
   "no_reply_mail_ids": [
@@ -1232,6 +2866,39 @@
     "n10",
     "n11"
   ],
-  "generator": "placeholder",
-  "note": "Placeholder built from hand-written labels. No AI was used. Replaced by the Gemini run."
+  "generator": "gemini",
+  "score": {
+    "generator": "gemini",
+    "emails": {
+      "right": 41,
+      "total": 41,
+      "wrong": []
+    },
+    "items": {
+      "found": 6,
+      "total": 6
+    },
+    "kinds": {
+      "right": 6,
+      "total": 6
+    },
+    "columns": {
+      "right": 6,
+      "total": 6
+    },
+    "dated_steps": {
+      "found": 20,
+      "total": 21
+    },
+    "draft_checks": {
+      "passed": 20,
+      "failed": 2,
+      "total": 30
+    }
+  },
+  "models": {
+    "heavy": "gemini-3.8-flash",
+    "light": "gemini-3.5-flash-lite"
+  },
+  "run_seconds": 358
 }

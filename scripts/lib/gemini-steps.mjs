@@ -24,7 +24,7 @@ export async function ask({ step, model, system, prompt, schema, tools, toolImpl
   const started = Date.now();
   const toolCalls = [];
   const contents = [{ role: 'user', parts: [{ text: prompt }] }];
-  for (let attempt = 0; attempt < 6; attempt++) {
+  for (let attempt = 0; attempt < 8; attempt++) {
     const config = { systemInstruction: system, temperature: 0.2 };
     if (tools) config.tools = [{ functionDeclarations: tools }];
     else { config.responseMimeType = 'application/json'; config.responseJsonSchema = schema; }
@@ -50,7 +50,10 @@ export async function ask({ step, model, system, prompt, schema, tools, toolImpl
     }
     return done(res.text);
   }
-  throw new Error(`${step}: too many tool rounds`);
+  // Enough lookups: ask for the answer with what has been found so far.
+  contents.push({ role: 'user', parts: [{ text: 'Stop looking things up. Give the final answer as JSON only, matching the schema, using what you found.' }] });
+  const final = await gemini().models.generateContent({ model, contents, config: { systemInstruction: system, temperature: 0.2, responseMimeType: 'application/json', responseJsonSchema: schema } });
+  return done(final.text);
 
   function done(text) {
     let output;

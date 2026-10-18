@@ -56,6 +56,7 @@ if (terms.length === 0) {
 // ---------- secrets ----------
 const secretPatterns = [
   ['Google API key', /AIza[0-9A-Za-z_\-]{35}/],
+  ['Google AI Studio key', /\bAQ\.[0-9A-Za-z_\-]{30,}/],
   ['private key block', /-----BEGIN [A-Z ]*PRIVATE KEY-----/],
   ['service account key', /"private_key"\s*:\s*"/],
   ['GitHub token', /\bgh[pousr]_[A-Za-z0-9]{30,}/],
